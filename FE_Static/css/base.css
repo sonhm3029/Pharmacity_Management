@@ -1,0 +1,23 @@
+/* Color variables */
+:root {
+    --red-color: red;
+    --header-color:#4a4a4a;
+    --dashboard-color:#363636;
+    --btn-color:#01d1b2;
+    --table-header-color:#e0e0e0;
+    --logo-color-1:#55a2de;
+    --logo-color-2:#5dac46;
+    --search-form-height: 32px;
+    --topbar-height:60px;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    line-height: 1.5;
+    font-size: 62.5%; 
+}
