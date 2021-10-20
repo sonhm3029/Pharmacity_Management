@@ -81,7 +81,7 @@ body {
 .page-layout-wrapper {
     padding-top: var(--topbar-height);
     display: flex;
-    height: 100%;
+    /* height: 100%; */
     position: relative;
     padding-left: 10px;
     background-color: var(--header-color);
@@ -156,7 +156,7 @@ body {
 .main-content {
     flex: 1;
     background-color: wheat;
-    height: 1000px;
+    min-height: 100vh;
 }
 /* End main content */
 
