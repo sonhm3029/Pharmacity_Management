@@ -114,7 +114,6 @@ body {
 
 
 .sidebar-wrapper .sidebar-nav {
-    margin-left: 12px;
     padding: 24px 0px 0px 0px;
     list-style-type: none;
     color: white;
@@ -122,15 +121,29 @@ body {
 
 .sidebar-nav__item {
     display: block;
+}  
+
+.sidebar-nav__item:hover {
+    background-color: var(--sidebar-btn-hover);
+    cursor: pointer;
+}
+
+
+.sidebar-nav__item:hover .sidebar-task__link {
+    color: black;
+    text-decoration: none;
 }
 
 .sidebar-task__link {
+    padding: 15px 15px 15px 24px;
     display: flex;
     align-items: center;
     color: var(--table-header-color);
     text-decoration: none;
     font-size: 1.6rem;
 }
+
+
 
 .sidebar-task__link i {
     margin-right: 8px;
