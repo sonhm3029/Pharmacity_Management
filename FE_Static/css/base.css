@@ -2,6 +2,7 @@
 :root {
     --red-color: red;
     --header-color:#4a4a4a;
+    /* --header-color:#0f62f9; */
     --dashboard-color:#363636;
     --btn-color:#01d1b2;
     --table-header-color:#e0e0e0;
@@ -22,3 +23,33 @@ html {
     line-height: 1.5;
     font-size: 62.5%; 
 }
+
+.form-container {
+    padding: 12px;
+    background-color: white;
+    min-height: 400px;
+}
+
+
+.page-header-wrapper {
+    padding: 24px;
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    position: sticky;
+    top: var(--topbar-height);
+    z-index: 99;
+}
+
+.page-content-wrapper {
+    background-color: #edf1f5;
+    padding: 24px;
+    min-height: 100vh;
+}
+
+
+.form-label {
+    font-size: 1.6rem;
+}
+
+

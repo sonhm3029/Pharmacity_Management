@@ -97,7 +97,60 @@
                 <h1>THÊM SẢN PHẨM MỚI</h1>
             </div>
             <div class="page-content-wrapper">
-                
+                <div class="form-container">
+                    <form id="create-product-form">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="product-name" class="form-label">Tên sản phẩm</label>
+                                <input type="text" class="form-control" id="product-name" required>
+                                <!-- <div class="valid-feedback">
+                                  Looks good!
+                                </div> -->
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="product-code" class="form-label">Mã sản phẩm</label>
+                                <input type="text" class="form-control" id="product-code" required>
+                                <!-- <div class="valid-feedback">
+                                  Looks good!
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="product-description" class="form-label">Mô tả sản phẩm</label>
+                                <textarea class="form-control" id="product-description" required></textarea>
+                                <!-- <div class="invalid-feedback">
+                                  Please enter a message in the textarea.
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <label for="product-price" class="form-label">Giá</label>
+                                <input type="text" class="form-control" id="product-price" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="product-quantity" class="form-label">Số lượng</label>
+                                <input type="text" class="form-control" id="product-quantity" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="product-brand" class="form-label">Thương hiệu</label>
+                                <select class="custom-select" id="product-brand" required>
+                                    <option>Pharmacity</option>
+                                    <option selected disabled value="">Chọn</option>
+                                    <option>Durex</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="product-image" required>
+                                <label class="custom-file-label form-label" for="product-image">Tải ảnh lên...</label>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit" id="create-btn">Tạo</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

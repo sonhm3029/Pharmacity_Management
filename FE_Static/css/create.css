@@ -4,18 +4,21 @@
     background-color: white;
 }
 
-.page-header-wrapper {
-    padding: 24px;
-    height: 80px;
-    width: 100%;
-    background-color: white;
-    position: sticky;
-    top: var(--topbar-height);
-    z-index: 99;
+
+
+
+#create-product-form input, #product-description, option, #product-brand {
+    font-size: 1.6rem;
 }
 
-.page-content-wrapper {
-    background-color: #edf1f5;
-    padding: 24px;
-    min-height: 100vh;
+
+#create-btn {
+    padding: 8px 24px 8px 24px;
+    font-size: 1.6rem;
+}
+
+
+#create-product-form .input-group {
+    margin-bottom: 24px;
+    width: 30%;
 }
