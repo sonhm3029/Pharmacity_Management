@@ -29,6 +29,11 @@ html {
     background-color: white;
     min-height: 400px;
 }
+.table-container {
+    padding: 12px;
+    background-color: white;
+    min-height: 524px;
+}
 
 
 .page-header-wrapper {
@@ -36,9 +41,6 @@ html {
     height: 80px;
     width: 100%;
     background-color: white;
-    position: sticky;
-    top: var(--topbar-height);
-    z-index: 99;
 }
 
 .page-content-wrapper {

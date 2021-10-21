@@ -1,0 +1,17 @@
+
+#list-product {
+    font-size: 1.6rem;
+}
+
+.product-info-item {
+    text-transform: uppercase;
+}
+
+
+.update-product {
+    margin-right: 12px;
+}
+
+.delete-product {
+    color: red;
+}
