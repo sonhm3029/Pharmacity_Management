@@ -1,4 +1,13 @@
 
+.page-header-wrapper {
+    display: flex;
+}
+
+.page-header-wrapper #product-management__function {
+    
+}
+
+
 #list-product {
     font-size: 1.6rem;
 }

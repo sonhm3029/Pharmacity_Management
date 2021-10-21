@@ -51,4 +51,9 @@
     .sidebar-task__link {
         padding: 24px 15px 24px 24px;
     }
+
+    .submit-checkbox, 
+    #forgot-password a {
+        font-size: 1.4rem;
+    }
 }
