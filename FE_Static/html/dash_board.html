@@ -114,10 +114,10 @@
                 <div class="row" id="products-yearly-sale">
                     <div class="col-md-12 col-lg-12">
                         <div class="white-box data-info">
-                            <h3 class="box-title">Product Yearly Sale</h3>
+                            <h3 class="box-title">Biểu đồ doanh thu</h3>
 
                             <!--Chart -->
-                            <canvas id="product-yearly-sale__chart" width="100%"></canvas>
+                            <canvas id="product-yearly-sale__chart"></canvas>
                             <script>
 
                                 //X axis
@@ -131,14 +131,13 @@
 
                                 let bar_color = ["red"];
 
-                                // Chart.defaults.font.size = 16;
                                 new Chart("product-yearly-sale__chart", {
                                     type: "bar",
                                     data: {
                                         labels: months,
                                         datasets: [{
-                                            label:'Doanh thu',
-                                            backgroundColor: "red",
+                                            label:'Doanh thu (triệu VND)',
+                                            backgroundColor: "rgba(85,162,222,1)",
                                             data: profit
                                         }]
                                     },
@@ -146,10 +145,11 @@
                                         legend: {
                                             display: false
                                         },
-                                        title: {
-                                            display: true,
-                                            text: 'Doanh thu bán hàng năm 2021'
-                                            
+                                        plugins: {
+                                            title: {
+                                                display: true,
+                                                text: 'Doanh thu bán hàng năm 2021'
+                                            }
                                         },
                                         scales: {
                                             y: {

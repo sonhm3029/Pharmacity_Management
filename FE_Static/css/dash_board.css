@@ -23,3 +23,7 @@
 #products-yearly-sale .box-title {
     text-align: left;
 }
+
+#product-yearly-sale__chart {
+    width: 100%!important;
+}
