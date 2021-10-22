@@ -20,10 +20,14 @@
     font-size: 2.4rem;
 }
 
-#products-yearly-sale .box-title {
+#products-yearly-sale .box-title, #products-best-sale .box-title {
     text-align: left;
 }
 
 #product-yearly-sale__chart {
     width: 100%!important;
+}
+
+.products-best-sale__table {
+    font-size: 1.6rem;
 }
