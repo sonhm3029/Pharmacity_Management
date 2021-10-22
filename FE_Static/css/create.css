@@ -1,13 +1,6 @@
 /* Create in main content */
 
-.main-content {
-    background-color: white;
-}
-
-
-
-
-#create-product-form input, #product-description, option, #product-brand {
+#create-product-form input, #product-description, option, #product-brand, #product-type {
     font-size: 1.6rem;
 }
 

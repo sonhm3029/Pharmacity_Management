@@ -1,0 +1,25 @@
+
+.white-box.data-info {
+
+    margin-bottom: 30px;
+    padding: 25px;
+    background-color: white;
+}
+
+.box-title {
+    text-align: center;
+    display: block;
+    font-size: 2rem;
+    font-weight: 700!important;
+    margin-bottom: 8px;
+}
+
+.box-value {
+    text-align: center;
+    display: block;
+    font-size: 2.4rem;
+}
+
+#products-yearly-sale .box-title {
+    text-align: left;
+}

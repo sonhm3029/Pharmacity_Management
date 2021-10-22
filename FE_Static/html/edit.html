@@ -29,21 +29,13 @@
     <!-- Top bar -->
     <header class="topbar">
         <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-            <a class="navbar-brand" href="./layout.html">
-                <p style="color: var(--logo-color-2);">Pharma<span style="color: var(--logo-color-1);">city</span></p>
+            <a class="navbar-brand" href="./dash_board.html">
+                <p style="color: var(--logo-color-2);">Pharmacy<span style="color: var(--logo-color-1);"> Management</span></p>
                 <img src="/public/img/logo-vector.png" alt="" class="logo-pharmacy" style="display: none;">
             </a>
 
 
             <div class="navbar-function">
-                <!-- Search form -->
-                <form class="form-inline my-2 my-lg-0 search-form" action="/">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
-
                 <!-- Log out btn -->
                 <a href="login.html" class="btn btn-outline-success log-out-btn">Log out</a>
             </div>
@@ -59,7 +51,7 @@
             <nav class="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li class="sidebar-nav__item">
-                        <a href="" class="sidebar-task__link">
+                        <a href="./dash_board.html" class="sidebar-task__link">
                             <i class="fa fa-dashboard"></i>
                             <span>Dash board</span>
                         </a>
@@ -97,7 +89,27 @@
             <div class="page-header-wrapper">
                 <h1>QUẢN LÝ KHO THUỐC</h1>
                 <div class="page-header__function" id="product-management__function">
-                    
+                    <form class="form-inline my-2 my-lg-0 search-form" action="/">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Tìm theo mã sản phẩm..." aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>   
+                </div>
+                
+                <div class="product-type__filter-form">
+                    <label for="product-type__filter" class="form-label">Loại sản phẩm</label>
+                    <select class="custom-select" id="product-type__filter" name="product_type" required>
+                        <option selected disabled value="">Chọn</option>
+                        <option>Dược phẩm</option>
+                        <option>Chăm sóc sức khỏe</option>
+                        <option>Chăm sóc cá nhân</option>
+                        <option>Sản phẩm tiện lợi</option>
+                        <option>Thực phẩm chức năng</option>
+                        <option>Mẹ và bé</option>
+                        <option>Chăm sóc sắc đẹp</option>
+                        <option>Thiết bị y tế</option>
+                    </select>
                 </div>
             </div>
             <div class="page-content-wrapper">
@@ -107,6 +119,7 @@
                           <tr>
                             <th scope="col" class="product-info-item">#</th>
                             <th scope="col" class="product-info-item">MÃ SP</th>
+                            <th scope="col" class="product-info-item">Loại SP</th>
                             <th scope="col" class="product-info-item">Giá</th>
                             <th scope="col" class="product-info-item">Số lượng</th>
                             <th scope="col" class="product-info-item">Ngày nhập</th>
@@ -118,6 +131,7 @@
                           <tr class="product-info-value">
                             <th scope="row">1</th>
                             <td>MD0000</td>
+                            <td>Thực phẩm chức năng</td>
                             <td>100000</td>
                             <td>20</td>
                             <td>21/10/2021</td>
@@ -130,6 +144,7 @@
                           <tr class="product-info-value">
                             <th scope="row">2</th>
                             <td>MD0001</td>
+                            <td>Thực phẩm chức năng</td>
                             <td>100000</td>
                             <td>50</td>
                             <td>21/10/2021</td>
@@ -142,6 +157,7 @@
                           <tr class="product-info-value">
                             <th scope="row">3</th>
                             <td>MD0002</td>
+                            <td>Thực phẩm chức năng</td>
                             <td>300000</td>
                             <td>6000</td>
                             <td>21/10/2021</td>

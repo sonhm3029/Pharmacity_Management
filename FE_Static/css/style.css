@@ -58,7 +58,7 @@ body {
 
 .search-form button {
     border: none;
-    color: white;
+    color: black;
     height: var(--search-form-height);
     margin-right: 5px;
     border-radius: 5px;
@@ -155,9 +155,10 @@ body {
 /* Main content */
 .main-content {
     flex: 1;
-    background-color: wheat;
+    background-color: white;
     min-height: 100vh;
 }
+
 /* End main content */
 
 /* End page layout wrapper */

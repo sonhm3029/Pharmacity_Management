@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacity</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dash_board.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Top bar -->
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            <a class="navbar-brand" href="./dash_board.html">
+                <p style="color: var(--logo-color-2);">Pharmacy<span style="color: var(--logo-color-1);"> Management</span></p>
+                <img src="/public/img/logo-vector.png" alt="" class="logo-pharmacy" style="display: none;">
+            </a>
+
+
+            <div class="navbar-function">
+                <!-- Log out btn -->
+                <a href="./login.html" class="btn btn-outline-success log-out-btn">Log out</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-layout-wrapper">
+        <!-- Left side bar -->
+        <aside class="left-sidebar">
+            <h1 class="sidebar-nav__name">
+                Admin Task board
+            </h1>
+            <nav class="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav__item">
+                        <a href="" class="sidebar-task__link">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Dash board</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav__item">
+                        <a href="./create.html" class="sidebar-task__link">
+                            <i class="fa fa-plus-square"></i>
+                            <span>Nhập thêm thuốc</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav__item">
+                        <a href="./edit.html" class="sidebar-task__link">
+                            <i class="fa fa-briefcase" aria-hidden="true"></i>
+                            <span>Quản lý thuốc</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav__item">
+                        <a href="" class="sidebar-task__link">
+                            <i class="fa fa-wpforms"></i>
+                            <span>Quản lý đơn hàng</span>
+                        </a>
+                    </li>
+
+                    <!-- <li class="sidebar-nav__item">
+                        <a href="" class="sidebar-task__link">
+                            <i class="fa fa-truck"></i>
+                        </a>
+                    </li> -->
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main content  -->
+        <div class="main-content">
+            <div class="page-header-wrapper">
+                <h1>DASH BOARD</h1>
+            </div>
+            <div class="page-content-wrapper">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box data-info">
+                            <h3 class="box-title">Đơn Hàng</h3>
+                            <span class="box-value">12</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box data-info">
+                            <h3 class="box-title">Doanh Thu</h3>
+                            <span class="box-value">12</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box data-info">
+                            <h3 class="box-title">Sản phẩm nhập</h3>
+                            <span class="box-value">12</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="products-yearly-sale">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="white-box data-info">
+                            <h3 class="box-title">Product Yearly Sale</h3>
+
+                            <!--Chart -->
+                            <canvas id="product-yearly-sale__chart" width="100%"></canvas>
+                            <script>
+
+                                //X axis
+                                let months = ["Tháng 1", "Tháng 2","Tháng 3","Tháng 4",
+                                            "Tháng 5","Tháng 6","Tháng 7","Tháng 8",
+                                            "Tháng 9","Tháng 10","Tháng 11","Tháng 12"];
+                                
+                                
+                                // Y axis
+                                let profit =[55, 49, 44, 24, 15,55, 49, 44, 24, 15,55, 49]; 
+
+                                let bar_color = ["red"];
+
+                                // Chart.defaults.font.size = 16;
+                                new Chart("product-yearly-sale__chart", {
+                                    type: "bar",
+                                    data: {
+                                        labels: months,
+                                        datasets: [{
+                                            label:'Doanh thu',
+                                            backgroundColor: "red",
+                                            data: profit
+                                        }]
+                                    },
+                                    options: {
+                                        legend: {
+                                            display: false
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: 'Doanh thu bán hàng năm 2021'
+                                            
+                                        },
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        }
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="../js/script.js"></script>
+</body>
+</html>

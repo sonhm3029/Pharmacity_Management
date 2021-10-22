@@ -28,20 +28,20 @@
     <!-- Top bar -->
     <header class="topbar">
         <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-            <a class="navbar-brand" href="./layout.html">
-                <p style="color: var(--logo-color-2);">Pharma<span style="color: var(--logo-color-1);">city</span></p>
+            <a class="navbar-brand" href="./dash_board.html">
+                <p style="color: var(--logo-color-2);">Pharmacy<span style="color: var(--logo-color-1);"> Management</span></p>
                 <img src="/public/img/logo-vector.png" alt="" class="logo-pharmacy" style="display: none;">
             </a>
 
 
             <div class="navbar-function">
                 <!-- Search form -->
-                <form class="form-inline my-2 my-lg-0 search-form" action="/">
+                <!-- <form class="form-inline my-2 my-lg-0 search-form" action="/">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
-                </form>
+                </form> -->
 
                 <!-- Log out btn -->
                 <a href="./login.html" class="btn btn-outline-success log-out-btn">Log out</a>
@@ -58,7 +58,7 @@
             <nav class="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li class="sidebar-nav__item">
-                        <a href="" class="sidebar-task__link">
+                        <a href="./dash_board.html" class="sidebar-task__link">
                             <i class="fa fa-dashboard"></i>
                             <span>Dash board</span>
                         </a>
@@ -100,25 +100,40 @@
                 <div class="form-container">
                     <form id="create-product-form">
                         <div class="form-row">
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <label for="product-name" class="form-label">Tên sản phẩm</label>
-                                <input type="text" class="form-control" id="product-name" required>
+                                <input type="text" class="form-control" id="product-name" name="product_name" required>
                                 <!-- <div class="valid-feedback">
                                   Looks good!
                                 </div> -->
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <label for="product-code" class="form-label">Mã sản phẩm</label>
-                                <input type="text" class="form-control" id="product-code" required>
+                                <input type="text" class="form-control" id="product-code" name="product_code" required>
                                 <!-- <div class="valid-feedback">
                                   Looks good!
                                 </div> -->
                             </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="product-type" class="form-label">Loại sản phẩm</label>
+                                <select class="custom-select" id="product-type" name="product_type" required>
+                                    <option selected disabled value="">Chọn</option>
+                                    <option>Dược phẩm</option>
+                                    <option>Chăm sóc sức khỏe</option>
+                                    <option>Chăm sóc cá nhân</option>
+                                    <option>Sản phẩm tiện lợi</option>
+                                    <option>Thực phẩm chức năng</option>
+                                    <option>Mẹ và bé</option>
+                                    <option>Chăm sóc sắc đẹp</option>
+                                    <option>Thiết bị y tế</option>
+                                </select>
+                            </div>
+
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="product-description" class="form-label">Mô tả sản phẩm</label>
-                                <textarea class="form-control" id="product-description" required></textarea>
+                                <textarea class="form-control" id="product-description" name="product_description" required></textarea>
                                 <!-- <div class="invalid-feedback">
                                   Please enter a message in the textarea.
                                 </div> -->
@@ -127,28 +142,28 @@
                         <div class="form-row">
                             <div class="col-md-3 mb-3">
                                 <label for="product-price" class="form-label">Giá</label>
-                                <input type="text" class="form-control" id="product-price" required>
+                                <input type="text" class="form-control" id="product-price" name="product_price" required>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="product-quantity" class="form-label">Số lượng</label>
-                                <input type="text" class="form-control" id="product-quantity" required>
+                                <input type="text" class="form-control" id="product-quantity" name="product_quanity" required>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="product-brand" class="form-label">Thương hiệu</label>
-                                <select class="custom-select" id="product-brand" required>
-                                    <option>Pharmacity</option>
+                                <select class="custom-select" id="product-brand" name="product_brand" required>
                                     <option selected disabled value="">Chọn</option>
+                                    <option>Pharmacity</option>
                                     <option>Durex</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="product-expired" class="form-label">HSD</label>
-                                <input type="date" class="form-control" id="product-expired" required>
+                                <input type="date" class="form-control" id="product-expired" name="product_expired" required>
                             </div>
                         </div>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="product-image" required>
+                                <input type="file" class="custom-file-input" id="product-image" name="product_img" required>
                                 <label class="custom-file-label form-label" for="product-image">Tải ảnh lên...</label>
                             </div>
                         </div>
