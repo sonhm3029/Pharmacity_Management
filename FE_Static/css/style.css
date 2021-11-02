@@ -150,6 +150,16 @@ body {
 .sidebar-task__link i {
     margin-right: 8px;
 }
+
+
+.dropdown-item {
+    font-size: 1.6rem;
+}
+
+.dropdown-menu {
+    width: 100%;
+    background-color: #ededed;
+}
 /* End left sidebar */
 
 /* Main content */
