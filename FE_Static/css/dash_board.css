@@ -20,7 +20,10 @@
     font-size: 2.4rem;
 }
 
-#products-yearly-sale .box-title, #products-best-sale .box-title {
+#products-yearly-sale .box-title,
+#products-best-sale .box-title,
+#products-slowest-sale .box-title,
+#products-expired .box-title {
     text-align: left;
 }
 
@@ -28,6 +31,19 @@
     width: 100%!important;
 }
 
-.products-best-sale__table {
+.products-best-sale__table,
+.products-slowest-sale__table,
+.products-expired__table {
     font-size: 1.6rem;
+}
+
+/* Config table color */
+
+/* .my-thead, .my-table {
+    background-color: blue;
+    color: white;
+} */
+
+.my-table-column__success {
+    color: #4ae41e;
 }

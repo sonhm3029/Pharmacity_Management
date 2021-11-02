@@ -52,7 +52,7 @@
             <nav class="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li class="sidebar-nav__item">
-                        <a href="" class="sidebar-task__link">
+                        <a href="./dash_board.html" class="sidebar-task__link">
                             <i class="fa fa-dashboard"></i>
                             <span>Dash board</span>
                         </a>
@@ -70,7 +70,7 @@
                         </a>
                     </li>
                     <li class="sidebar-nav__item">
-                        <a href="" class="sidebar-task__link">
+                        <a href="./bill.html" class="sidebar-task__link">
                             <i class="fa fa-wpforms"></i>
                             <span>Quản lý đơn hàng</span>
                         </a>
@@ -167,12 +167,12 @@
                         <div class="white-box data-info">
                             <h3 class="box-title">Top sản phẩm bán chạy</h3>
                             <div class="products-best-sale__table">
-                                <table class="table" style="margin-top:24px;">
-                                    <thead class="thead-dark">
+                                <table class="table table-hover" style="margin-top:24px;">
+                                    <thead class="thead-light">
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Mã SP</th>
-                                            <th scope="col">Loại SP</th>
+                                            <th scope="col" class="text-primary">Mã SP</th>
+                                            <th scope="col" class="text-primary">Loại SP</th>
                                             <th scope="col">Số lượng bán</th>
                                             <th scope="col">Giá (VNĐ)</th>
                                         </tr>
@@ -180,16 +180,91 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row">1</th>
-                                            <td>MD0000</td>
+                                            <td class="text-primary">MD0000</td>
                                             <td>Thực phẩm chức năng</td>
-                                            <td>1000000</td>
+                                            <td class="my-table-column__success">1000000</td>
+                                            <td class="my-table-column__success">1000000</td>
+                                        </tr>
+                                        <tr class="my-table-row__success">
+                                            <th scope="row">2</th>
+                                            <td class="text-primary">MD0000</td>
+                                            <td>Thực phẩm chức năng</td>
+                                            <td class="my-table-column__success">1000000</td>
+                                            <td class="my-table-column__success">1000000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="products-slowest-sale">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="white-box data-info">
+                            <h3 class="box-title">Các sản phẩm bán chậm</h3>
+                            <div class="products-slowest-sale__table">
+                                <table class="table table-hover" style="margin-top:24px;">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col" class="text-warning">Mã SP</th>
+                                            <th scope="col">Loại SP</th>
+                                            <th scope="col" class="text-warning">Số lượng bán</th>
+                                            <th scope="col" class="text-warning">Giá (VNĐ)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td class="text-warning">MD0000</td>
+                                            <td>Thực phẩm chức năng</td>
+                                            <td class="text-warning">1000000</td>
                                             <td>1000000</td>
                                         </tr>
                                         <tr>
+                                            <th scope="row">2</th>
+                                            <td class="text-warning">MD0000</td>
+                                            <td>Thực phẩm chức năng</td>
+                                            <td class="text-warning">1000000</td>
+                                            <td>1000000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="products-expired">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="white-box data-info">
+                            <h3 class="box-title">Các sản phẩm sắp hết hạn</h3>
+                            <div class="products-expired__table">
+                                <table class="table table-hover" style="margin-top:24px;">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col" class="text-danger">Mã SP</th>
+                                            <th scope="col">Loại SP</th>
+                                            <th scope="col">Số lượng</th>
+                                            <th scope="col">Ngày hết hạn</th>
+                                            <th scope="col">Giá (VNĐ)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
                                             <th scope="row">1</th>
-                                            <td>MD0000</td>
+                                            <td class="text-warning">MD0000</td>
                                             <td>Thực phẩm chức năng</td>
                                             <td>1000000</td>
+                                            <td class="text-warning">21/07/2020</td>
+                                            <td>1000000</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td class="text-danger">MD0000</td>
+                                            <td>Thực phẩm chức năng</td>
+                                            <td>1000000</td>
+                                            <td class="text-danger">21/07/2020</td>
                                             <td>1000000</td>
                                         </tr>
                                     </tbody>
