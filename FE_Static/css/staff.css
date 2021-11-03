@@ -31,7 +31,7 @@ button.close {
 
 /* List staff */
 
-#list-staff {
+/* #list-staff {
     font-size: 1.6rem;
 }
 
@@ -41,4 +41,29 @@ button.close {
 
 .delete-staff {
     color: red;
+} */
+
+.staff-information {
+    font-weight: 800;
+}
+
+.staff-information span {
+    font-weight: initial;
+}
+
+.card-name-field {
+    font-size: 2.4rem;
+}
+
+.card-age-field,
+.card-gender-field,
+.card-phone-field,
+.card-email-field,
+.card-address-field {
+    font-size: 1.6rem;
+}
+
+.update-staff,
+.delete-staff {
+    font-size: 1.6rem;
 }
