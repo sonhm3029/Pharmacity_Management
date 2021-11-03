@@ -1,6 +1,10 @@
 /* Create in main content */
 
-#create-product-form input, #product-description, option, #product-brand, #product-type {
+#create-product-form input,
+#product-description, option,
+#product-brand,
+#product-type,
+#product-maker__place  {
     font-size: 1.6rem;
 }
 
