@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dash_board.css">
+    <link rel="stylesheet" href="../css/dynamic_input.css">
     <link rel="stylesheet" href="../css/bill.css">
     <link rel="stylesheet" href="../css/responsive.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -182,33 +183,80 @@
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="invoice-code" class="form-label">Mã hóa đơn</label>
-                                        <input type="text" class="form-control" id="invoice-code" name="invoice_code" required>
+                                        <input type="text" class="form-control" id="invoice-code" name="invoice_code">
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="invoice-staff-name" class="form-label">Họ tên nhân viên</label>
-                                        <input type="text" class="form-control" id="invoice-staff-name" name="invoice_staff_name" required>
+                                        <input type="text" class="form-control" id="invoice-staff-name" name="invoice_staff_name">
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="invoice-date" class="form-label">Ngày lập hóa đơn</label>
-                                        <input type="date" class="form-control" id="invoice-date" name="invoice_date" required>
+                                        <input type="date" class="form-control" id="invoice-date" name="invoice_date">
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-3 mb-3">
                                         <label for="customer-name" class="form-label">Họ tên khách hàng</label>
-                                        <input type="text" class="form-control" id="customer-name" name="customer_name" required>
+                                        <input type="text" class="form-control" id="customer-name" name="customer_name">
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="customer-birth" class="form-label">Ngày sinh</label>
-                                        <input type="date" class="form-control" id="customer-birth" name="customer_birth" required>
+                                        <input type="date" class="form-control" id="customer-birth" name="customer_birth">
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="customer-phone" class="form-label">SĐT</label>
-                                        <input type="text" class="form-control" id="customer-phone" name="customer_phone" required>
+                                        <input type="text" class="form-control" id="customer-phone" name="customer_phone">
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="customer-email" class="form-label">Email</label>
                                         <input type="email" class="form-control" id="customer-email" name="customer_name">
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-md-12 mb-3 dynamic-item">
+                                        <div class="dynamic-field__heading mb-3">
+                                            <h1>Thêm sản phẩm</h1>
+                                        </div>
+                                        <div class="form-row dynamic-field__content">
+                                            <!-- <div class="col-md-10"> -->
+                                                <!-- <div class="form-row"> -->
+                                                    <div class="col-md-2-5 mb-3">
+                                                        <label for="invoice-product-code" class="form-label">Mã Sản Phẩm</label>
+                                                        <input type="text" class="form-control" id="invoice-product-code" name="product_code">
+                                                    </div>
+                                                    <div class="col-md-2-5 mb-3">
+                                                        <h3>Tên sản phẩm</h3>
+                                                        <span id="invoice-product-name" style="display:block;padding:8px;">Demo ten</span>
+                                                    </div>
+                                                    <div class="col-md-2-5 mb-3">
+                                                        <label for="invoice-product-quantity" class="form-label">Số lượng</label>
+                                                        <input type="number" min="0" step="1" value="0" class="form-control" id="invoice-product-quantity" name="product_quantity">
+                                                    </div>
+                                                    <div class="col-md-2-5 mb-3">
+                                                        <h3>Giá tiền</h3>
+                                                        <span id="invoice-product-price" style="display:block;padding:8px;">100000</span>
+                                                    </div>
+                                                    <div class="col-md-2-5">
+                                                        <div class="copy_btn">
+                                                            <label for="" class="form-label"></label>
+                                                            <div>
+                                                                <button class="btn_round" type="button">
+                                                                    <i class="fa fa-copy"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="trash_btn">
+                                                            <label for="" class="form-label"></label>
+                                                            <div>
+                                                                <button class="btn_round" type="button" disabled>
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+                                                <!-- </div> -->
+                                            <!-- </div> -->
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -219,7 +267,7 @@
         </div>
     </div>
 
-    
+    <script src="../js/dynamic_field.js"></script>
     <script src="../js/script.js"></script>
 </body>
 </html>
