@@ -1,3 +1,37 @@
-#bill-options-container {
-    height: 100px;
+#order-options-container {
+    font-size: 1.6rem;
+}
+
+#order-tabs {
+    position: relative;
+}
+
+
+/* online order */
+
+.confirm-order,
+.view-order {
+    margin-right: 8px;
+}
+
+.cancel-order,
+.delete-order {
+    color: red;
+}
+
+/* Create invoice */
+#create-invoice {
+    position: relative;
+    flex: 1;
+}
+
+#create-invoice__btn {
+    position: absolute;
+    right: 0;
+    font-size: 1.6rem;
+}
+
+#create-invoice-form,
+#create-invoice-form input {
+    font-size: 1.6rem;
 }
