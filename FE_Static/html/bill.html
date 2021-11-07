@@ -27,6 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
     <!-- Top bar -->
@@ -213,50 +214,61 @@
                                     </div>
                                 </div>
                                 <div class="row mt-4">
-                                    <div class="col-md-12 mb-3 dynamic-item">
+                                    <div class="col-md-12 mb-3" id="list_dynamic_items">
                                         <div class="dynamic-field__heading mb-3">
-                                            <h1>Thêm sản phẩm</h1>
+                                            <h1>Danh sách sản phẩm</h1>
                                         </div>
                                         <div class="form-row dynamic-field__content">
-                                            <!-- <div class="col-md-10"> -->
-                                                <!-- <div class="form-row"> -->
-                                                    <div class="col-md-2-5 mb-3">
-                                                        <label for="invoice-product-code" class="form-label">Mã Sản Phẩm</label>
-                                                        <input type="text" class="form-control" id="invoice-product-code" name="product_code">
+                                            <div class="col-md-2-5 mb-3">
+                                                <label for="invoice-product-code" class="form-label">Mã Sản Phẩm</label>
+                                                <input type="text" class="form-control" id="invoice-product-code" name="product_code">
+                                            </div>
+                                            <div class="col-md-2-5 mb-3">
+                                                <h3>Tên sản phẩm</h3>
+                                                <span id="invoice-product-name" style="display:block;padding:8px;">Demo ten</span>
+                                            </div>
+                                            <div class="col-md-2-5 mb-3">
+                                                <label for="invoice-product-quantity" class="form-label">Số lượng</label>
+                                                <input type="number" min="0" step="1" value="0" class="form-control" id="invoice-product-quantity" name="product_quantity">
+                                            </div>
+                                            <div class="col-md-2-5 mb-3">
+                                                <h3>Giá tiền</h3>
+                                                <span id="invoice-product-price" style="display:block;padding:8px;">100000</span>
+                                            </div>
+                                            <div class="col-md-2-5">
+                                                <div class="copy_btn">
+                                                    <label for="" class="form-label"></label>
+                                                    <div>
+                                                        <button class="btn_round" type="button" onclick="addNewField()">
+                                                            <i class="fa fa-copy"></i>
+                                                        </button>
                                                     </div>
-                                                    <div class="col-md-2-5 mb-3">
-                                                        <h3>Tên sản phẩm</h3>
-                                                        <span id="invoice-product-name" style="display:block;padding:8px;">Demo ten</span>
+                                                </div>
+                                                <div class="trash_btn">
+                                                    <label for="" class="form-label"></label>
+                                                    <div>
+                                                        <button class="btn_round" type="button" disabled>
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
                                                     </div>
-                                                    <div class="col-md-2-5 mb-3">
-                                                        <label for="invoice-product-quantity" class="form-label">Số lượng</label>
-                                                        <input type="number" min="0" step="1" value="0" class="form-control" id="invoice-product-quantity" name="product_quantity">
-                                                    </div>
-                                                    <div class="col-md-2-5 mb-3">
-                                                        <h3>Giá tiền</h3>
-                                                        <span id="invoice-product-price" style="display:block;padding:8px;">100000</span>
-                                                    </div>
-                                                    <div class="col-md-2-5">
-                                                        <div class="copy_btn">
-                                                            <label for="" class="form-label"></label>
-                                                            <div>
-                                                                <button class="btn_round" type="button">
-                                                                    <i class="fa fa-copy"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="trash_btn">
-                                                            <label for="" class="form-label"></label>
-                                                            <div>
-                                                                <button class="btn_round" type="button" disabled>
-                                                                    <i class="fa fa-trash"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
-                                                <!-- </div> -->
-                                            <!-- </div> -->
+                                                </div> 
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary" id="add-new-field"> + Thêm sản phẩm</button>
+                                    </div>
+                                </div>
+                                <div class="form-row"  style="margin-top: 32px;">
+                                    <div class="col-md-3">
+                                        <label for="customer-pay" class="form-label"><strong>Số tiền khách trả</strong></label>
+                                        <input type="text" class="form-control" id="customer-pay" name="customer_pay">
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-top: 32px;">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary" id="submit-invoice">Xác nhận</button>
+                                        <button type="button" class="btn btn-danger" id="cancel-invoice" onclick="cancel_invoice()">Hủy</button>
                                     </div>
                                 </div>
                             </form>

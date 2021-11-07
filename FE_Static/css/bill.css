@@ -35,3 +35,8 @@
 #create-invoice-form input {
     font-size: 1.6rem;
 }
+
+#submit-invoice,
+#cancel-invoice {
+    font-size: 1.6rem;
+}
