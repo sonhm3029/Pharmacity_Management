@@ -9,6 +9,8 @@ const methodOverride = require('method-override');
 const exp = require('constants');
 const router = require('./routes/login');
 
+const cookieParser = require('cookie-parser');
+
 const port = process.env.PORT || 3000;
 
 // Import database and connect
@@ -21,6 +23,7 @@ app.use(methodOverride('_method'));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(cookieParser());
 
 app.engine('hbs', handlebars({
     extname: '.hbs'

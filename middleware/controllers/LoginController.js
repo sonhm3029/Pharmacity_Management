@@ -47,6 +47,10 @@ class LoginController {
             .catch(next);
         
     }
+
+    requireAuth(req, res, next) {
+        
+    }
 }
 
 module.exports = new LoginController;
