@@ -1,0 +1,68 @@
+@media (max-width: 768px) {
+    
+}
+
+
+@media (max-width: 999px) {
+
+
+    .page-layout-wrapper {
+        padding-left: 0px;
+    }
+
+    .navbar.top-navbar {
+        padding-left: 8px;
+    }
+
+    .navbar-brand {
+        margin-left: 0px;
+    }
+
+    .navbar-brand p {
+        display: none;
+    }
+
+
+    .navbar-brand .logo-pharmacy {
+        display: block!important;
+        width: 50px;
+        height: 50px;
+    }
+
+    .sidebar-task__link span {
+        display: none;
+    }
+
+    .sidebar-wrapper {
+        margin: 0px 0px 0px 0px!important;
+    }
+
+    .sidebar-nav__name {
+        display: none;
+    }
+
+    .page-layout-wrapper .left-sidebar {
+        width: 64px;
+    }
+
+
+    .sidebar-task__link {
+        padding: 24px 15px 24px 24px;
+    }
+
+    .submit-checkbox, 
+    #forgot-password a {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 1199px) {
+
+    .page-header-wrapper h1 {
+        font-size: 20px;
+    }
+
+    #product-management__function button {
+        display: none;
+    }
+}

@@ -1,0 +1,136 @@
+.login-form-wrapper {
+    padding-top: 112px;
+    padding-bottom: 112px;
+    background-color: #f8fafb;
+    min-height: 100vh;
+}
+
+#login-form {
+    width: 100%;
+}
+
+
+.login-form__header {
+    font-size: 2.4rem;
+}
+
+label[for="Adminname"], label[for="password"] {
+    font-size: 1.6rem;
+}
+
+#login-form__content {
+    margin-top: 40px;
+    
+}
+
+#login-form__content .login-form__input {
+    font-size: 1.6rem;
+    color: #b3b3b3; 
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.login-form__input:focus {
+    box-shadow: none;
+}
+
+.login-form__input::placeholder {
+    color: #b3b3b3;
+}
+
+.submit-checkbox {
+    display: inline-block;
+    position: relative;
+    padding-left: 28px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1.6rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #888;
+}
+
+.submit-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+
+
+
+/* On mouse-over, add a grey background color */
+.submit-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+  
+/* When the checkbox is checked, add a blue background */
+.submit-checkbox input:checked ~ .checkmark {
+    background-color: #38d39f;
+}
+  
+/* Create the checkmark/indicator (hidden when not checked) */
+  
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+/* Show the checkmark when checked */
+.submit-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+/* Style the checkmark/indicator */
+.submit-checkbox .checkmark:after {
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+#login-form__content .form-group:nth-child(3) {
+    display: flex;
+}
+
+#forgot-password {
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+#forgot-password a {
+    font-size: 1.6rem;
+    color: #888;
+    text-decoration: underline;
+}
+
+#submit-login__btn {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 1.6rem;
+    background-color: #38d39f;
+    color: white;
+    font-weight: 700;
+}
