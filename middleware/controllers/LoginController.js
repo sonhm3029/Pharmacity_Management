@@ -34,9 +34,17 @@ class LoginController {
                         layout: false});
                     return;
                 }
+  
+           
 
-                res.redirect('/');
+                if(auth.role === 'Staff') {
+                    res.redirect('/staff');
+                }
+                if(auth.role === 'Manager') {
+                    res.redirect('/manager');
+                }
             })
+            .catch(next);
         
     }
 }

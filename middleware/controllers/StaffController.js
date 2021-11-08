@@ -1,0 +1,8 @@
+class StaffController {
+
+    show(req, res) {
+        res.render('dashboard', {layout:'staff_layout'});
+    }
+}
+
+module.exports = new StaffController;
