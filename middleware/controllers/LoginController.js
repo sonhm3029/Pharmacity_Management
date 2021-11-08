@@ -7,11 +7,11 @@ const bcrypt = require('bcryptjs');
 
 class LoginController {
 
-    index(req, res) {
+    show(req, res) {
         res.render('login', {layout: false});
     }
 
-    show(req, res, next) {
+    authenticate(req, res, next) {
         
         const {username, password} = req.body;
 
