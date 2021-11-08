@@ -26,7 +26,7 @@ class LoginController {
                     return;
                 }
 
-                if(password !== auth.password) {
+                if(bcrypt.compareSync(password, auth.password) == false) {
                     res.render('login',{
                         errors: [
                             'Mật khẩu không hợp lệ'
