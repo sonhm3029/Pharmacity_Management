@@ -38,17 +38,19 @@ class LoginController {
            
 
                 if(auth.role === 'Staff') {
+                    // Set cookies
+
+                    console.log(auth);
                     res.redirect('/staff');
                 }
                 if(auth.role === 'Manager') {
+
+                    // Set cookies
+                    res.cookie('userId', auth._id);
                     res.redirect('/manager');
                 }
             })
             .catch(next);
-        
-    }
-
-    requireAuth(req, res, next) {
         
     }
 }
