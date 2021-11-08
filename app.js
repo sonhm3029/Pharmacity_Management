@@ -11,6 +11,10 @@ const router = require('./routes/login');
 
 const port = process.env.PORT || 3000;
 
+// Import database and connect
+const db = require('./config/db/index');
+db.connect();
+
 
 app.use(morgan('combined'));
 app.use(methodOverride('_method'));
