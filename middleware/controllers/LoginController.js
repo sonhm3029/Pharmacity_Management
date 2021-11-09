@@ -61,13 +61,17 @@ class LoginController {
 
                 if(auth.role === 'Staff') {
                     // Set cookies
-                    res.cookie('userId', crypt_id);
+                    res.cookie('userId', crypt_id, {
+                        expires: new Date(Date.now() + 5*3600000)
+                    });
                     res.redirect('/staff');
                 }
                 if(auth.role === 'Manager') {
 
                     // Set cookies
-                    res.cookie('userId', crypt_id);
+                    res.cookie('userId', crypt_id, {
+                        expires: new Date(Date.now() + 5*3600000)
+                    });
                     res.redirect('/manager');
                 }
             })
