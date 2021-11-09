@@ -7,7 +7,26 @@ const bcrypt = require('bcryptjs');
 
 class LoginController {
 
-    show(req, res) {
+    show(req, res, next) {
+        // res.clearCookie('userId');
+        var id = req.cookies.userId;
+        if(id) {
+            User.findOne({_id: id})
+                .then((auth)=> {
+
+                    if(auth.role === 'Staff') {
+                        res.redirect('/staff');
+                    }
+
+                    if(auth.role === 'Manager') {
+                        res.redirect('/manager');
+                    }
+
+                })
+                .catch(next)
+            return;
+        }
+
         res.render('login', {layout: false});
     }
 
@@ -52,6 +71,11 @@ class LoginController {
             })
             .catch(next);
         
+    }
+
+    logOut(req, res, next) {
+        res.clearCookie('userId');
+        res.redirect('/');
     }
 }
 
