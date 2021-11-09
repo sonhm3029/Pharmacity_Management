@@ -1,0 +1,85 @@
+<div class="page-header-wrapper">
+    <h1>QUẢN LÝ KHO THUỐC</h1>
+    <div class="page-header__function" id="product-management__function">
+        <form class="form-inline my-2 my-lg-0 search-form" action="/">
+            <input class="form-control mr-sm-2" type="search" placeholder="Tìm theo mã sản phẩm..." aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>   
+    </div>
+    
+    <div class="product-type__filter-form">
+        <label for="product-type__filter" class="form-label">Loại sản phẩm</label>
+        <select class="custom-select" id="product-type__filter" name="product_type" required>
+            <option selected disabled value="">Chọn</option>
+            <option>Dược phẩm</option>
+            <option>Chăm sóc sức khỏe</option>
+            <option>Chăm sóc cá nhân</option>
+            <option>Sản phẩm tiện lợi</option>
+            <option>Thực phẩm chức năng</option>
+            <option>Mẹ và bé</option>
+            <option>Chăm sóc sắc đẹp</option>
+            <option>Thiết bị y tế</option>
+        </select>
+    </div>
+</div>
+<div class="page-content-wrapper">
+    <div class="table-container">
+        <table class="table table-hover" id="list-product">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" class="product-info-item">#</th>
+                <th scope="col" class="product-info-item">MÃ SP</th>
+                <th scope="col" class="product-info-item">Loại SP</th>
+                <th scope="col" class="product-info-item">Giá</th>
+                <th scope="col" class="product-info-item">Số lượng</th>
+                <th scope="col" class="product-info-item">Ngày nhập</th>
+                <th scope="col" class="product-info-item">HSD</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="product-info-value">
+                <th scope="row">1</th>
+                <td>MD0000</td>
+                <td>Thực phẩm chức năng</td>
+                <td>100000</td>
+                <td>20</td>
+                <td>21/10/2021</td>
+                <td>21/10/2023</td>
+                <td class="edit-product">
+                    <a href="" class="update-product">Sửa</a>
+                    <a href="" class="delete-product">Xóa</a>
+                </td>
+            </tr>
+              <tr class="product-info-value">
+                <th scope="row">2</th>
+                <td>MD0001</td>
+                <td>Thực phẩm chức năng</td>
+                <td>100000</td>
+                <td>50</td>
+                <td>21/10/2021</td>
+                <td>21/10/2023</td>
+                <td class="edit-product">
+                    <a href="" class="update-product">Sửa</a>
+                    <a href="" class="delete-product">Xóa</a>
+                </td>
+            </tr>
+              <tr class="product-info-value">
+                <th scope="row">3</th>
+                <td>MD0002</td>
+                <td>Thực phẩm chức năng</td>
+                <td>300000</td>
+                <td>6000</td>
+                <td>21/10/2021</td>
+                <td>21/10/2023</td>
+                <td class="edit-product">
+                    <a href="" class="update-product">Sửa</a>
+                    <a href="" class="delete-product">Xóa</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

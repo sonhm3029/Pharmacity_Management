@@ -54,18 +54,20 @@ class LoginController {
                     return;
                 }
   
-           
+                // crypt auth id
+                // var salt = bcrypt.genSaltSync(10);
+                var crypt_id = auth._id;
+                // crypt_id = bcrypt.hashSync(crypt_id, salt);
 
                 if(auth.role === 'Staff') {
                     // Set cookies
-
-                    console.log(auth);
+                    res.cookie('userId', crypt_id);
                     res.redirect('/staff');
                 }
                 if(auth.role === 'Manager') {
 
                     // Set cookies
-                    res.cookie('userId', auth._id);
+                    res.cookie('userId', crypt_id);
                     res.redirect('/manager');
                 }
             })

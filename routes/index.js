@@ -8,8 +8,8 @@ const authMiddleware = require('../middleware/auth.middleware');
 
 function route(app) {
 
-    app.use('/manager',authMiddleware.requireAuth, manager);
-    app.use('/staff', staff);
+    app.use('/manager',authMiddleware.requireManagerRole, manager);
+    app.use('/staff',authMiddleware.requireStaffRole, staff);
     app.use('/', login);
     
 }
