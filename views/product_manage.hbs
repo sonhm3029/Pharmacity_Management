@@ -1,3 +1,5 @@
+
+
 <div class="page-header-wrapper">
     <h1>QUẢN LÝ KHO THUỐC</h1>
     <div class="page-header__function" id="product-management__function">
@@ -40,45 +42,21 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="product-info-value">
-                <th scope="row">1</th>
-                <td>MD0000</td>
-                <td>Thực phẩm chức năng</td>
-                <td>100000</td>
-                <td>20</td>
-                <td>21/10/2021</td>
-                <td>21/10/2023</td>
-                <td class="edit-product">
-                    <a href="" class="update-product">Sửa</a>
-                    <a href="" class="delete-product">Xóa</a>
-                </td>
-            </tr>
-              <tr class="product-info-value">
-                <th scope="row">2</th>
-                <td>MD0001</td>
-                <td>Thực phẩm chức năng</td>
-                <td>100000</td>
-                <td>50</td>
-                <td>21/10/2021</td>
-                <td>21/10/2023</td>
-                <td class="edit-product">
-                    <a href="" class="update-product">Sửa</a>
-                    <a href="" class="delete-product">Xóa</a>
-                </td>
-            </tr>
-              <tr class="product-info-value">
-                <th scope="row">3</th>
-                <td>MD0002</td>
-                <td>Thực phẩm chức năng</td>
-                <td>300000</td>
-                <td>6000</td>
-                <td>21/10/2021</td>
-                <td>21/10/2023</td>
-                <td class="edit-product">
-                    <a href="" class="update-product">Sửa</a>
-                    <a href="" class="delete-product">Xóa</a>
-                </td>
-            </tr>
+                {{#each products}}
+                    <tr class="product-info-value">
+                        <th scope="row">{{sum @index 1}}</th>
+                        <td><a href="">{{this.product_code}}</a></td>
+                        <td>{{this.product_type}}</td>
+                        <td>{{this.product_price_in}}</td>
+                        <td>{{this.product_quantity}}</td>
+                        <td>{{getDate this.product_MFG}}/{{getMonth this.product_MFG}}/{{getYear this.product_MFG}}</td>
+                        <td>{{getDate this.product_expired}}/{{getMonth this.product_expired}}/{{getYear this.product_expired}}</td>
+                        <td class="edit-product">
+                            <a href="" class="update-product">Sửa</a>
+                            <a href="" class="delete-product">Xóa</a>
+                        </td>
+                    </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>

@@ -1,0 +1,102 @@
+
+
+<div class="page-header-wrapper">
+    <h1>THÊM SẢN PHẨM MỚI</h1>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="form-container">
+        <form id="create-product-form" method="POST">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="product-name" class="form-label">Tên sản phẩm</label>
+                    <input type="text" class="form-control" id="product-name" name="product_name" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="product-code" class="form-label">Mã sản phẩm</label>
+                    <input type="text" class="form-control" id="product-code" name="product_code" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="product-type" class="form-label">Ngành hàng</label>
+                    <select class="custom-select" id="product-type" name="product_type" required>
+                        <option selected disabled value="">Chọn</option>
+                        <option>Dược phẩm</option>
+                        <option>Chăm sóc sức khỏe</option>
+                        <option>Chăm sóc cá nhân</option>
+                        <option>Sản phẩm tiện lợi</option>
+                        <option>Thực phẩm chức năng</option>
+                        <option>Mẹ và bé</option>
+                        <option>Chăm sóc sắc đẹp</option>
+                        <option>Thiết bị y tế</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-4">
+                    <label for="product-maker" class="form-label">Nhà sản xuất</label>
+                    <input type="text" class="form-control" id="product-maker" name="product_maker" required>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="product-maker__place" class="form-label">Nước sản xuất</label>
+                    <select class="custom-select" id="product-maker__place" name="product_maker_place" required>
+                        <option selected disabled value="">Chọn</option>
+                        <option>Việt Nam</option>
+                        <option>Anh</option>
+                        <option>Đức</option>
+                        <option>Pháp</option>
+                        <option>Trung Quốc</option>
+                        <option>Mỹ</option>
+                        <option>Nhật</option>
+                        <option>Hàn Quốc</option>
+                        <option>Nga</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="product-brand" class="form-label">Thương hiệu</label>
+                    <select class="custom-select" id="product-brand" name="product_brand" required>
+                        <option selected disabled value="">Chọn</option>
+                        <option>Pharmacity</option>
+                        <option>Durex</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="product-description" class="form-label">Mô tả sản phẩm</label>
+                    <textarea class="form-control" id="product-description" name="product_description" required></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-4">
+                    <label for="product-quantity" class="form-label">Số lượng</label>
+                    <input type="text" class="form-control" id="product-quantity" name="product_quantity" required>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="product-MFG" class="form-label">NSX</label>
+                    <input type="date" class="form-control" id="product-MFG" name="product_MFG" required>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="product-expired" class="form-label">HSD</label>
+                    <input type="date" class="form-control" id="product-expired" name="product_expired" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-4">
+                    <label for="product-price__in" class="form-label">Giá nhập</label>
+                    <input type="text" class="form-control" id="product-price__in" name="product_price_in" required>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="product-price__out" class="form-label">Giá bán</label>
+                    <input type="text" class="form-control" id="product-price__out" name="product_price_out" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="product-image" name="product_img" required>
+                    <label class="custom-file-label form-label" for="product-image">Tải ảnh lên...</label>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" id="create-btn">Tạo</button>
+        </form>
+    </div>
+</div>

@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 
 const path = require('path');
-const handlebars = require('express-handlebars');
+// const handlebars = require('express-handlebars');
+const handlebars_helper = require('./helper/handlebar.helper');
+
 const morgan = require('morgan');
 const route = require('./routes/index');
 const methodOverride = require('method-override');
@@ -25,12 +27,12 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cookieParser());
 
-app.engine('hbs', handlebars({
-    extname: '.hbs'
-}));
+// app.engine('hbs', handlebars({
+//     extname: '.hbs'
+// }));
 
-app.set('view engine', 'hbs');
-
+// app.set('view engine', 'hbs');
+handlebars_helper(app);
 route(app);
 
 
