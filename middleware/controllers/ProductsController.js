@@ -2,35 +2,8 @@
 const User = require('../model/Authentication');
 const Products = require('../model/Products');
 
-class StaffController {
+class ProductsController {
 
-    
-
-    show(req, res, next) {
-
-        User.findOne({_id: req.cookies.userId})
-            .then((auth)=> {
-                if(auth.role != 'Staff') {
-                    res.redirect('/manager');
-                    return;
-                }
-                
-                Products.find({})
-                    .then( (products) => {
-                        products = products.map( product => product.toObject());
-                            //change date and time 
-                            res.render('product_manage', {
-                                products,
-                                layout: 'staff_layout'
-                            });
-                    })
-                    .catch(next);
-
-
-            })
-            .catch(next);
-        
-    }
 
     show_product(req, res, next) {
         Products.find({})
@@ -78,6 +51,28 @@ class StaffController {
                 })
             });
     }
+
+    edit_product(req, res, next) {
+        Products.findOne({product_code: req.params.id})
+            .then( product => {
+                product = product.toObject();
+                res.render('edit_product', {
+                    product,
+                    layout:'staff_layout'
+                });
+            })
+            .catch(next);
+    }
+
+    update_product(req, res, next) {
+        Products.updateOne({product_code: req.params.id}, req.body)
+            .then(()=> {
+                res.redirect('/product');
+            })
+            .catch( error => {
+                res.redirect(req.get('referer'));
+            });
+    }
 }
 
-module.exports = new StaffController;
+module.exports = new ProductsController;

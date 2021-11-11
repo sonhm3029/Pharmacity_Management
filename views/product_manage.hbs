@@ -44,7 +44,7 @@
             <tbody>
                 {{#each products}}
                     <tr class="product-info-value">
-                        <th scope="row">{{sum @index 1}}</th>
+                        <th scope="row">{{product_index @index 1 ../page_number}}</th>
                         <td><a href="">{{this.product_code}}</a></td>
                         <td>{{this.product_type}}</td>
                         <td>{{this.product_price_in}}</td>
@@ -52,12 +52,47 @@
                         <td>{{getDate this.product_MFG}}/{{getMonth this.product_MFG}}/{{getYear this.product_MFG}}</td>
                         <td>{{getDate this.product_expired}}/{{getMonth this.product_expired}}/{{getYear this.product_expired}}</td>
                         <td class="edit-product">
-                            <a href="" class="update-product">Sửa</a>
-                            <a href="" class="delete-product">Xóa</a>
+                            <a href="/product/{{this.product_code}}/edit" class="update-product">Sửa</a>
+                            <a href="" class="delete-product" data-toggle="modal" data-target="#delete-modal" data-id="{{this._id}}">Xóa</a>
                         </td>
                     </tr>
                 {{/each}}
             </tbody>
         </table>
+        {{!-- Delete Dialog Modal --}}
+        <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirm delete course</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Do you really want to delete this course
+                </div>
+                <div class="modal-footer">
+                    <button id="delete-confirm-btn" type="button" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <nav aria-label="..." style="font-size: 1.6rem;">
+        <ul class="pagination mt-4">
+            <li class="page-item disabled">
+                <span class="page-link">Trang trước</span>
+            </li>
+            {{#each page_index}}
+                <li class="page-item">
+                    <a class="page-link" href="/product?page={{this}}">{{this}}</a>
+                </li>
+            {{/each}}
+            <li class="page-item">
+                <a class="page-link" href="#">Trang sau</a>
+            </li>
+        </ul>
+    </nav>
 </div>
