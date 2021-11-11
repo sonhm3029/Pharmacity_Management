@@ -15,6 +15,8 @@ function getYear(product_time) {
     return product_time.getFullYear();
 }
 
+
+
 function hbsHelper(app) {
 
     app.engine('hbs', handlebars({

@@ -58,10 +58,12 @@ class StaffController {
                 res.redirect('/staff/product');
             })
             .catch((error)=> {
+                const oldData = formData;
                 res.render('create_product',
                 {
                     layout:'staff_layout',
-                    error: 'Mã sản phẩm đã tồn tại !'
+                    errors: ['Mã sản phẩm đã tồn tại !'],
+                    oldData
                 })
             });
     }
