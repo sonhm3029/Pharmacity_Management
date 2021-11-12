@@ -89,7 +89,8 @@
             </li>
             {{#each page_index}}
                 <li class="page-item">
-                    <a class="page-link" href="/product?page={{this}}">{{this}}</a>
+                    {{!-- <a class="page-link" href="/product?page={{this}}">{{this}}</a> --}}
+                    <a class="page-link" >{{this}}</a>
                 </li>
             {{/each}}
             <li class="page-item">
@@ -127,7 +128,7 @@
 
         $(custom_selection).change(()=>{
             $(product_filter_form).submit();
-        })
+        });
     })
 </script>
 
