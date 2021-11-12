@@ -52,6 +52,27 @@
 }
 
 
+/* Pagination */
+
+/* .paginationjs-pages  ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.paginationjs-pages  ul li {
+    display: inline-block;
+    font-size: 1.6rem;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    border: 1px solid #dee2e6;
+}
+
+.paginationjs-pages  ul li a{
+    text-decoration: none;
+} */
+
+
 
 
 

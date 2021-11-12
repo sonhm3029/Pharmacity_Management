@@ -1,12 +1,18 @@
 $(function() {
     // Pagination for product
+
+
+
+
     const number_of_page = $('.page-link').length;
-    console.log(number_of_page);
     $('.page-link').click(function() {
         let urlParams = new URLSearchParams(window.location.search);
         urlParams.set('page', $(this).text());
         window.location.search = urlParams;
-    })
+    });
+
+
+
     $('#next-page').click(function() {
         let urlParams = new URLSearchParams(window.location.search);
         var current_page = Number(urlParams.get('page'));
@@ -49,4 +55,16 @@ $(function() {
             $(taskbar_items[i]).addClass('active-task');
         }
     }
+
+
+    // Other pagination
+    // $('#pagination').pagination({
+    //     dataSource: [1,2,3,4,5,6,7,8,9,0,1,2,3,44,5,6,7,8,9,0,1,2,23,4,5,4,7,5,45,57,43,346,34,47],
+    //     pageSize:20,
+    //     prevText:'&#8592;',
+    //     nextText:'&#8594;'
+    // });
+
+    // var container = $('#pagination');
+    // console.log(container.pagination('getSelectedPageNum'));
 })

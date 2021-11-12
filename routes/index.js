@@ -4,6 +4,7 @@ const manager = require('./manager');
 const staff = require('./staff');
 const products = require('./product');
 const search = require('./search');
+const order = require('./order');
 
 const authMiddleware = require('../middleware/auth.middleware');
 
@@ -14,6 +15,7 @@ function route(app) {
     app.use('/staff',authMiddleware.requireStaffRole, staff);
     app.use('/product',authMiddleware.requireStaffRole, products);
     app.use('/search',authMiddleware.requireStaffRole,search);
+    app.use('/order',authMiddleware.requireStaffRole, order );
     app.use('/', login);
     
 }
