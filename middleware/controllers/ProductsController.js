@@ -9,6 +9,14 @@ class ProductsController {
         Products.find({})
             .then( (products) => {
                 products = products.map( product => product.toObject());
+                // Product filter type
+                if(req.query.product_type) {
+                    products = products.filter( product => {
+                        return product.product_type == req.query.product_type;
+                    })  
+                }
+
+                // Make pagination
                 var page_index = [];
                 for(var i = 1; i<= Math.ceil((products.length)/20); i++) {
                     page_index.push(i);
@@ -17,9 +25,8 @@ class ProductsController {
                 const product_perpage = 20;
 
                 products = products.slice((page_number-1)*product_perpage, (page_number-1)*product_perpage + product_perpage );
-                
-                
                 res.locals.page_number = page_number;
+
                 res.render('product_manage', {
                     products,
                     page_index,
@@ -73,6 +80,14 @@ class ProductsController {
                 res.redirect(req.get('referer'));
             });
     }
+
+    delete_product(req, res, next) {
+        Products.deleteOne({product_code: req.params.id})
+            .then(()=> {
+                res.redirect('/product');
+            })
+            .catch(next);
+    }   
 }
 
 module.exports = new ProductsController;

@@ -18,6 +18,10 @@
     font-size: 1.6rem;
 }
 
+/* .product-type__filter-form label {
+    margin-right: 8px;
+} */
+
 
 #list-product {
     font-size: 1.6rem;
@@ -34,4 +38,15 @@
 
 .delete-product {
     color: red;
+}
+
+#delete-product__modal,
+#delete-product__modal .modal-footer button {
+    font-size: 1.6rem;
+}
+
+#delete-product__modal .modal-title,
+.modal-title {
+    font-size: 2rem;
+    color: white;
 }

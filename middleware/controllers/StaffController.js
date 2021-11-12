@@ -19,10 +19,12 @@ class StaffController {
                     .then( (products) => {
                         products = products.map( product => product.toObject());
                             //change date and time 
+                            res.locals.page_number = 1;
                             res.render('product_manage', {
                                 products,
                                 layout: 'staff_layout'
                             });
+                            
                     })
                     .catch(next);
 
