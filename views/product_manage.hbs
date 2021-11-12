@@ -85,16 +85,15 @@
     <nav aria-label="..." style="font-size: 1.6rem;">
         <ul class="pagination mt-4">
             <li class="page-item disabled">
-                <span class="page-link">Trang trước</span>
+                <button type="button" class="btn btn-primary" id="pre-page" style="font-size: 1.6rem;"> &#8592; </button>
             </li>
             {{#each page_index}}
                 <li class="page-item">
-                    {{!-- <a class="page-link" href="/product?page={{this}}">{{this}}</a> --}}
-                    <a class="page-link" >{{this}}</a>
+                    <button class="page-link" >{{this}}</button>
                 </li>
             {{/each}}
-            <li class="page-item">
-                <a class="page-link" href="#">Trang sau</a>
+            <li class="page-item disabled">
+                <button type="button" class="btn btn-primary" id="next-page" style="font-size: 1.6rem;">&#8594;</button>
             </li>
         </ul>
     </nav>

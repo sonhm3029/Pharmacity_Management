@@ -60,6 +60,20 @@ html {
     font-size: 1.6rem;
 }
 
+.active-task {
+    background-color: var(--sidebar-btn-hover);
+    cursor: pointer;
+}
+
+.active-task__link {
+    color: black!important;
+}
+
+.active-page {
+    color: white;
+    background-color: #007bff;
+}
+
 
 /* clears the ‘X’ from Internet Explorer */
 input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
