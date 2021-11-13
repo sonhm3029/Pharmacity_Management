@@ -47,3 +47,9 @@ B1: vào branch son > Code > Download zip
 ![hdgitimg](./hdgit_1.png)
 
 B2: Mở code ra. Mở terminal gõ: npm run dev.
+
+ở cửa số log nó có hiện
+
+![hdgit_2](./hd_git_2.png)
+
+**Crtl + Click** hoặc cop cái **http://localhost:3000** vào để chạy lên web
