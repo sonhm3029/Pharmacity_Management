@@ -77,7 +77,7 @@
         </div>
         <div class="tab-pane fade" id="create-invoice__tab" role="tabpanel" aria-labelledby="create-invoice-tab">
             <div class="form-container">
-                <form action="./invoice.html" id="create-invoice-form">
+                <form  id="create-invoice-form" method="POST">
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="invoice-code" class="form-label">Mã hóa đơn</label>
@@ -107,7 +107,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="customer-email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="customer-email" name="customer_name">
+                            <input type="email" class="form-control" id="customer-email" name="customer_email">
                         </div>
                     </div>
                     <div class="row mt-4">
@@ -115,28 +115,28 @@
                             <div class="dynamic-field__heading mb-3">
                                 <h1>Danh sách sản phẩm</h1>
                             </div>
-                            <div class="form-row dynamic-field__content">
+                            {{!-- <div class="form-row dynamic-field__content">
                                 <div class="col-md-2-5 mb-3">
-                                    <label for="invoice-product-code" class="form-label">Mã Sản Phẩm</label>
+                                    <label for="invoice-product-code__0" class="form-label">Mã Sản Phẩm</label>
                                     <input type="text" class="form-control" id="invoice-product-code" name="product_code">
                                 </div>
                                 <div class="col-md-2-5 mb-3">
                                     <h3>Tên sản phẩm</h3>
-                                    <span id="invoice-product-name" style="display:block;padding:8px;">Demo ten</span>
+                                    <span id="invoice-product-name__0" style="display:block;padding:8px;" class="invoice-product-name"></span>
                                 </div>
                                 <div class="col-md-2-5 mb-3">
-                                    <label for="invoice-product-quantity" class="form-label">Số lượng</label>
-                                    <input type="number" min="0" step="1" value="0" class="form-control" id="invoice-product-quantity" name="product_quantity">
+                                    <label for="invoice-product-quantity__0" class="form-label">Số lượng</label>
+                                    <input type="number" min="0" step="1" value="0" class="form-control" id="invoice-product-quantity__0" name="product_quantity">
                                 </div>
                                 <div class="col-md-2-5 mb-3">
                                     <h3>Giá tiền</h3>
-                                    <span id="invoice-product-price" style="display:block;padding:8px;">100000</span>
+                                    <span id="invoice-product-price__0" style="display:block;padding:8px;" class="invoice-product-price"></span>
                                 </div>
                                 <div class="col-md-2-5">
                                     <div class="copy_btn">
                                         <label for="" class="form-label"></label>
                                         <div>
-                                            <button class="btn_round" type="button" onclick="addNewField()">
+                                            <button class="btn_round" type="button">
                                                 <i class="fa fa-copy"></i>
                                             </button>
                                         </div>
@@ -150,7 +150,7 @@
                                         </div>
                                     </div> 
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="col-md-12">
                             <button type="button" class="btn btn-primary" id="add-new-field"> + Thêm sản phẩm</button>
@@ -173,3 +173,12 @@
         </div>
     </div>
 </div>
+<script>
+    const product_code_list = {{{product_code_list}}};
+    const product_name_list = {{{product_name_list}}};
+    const product_price_list = {{{product_price_list}}};
+    
+    product_code_list = JSON.parse(product_code_list);
+    product_name_list = JSON.parse(product_name_list);
+    product_price_list = JSON.parse(product_price_list);
+</script>
