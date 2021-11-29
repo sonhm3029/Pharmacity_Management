@@ -7,31 +7,53 @@ class OrderController {
 
 
     show(req, res, next) {
+        var products_code_list;
+        var products_name_list;
+        var products_price_list;
+        
+
         Products.find({})
             .then(products => {
                 var str = 'OK';
-                var products_code_list = products.map( product => {
+                products_code_list = products.map( product => {
                     product = product.toObject();
                     return product.product_code
                 });
-                var products_name_list = products.map( product => {
+                products_name_list = products.map( product => {
                     product = product.toObject();
                     return product.product_name;
                 });
-                var products_price_list = products.map( product => {
+                products_price_list = products.map( product => {
                     product = product.toObject();
                     return product.product_price_out;
                 });
+
+                //Take invoices after create
+                Invoices.find({})
+                    .then( invoices => {
+                        
+                        invoices = invoices.map( invoice => {
+                            invoice = invoice.toObject();
+                            return invoice;
+                        })
+
+                        res.render('order',{
+                            product_code_list: JSON.stringify(products_code_list),
+                            product_name_list: JSON.stringify(products_name_list),
+                            product_price_list: JSON.stringify(products_price_list),
+                            invoices,
+                            layout:'staff_layout'
+                        })
+                    })
+                    .catch(next);
+
+
                 
-                res.render('order',{
-                    product_code_list: JSON.stringify(products_code_list),
-                    product_name_list: JSON.stringify(products_name_list),
-                    product_price_list: JSON.stringify(products_price_list),
-                    str,
-                    layout:'staff_layout'
-                })
             })
-            .catch(next);
+   
+
+        
+
     }
 
     saveInvoice(req, res, next) {
@@ -75,6 +97,17 @@ class OrderController {
             })
             .catch((error) => {
                 res.send(error);
+            })
+    }
+
+    showInvoice(req, res, next) {
+
+        Invoices.findOne({invoice_code: req.params.id})
+            .then( invoice => {
+                invoice = invoice.toObject();
+                res.render('invoice', {
+                    layout: 'staff_layout'
+                })
             })
     }
 

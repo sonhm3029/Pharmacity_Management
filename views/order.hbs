@@ -55,22 +55,24 @@
                       <tr>
                         <th scope="col" class="order-info-item">#</th>
                         <th scope="col" class="order-info-item" style="color: var(--success-status);">MÃ ĐƠN HÀNG</th>
-                        <th scope="col" class="order-info-item">GIỜ ĐẶT HÀNG</th>
                         <th scope="col" class="order-info-item">NGÀY ĐẶT HÀNG</th>
+                        <th scope="col" class="order-info-item">GIÁ TRỊ ĐƠN HÀNG</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
-                        <tr class="order-info-value">
-                            <th scope="row">1</th>
-                            <td style="color:var(--success-status);">DH12020</td>
-                            <td>06:24:24</td>
-                            <td>06/11/2021</td>
-                            <td class="order-options">
-                                <a href="" class="view-order">Xem</a>
-                                <a href="" class="delete-order">Xóa</a>
-                            </td>
-                        </tr>
+                        {{#each invoices}}
+                            <tr class="order-info-value">
+                                <th scope="row">{{sum @index 1}}</th>
+                                <td style="color:var(--success-status);">{{this.invoice_code}}</td>
+                                <td>{{getDate this.invoice_date}}/{{getMonth this.invoice_date}}/{{getYear this.invoice_date}}</td>
+                                <td>{{this.invoice_cost}} VND</td>
+                                <td class="order-options">
+                                    <a href="/order/successed/{{this.invoice_code}}" class="view-order">Xem</a>
+                                    <a href="" class="delete-order">Xóa</a>
+                                </td>
+                            </tr>
+                        {{/each}}
                     </tbody>
                 </table>
             </div>
@@ -156,10 +158,18 @@
                             <button type="button" class="btn btn-primary" id="add-new-field"> + Thêm sản phẩm</button>
                         </div>
                     </div>
-                    <div class="form-row"  style="margin-top: 32px;">
+                    <div class="form-row"  style="margin-top: 32px;flex-direction:column">
+                        <div class="col-md-3">
+                            <label for="invoice_cost" class="form-label"><strong>Tổng tiền</strong></label>
+                            <input type="text" class="form-control" id="invoice_cost" name="invoice_cost">
+                        </div>
                         <div class="col-md-3">
                             <label for="customer-pay" class="form-label"><strong>Số tiền khách trả</strong></label>
                             <input type="text" class="form-control" id="customer-pay" name="customer_pay">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="customer-pay-back" class="form-label"><strong>Số tiền trả lại khách</strong></label>
+                            <input type="text" class="form-control" id="customer-pay-back" name="customer_pay_back">
                         </div>
                     </div>
                     <div class="form-row" style="margin-top: 32px;">

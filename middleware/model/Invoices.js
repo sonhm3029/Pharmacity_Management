@@ -15,6 +15,8 @@ const Invoice = new Schema({
     invoice_date: {type: Date},
     customer_birth: {type: Date},
     customer_pay: {type: Number},
+    customer_pay_back: {type: Number},
+    invoice_cost: {type: Number},
     list_products: {type: Array},
     invoice_status: {type: String}
 }, {

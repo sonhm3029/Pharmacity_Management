@@ -18,6 +18,14 @@ function addInputChange() {
             var product_price = product_price_list[product_index];
             $(parent).find(".invoice-product-price").html(product_price);
         }
+        else {
+            //take parent element
+            var parent = $(this).closest('.dynamic-field__content');
+            
+            //Take product_name -- it is product_name_list[product_index];
+            var product_name = product_name_list[product_index];
+            $(parent).find(".invoice-product-name").html("KHÔNG TÌM THẤY SẢN PHẨM");
+        }
     })
 }
 
@@ -57,6 +65,7 @@ $(function() {
     // Add item 
     $('#add-new-field').click(function() {
         
+        //A flag to know any input field exist
         store_add_index +=1;
         var newElement = $(createItem(store_add_index));
         $('#list_dynamic_items').append(newElement);
@@ -64,13 +73,54 @@ $(function() {
         // Delete-item
         $('.delete-item').click(function() {
             $(this).closest('.dynamic-field__content').remove();
+
             store_add_index -=1;
+            //Auto re calculate invoice code when delete a product field
+            calculate_cost();
+            calculate_payback();
         });
+
+        // Add auto calculate invoice cost
+        $('input[name="product_quantity"]').change(function() {
+            calculate_cost();
+        })
 
         // Add input change event to input field
         addInputChange();
     });
+
+
+    //Calculate payback
+    $('#customer-pay').change(function() {
+        calculate_payback();
+    });
 });
+
+function calculate_cost() {
+    var sum = 0;
+
+    let quantity_arr = $('input[name="product_quantity"]');
+    let price_arr = $('.invoice-product-price');
+
+    for(let i = 0; i< quantity_arr.length; i++) {
+        sum += $(quantity_arr[i]).val() * Number($(price_arr[i]).text());
+    }
+    
+    //Put invoice cost into its place
+    $('#invoice_cost').val(sum);
+    calculate_payback();
+
+}
+
+function calculate_payback() {
+    // Take customer pay
+    let customer_pay = Number($('#customer-pay').val());
+    let invoice_cost = Number($('#invoice_cost').val());
+    // Calculate money to payback customer
+    var pay_back = customer_pay - invoice_cost;
+    $('#customer-pay-back').val(pay_back);
+}
+
 
 
 function cancel_invoice() {
