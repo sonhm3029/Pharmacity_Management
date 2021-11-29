@@ -66,25 +66,36 @@ class OrderController {
         var list_products = [];
         var list_products_code;
         var list_products_quantity;
+        var list_products_name;
+        var list_products_price;
         if(!Array.isArray(formData.product_code)) {
             list_products_code = [formData.product_code];
-            list_products_quantity = [formData.product_quantity]
+            list_products_quantity = [formData.product_quantity];
+            list_products_name = [formData.product_name];
+            list_products_price = [formData.product_price];
+
         }
         else {
             list_products_code = formData.product_code;
             list_products_quantity = formData.product_quantity;
+            list_products_name = formData.product_name;
+            list_products_price = formData.product_price;
         }
 
         for(var i = 0; i<list_products_code.length; i++) {
             var temp_product = {};
             temp_product.product_code = list_products_code[i];
             temp_product.product_quantity = list_products_quantity[i];
+            temp_product.product_name = list_products_name[i];
+            temp_product.product_price = list_products_price[i];
             list_products.push(temp_product);
         }
 
         // Delete old invoice field
         delete formData.product_code;
         delete formData.product_quantity;
+        delete formData.product_price;
+        delete formData.product_name;
         // Create new  invoice field
         formData.list_products = list_products;
         formData.invoice_status = 'Đã xử lý';
@@ -106,9 +117,14 @@ class OrderController {
             .then( invoice => {
                 invoice = invoice.toObject();
                 res.render('invoice', {
+                    invoice,
                     layout: 'staff_layout'
                 })
             })
+    }
+
+    deleteInvoice(req, res, next) {
+        
     }
 
 

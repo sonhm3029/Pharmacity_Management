@@ -6,8 +6,8 @@
         <div class="card">
             <div class="card-header">
                 Hóa đơn
-            <strong>Ngày:07/11/2021</strong> 
-            <span class="float-right"> <strong>Mã hóa đơn: </strong>HD0000</span>
+            <strong>Ngày:{{getDate invoice.invoice_date}}/{{getMonth invoice.invoice_date}}/{{getYear invoice.invoice_date}}</strong> 
+            <span class="float-right"> <strong>Mã hóa đơn: </strong>{{invoice.invoice_code}}</span>
       
             </div>
             <div class="card-body">
@@ -15,18 +15,23 @@
                     <div class="col-sm-6">
                         <h6 class="mb-3">Nhân viên:</h6>
                         <div>
-                            <strong>Hoàng Minh Sơn</strong>
+                            <strong>{{invoice.invoice_staff_name}}</strong>
                         </div>
                     </div>
       
                     <div class="col-sm-6">
                         <h6 class="mb-3">Khách hàng:</h6>
                         <div>
-                            <strong>Bob Mart</strong>
+                            <strong>{{invoice.customer_name}}</strong>
                         </div>
-                        <div>Địa chỉ: 43-190 Mikolow, Poland</div>
-                        <div>Email: marek@daniel.com</div>
-                        <div>Số điện thoại: +48 123 456 789</div>
+                        <div>
+                            Địa chỉ:
+                            {{#if invoice.customer_address}}
+                                {{invoice.customer_address}}
+                            {{/if}}
+                        </div>
+                        <div>Email: {{invoice.customer_email}}</div>
+                        <div>Số điện thoại: {{invoice.customer_phone}}</div>
                     </div>
                 </div>
       
@@ -44,22 +49,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="center">1</td>
-                                <td class="left strong">QL0000</td>
-                                <td class="left">Thuốc ho</t
-                                <td class="right">10</td>
-                                <td class="center">999</td>
-                                <td class="right">9990</td>
-                            </tr>
-                            <tr>
-                                <td class="center">2</td>
-                                <td class="left strong">QL0000</td>
-                                <td class="left">Thuốc ho</t
-                                <td class="right">10</td>
-                                <td class="center">999</td>
-                                <td class="right">9990</td>
-                            </tr>
+                            {{#each invoice.list_products}}
+                                <tr>
+                                    <td class="center">{{sum @index 1}}</td>
+                                    <td class="left strong">{{this.product_code}}</td>
+                                    <td class="left">{{this.product_name}}</td>
+                                    <td class="right">{{this.product_quantity}}</td>
+                                    <td class="center">{{this.product_price}}</td>
+                                    <td class="right">{{calculate_price this.product_quantity this.product_price}}</td>
+                                </tr>
+                            {{/each}}
                         </tbody>
                     </table>
                 </div>
@@ -75,20 +74,20 @@
                                     <td class="left">
                                         <strong>Tổng số tiền</strong>
                                     </td>
-                                    <td class="right">19980</td>
+                                    <td class="right">{{invoice.invoice_cost}}</td>
                                 </tr>
                                 <tr>
                                     <td class="left">
                                         <strong>Số tiền khách trả</strong>
                                     </td>
-                                    <td class="right">100000</td>
+                                    <td class="right">{{invoice.customer_pay}}</td>
                                 </tr>
                                 <tr>
                                     <td class="left">
                                         <strong>Số tiền trả lại khách</strong>
                                     </td>
                                     <td class="right">
-                                        <strong>10000</strong>
+                                        <strong>{{invoice.customer_pay_back}}</strong>
                                     </td>
                                 </tr>
                             </tbody>
@@ -97,5 +96,7 @@
                 </div>
             </div>
         </div>
+        <a type="button" class="btn btn-primary" style="font-size: 1.6rem;margin-top:8px;" href="/order">Quay lại</a>
     </div>
+    
 </div>

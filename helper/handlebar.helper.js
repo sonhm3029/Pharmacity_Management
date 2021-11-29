@@ -48,6 +48,10 @@ function getYMD(product_time) {
     return date_str;
 }
 
+function calculate_price(product_quantity, product_price) {
+    return Number(product_quantity)*Number(product_price);
+}
+
 
 
 function hbsHelper(app) {
@@ -62,7 +66,8 @@ function hbsHelper(app) {
             product_index,
             Int,
             typeOf,
-            getYMD
+            getYMD,
+            calculate_price
         }
     }));
     

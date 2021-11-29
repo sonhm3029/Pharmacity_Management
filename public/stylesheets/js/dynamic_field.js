@@ -12,11 +12,11 @@ function addInputChange() {
             
             //Take product_name -- it is product_name_list[product_index];
             var product_name = product_name_list[product_index];
-            $(parent).find(".invoice-product-name").html(product_name);
+            $(parent).find(".invoice-product-name").val(product_name);
     
             // Take product price --it is product_price_list[product_index]
             var product_price = product_price_list[product_index];
-            $(parent).find(".invoice-product-price").html(product_price);
+            $(parent).find(".invoice-product-price").val(product_price);
         }
         else {
             //take parent element
@@ -36,16 +36,16 @@ function createItem(i) {
         <input type="text" class="form-control" id="invoice-product-code__${i}" name="product_code">
     </div>
     <div class="col-md-2-5 mb-3">
-        <h3>Tên sản phẩm</h3>
-        <span id="invoice-product-name__${i}" style="display:block;padding:8px;" class="invoice-product-name"></span>
+        <label for="invoice-product-name__${i}" class="form-label">Tên sản phẩm</label>
+        <input id="invoice-product-name__${i}" style="display:block;padding:8px;" class="invoice-product-name form-control" name="product_name">
     </div>
     <div class="col-md-2-5 mb-3">
         <label for="invoice-product-quantity__${i}" class="form-label">Số lượng</label>
         <input type="number" min="0" step="1" value="0" class="form-control" id="invoice-product-quantity__${i}" name="product_quantity">
     </div>
     <div class="col-md-2-5 mb-3">
-        <h3>Giá tiền</h3>
-        <span id="invoice-product-price__${i}" style="display:block;padding:8px;" class="invoice-product-price"></span>
+        <label for="invoice-product-price__${i}" class="form-label">Giá tiền</label>
+        <input id="invoice-product-price__${i}" style="display:block;padding:8px;" class="invoice-product-price form-control" name="product_price">
     </div>
     <div class="col-md-2-5">
         <div class="trash_btn">
@@ -103,7 +103,7 @@ function calculate_cost() {
     let price_arr = $('.invoice-product-price');
 
     for(let i = 0; i< quantity_arr.length; i++) {
-        sum += $(quantity_arr[i]).val() * Number($(price_arr[i]).text());
+        sum += $(quantity_arr[i]).val() * Number($(price_arr[i]).val());
     }
     
     //Put invoice cost into its place
