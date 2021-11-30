@@ -11,8 +11,8 @@ router.get('/', productController.show_product);
       
 router.get('/add', productController.add_product)
       .post('/add',upload.single('product_img'), productController.store_product);
-router.get('/:id/edit', productController.edit_product)
-      .put('/:id', productController.update_product)
+router.get('/:id/edit',productController.edit_product)
+      .put('/:id',upload.single('product_img'),productController.update_product)
       .delete('/:id', productController.delete_product);
 
 module.exports = router;

@@ -105,11 +105,9 @@
                     <input type="text" class="form-control" id="product-price__out" name="product_price_out" value="{{oldData.product_price_out}}" required>
                 </div>
             </div>
-            <div class="input-group">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="product-image" name="product_img" required>
-                    <label class="custom-file-label form-label" for="product-image">Tải ảnh lên...</label>
-                </div>
+            <div class="form-row mt-4 mb-4" style="flex-direction: column;">
+                <label for="#product-image">Tải ảnh sản phẩm</label>
+                <input type="file" id="product-image" name="product_img" required>
             </div>
             {{!-- Submit button and trigger modal --}}
             <button class="btn btn-primary" type="button" id="create-btn" data-toggle="modal" data-target="#confirmModal">Tạo</button>

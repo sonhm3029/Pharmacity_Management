@@ -14,12 +14,13 @@
     font-size: 1.6rem;
 }
 
-
-#create-product-form .input-group {
-    margin-bottom: 24px;
-    width: 30%;
+label[for="#product-image"] {
+    font-size: 1.6rem;
 }
 
+#product-image {
+    display: block;
+}
 
 /* Confirm modal */
 #confirmModal,

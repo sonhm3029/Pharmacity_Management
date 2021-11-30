@@ -1,6 +1,7 @@
 
 const User = require('../model/Authentication');
 const Products = require('../model/Products');
+const fs = require('fs');
 
 class ProductsController {
 
@@ -76,7 +77,26 @@ class ProductsController {
     }
 
     update_product(req, res, next) {
-        Products.updateOne({product_code: req.params.id}, req.body)
+
+        const formData = req.body;
+
+        if(req.file) {
+            //if update image, delete the old one
+            Products.findOne({product_code: req.params.id})
+                .then(product => {
+                    var old_img = 'public/' + product.product_img.split('/').slice(2).join('/');
+                    fs.unlink(old_img, function (err) {
+                        if (err) throw err;
+                        // if no error, file has been deleted successfully
+                        console.log('File deleted!');
+                    });
+                })
+                .catch()
+            //UPdate with the new one
+            formData.product_img = '/static/' + req.file.path.split('\\').slice(1).join('/');
+        }
+
+        Products.updateOne({product_code: req.params.id}, formData)
             .then(()=> {
                 res.redirect('/product');
             })
