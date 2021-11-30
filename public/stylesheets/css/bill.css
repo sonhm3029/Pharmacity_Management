@@ -40,3 +40,16 @@
 #cancel-invoice {
     font-size: 1.6rem;
 }
+
+
+#delete-order__modal,
+#delete-order__modal .modal-footer button {
+    font-size: 1.6rem;
+}
+
+
+#delete-order__modal .modal-title,
+.modal-title {
+    font-size: 2rem;
+    color: white;
+}

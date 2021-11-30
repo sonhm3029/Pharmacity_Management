@@ -2,6 +2,7 @@
 const User = require('../model/Authentication');
 const Products = require('../model/Products');
 const Invoices = require('../model/Invoices');
+const formidable = require('formidable');
 
 class OrderController {
 
@@ -66,6 +67,7 @@ class OrderController {
         var list_products = [];
         var list_products_code;
         var list_products_quantity;
+        var update_products_quantity;
         var list_products_name;
         var list_products_price;
         if(!Array.isArray(formData.product_code)) {
@@ -90,6 +92,30 @@ class OrderController {
             temp_product.product_price = list_products_price[i];
             list_products.push(temp_product);
         }
+
+        //Update product quantity after take from product db
+        let changed_products = Products.find({product_code: list_products_code});
+        changed_products.exec()
+            .then(products => {
+
+                let old_products_quantity = products.map(product => Number(product.product_quantity));
+                var new_products_quantity = [];
+
+                for(let i = 0; i<old_products_quantity.length; i++) {
+                    products[i].product_quantity = (Number(old_products_quantity[i]) - Number(list_products_quantity[i]));
+                }
+            
+                //UPdate db
+                products.forEach(function(product) {
+                    Products.updateOne({product_code: product.product_code},product )
+                        .then(()=>{
+                            console.log('OK');
+                        })
+                        .catch(next);
+                })
+            })
+            .catch(next);
+
 
         // Delete old invoice field
         delete formData.product_code;
@@ -124,7 +150,11 @@ class OrderController {
     }
 
     deleteInvoice(req, res, next) {
-        
+        Invoices.deleteOne({invoice_code: req.params.id})
+            .then(() => {
+                res.redirect('/order');
+            })
+            .catch(next);
     }
 
 

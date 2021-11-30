@@ -69,12 +69,31 @@
                                 <td>{{this.invoice_cost}} VND</td>
                                 <td class="order-options">
                                     <a href="/order/successed/{{this.invoice_code}}" class="view-order">Xem</a>
-                                    <a href="" class="delete-order">Xóa</a>
+                                    <a href="" class="delete-order" data-toggle="modal" data-target="#delete-order__modal" data-id="{{this.invoice_code}}">Xóa</a>
                                 </td>
                             </tr>
                         {{/each}}
                     </tbody>
                 </table>
+                <div class="modal fade" id="delete-order__modal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteOrderModal" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmDeleteOrderModal">Xác nhận xóa</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Bạn có muốn xóa hóa đơn này không ?
+                        </div>
+                        <div class="modal-footer">
+                            <button id="delete-confirm-btn" type="button" class="btn btn-primary">OK</button>
+                            <button  type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="tab-pane fade" id="create-invoice__tab" role="tabpanel" aria-labelledby="create-invoice-tab">
@@ -204,6 +223,30 @@
         </div>
     </div>
 </div>
+
+
+
+{{!-- Submit delete invoice modal --}}
+
+<form name="submit-delete-modal" method="POST">
+    <script>
+        $(function() {
+            var invoice_code;
+            let delete_confirm_btn = $('#delete-confirm-btn');
+            const submit_delete_modal = $("[name='submit-delete-modal']");
+            $('#delete-order__modal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                invoice_code = button.data('id'); // Extract info from data-* attributes
+            });
+                delete_confirm_btn.click(function() {
+                    submit_delete_modal.attr("action",'/order/successed/' + invoice_code + '?_method=DELETE');
+                    submit_delete_modal.submit();
+            });
+
+        })
+    </script>
+</form>
+
 <script>
     const product_code_list = {{{product_code_list}}};
     const product_name_list = {{{product_name_list}}};
