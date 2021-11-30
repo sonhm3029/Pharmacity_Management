@@ -2,7 +2,6 @@
 const User = require('../model/Authentication');
 const Products = require('../model/Products');
 const Invoices = require('../model/Invoices');
-const formidable = require('formidable');
 
 class OrderController {
 

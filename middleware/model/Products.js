@@ -17,7 +17,8 @@ const Product = new Schema({
     product_MFG: {type: Date},
     product_expired: {type: Date},
     product_price_in: {type: Number},
-    product_price_out: {type: Number}
+    product_price_out: {type: Number},
+    product_img: {type: String}
 }, {
     timestamps: true
 });

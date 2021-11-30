@@ -43,6 +43,10 @@ class ProductsController {
 
     store_product(req, res, next) {
         const formData = req.body;
+
+        //Add image file using multer
+        formData.product_img = '/static/' + req.file.path.split('\\').slice(1).join('/');
+
         const newProduct = new Products(formData);
         newProduct.save()
             .then(()=> {
