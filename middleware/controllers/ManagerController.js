@@ -88,6 +88,14 @@ class ManagerController {
                 res.redirect(req.get('referer'));
             });
     }
+
+    deleteStaffInfo(req, res, next) {
+        Staff.deleteOne({staff_code: req.params.id})
+            .then(() => {
+                res.redirect('/manager/staff-management');
+            })
+            .catch(next);
+    }
 }
 
 module.exports = new ManagerController;

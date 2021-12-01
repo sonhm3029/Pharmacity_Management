@@ -81,22 +81,6 @@ button.close {
 /* End list staff */
 
 /* Update staff modal */
-#update-staff__modal {
-    font-size: 1.6rem;
-}
-
-#update-staff__modal .modal-title,
-button.close {
-    font-size: 2.4rem;
-    color: white;
-}
-
-
-
-#update-staff__modal button.close:hover {
-    color: white;
-}
-
 
 #update-staff__form .form-label,
 #update-staff__form input,
@@ -104,3 +88,21 @@ button.close {
     font-size: 1.6rem;
 }
 /* End update staff modal */
+
+/* Delete staff modal */
+
+#delete-staff__modal,
+#delete-staff__modal .modal-footer button {
+    font-size: 1.6rem;
+}
+
+#delete-staff__modal .modal-title,
+.modal-title {
+    font-size: 2rem;
+    color: white;
+}
+
+#delete-staff__modal button.close:hover {
+    color: white;
+}
+/* End delete staff modal */

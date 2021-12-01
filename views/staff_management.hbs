@@ -90,11 +90,34 @@
                         <p class="card-address-field">Địa chỉ: <span>{{this.staff_address}}</span></p>
                         <div class="staff-function__btn">
                             <a class="btn btn-primary update-staff" href="/manager/staff-management/{{this.staff_code}}">Sửa</a>
-                            <button class="btn btn-danger delete-staff">Xóa</button>
+                            <button class="btn btn-danger delete-staff" data-toggle="modal" data-target="#delete-staff__modal" data-id="{{this.staff_code}}">Xóa</button>
                         </div>
                     </div>
                 </div>
             </div>
         {{/each}}        
     </div>
+    <div class="modal fade" id="delete-staff__modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có muốn xóa nhân viên này không ?
+            </div>
+            <div class="modal-footer">
+                <button id="delete-confirm-btn" type="button" class="btn btn-primary">OK</button>
+                <button  type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+            </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+{{!-- For submit delete staff form --}}
+<form name="submit-delete-modal" method="POST">
+</form>
