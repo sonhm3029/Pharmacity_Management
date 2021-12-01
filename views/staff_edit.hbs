@@ -1,0 +1,50 @@
+<div class="page-header-wrapper">
+    <h1>CHỈNH SỬA THÔNG TIN NHÂN VIÊN</h1>
+</div>
+<div class="page-content-wrapper container">
+    <form id="update-staff__form" method="POST" action="/manager/staff-management/{{staff.staff_code}}?_method=PUT" enctype="multipart/form-data">
+        <div class="form-row mt-4 mb-4" style="flex-direction: column;">
+            <img src="{{staff.staff_img}}" alt=""style="width:150px;height:150px">
+            <label for="#staff-image">Tải ảnh đại diện nhân viên</label>
+            <input type="file" id="staff-image" name="staff_img">
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 mb-4">
+                <label for="staff-name" class="form-label">Họ và tên</label>
+                <input type="text" class="form-control" id="staff-name" name="staff_name" value="{{staff.staff_name}}" required>
+            </div>
+            <div class="col-md-3 mb-4">
+                <label for="staff-code" class="form-label">Mã nhân viên</label>
+                <input type="text" class="form-control" id="staff-code" name="staff_code" value="{{staff.staff_code}}" required>
+            </div>
+            <div class="col-md-3 mb-4">
+                <label for="staff-gender" class="form-label">Giới tính</label>
+                <select class="custom-select" id="staff-gender" name="staff_gender" required>
+                    <option>{{staff.staff_gender}}</option>
+                    <option>Nữ</option>
+                    <option>Nam</option>
+                </select>
+            </div>
+            <div class="col-md-3 mb-4">
+                <label for="staff-birthday" class="form-label">Ngày sinh</label>
+                <input type="date" class="form-control" id="staff-birthday" name="staff_birthday" value="{{staff.staff_birthday}}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-4">
+                <label for="staff-phone-number" class="form-label">Số điện thoại</label>
+                <input type="tel" class="form-control" id="staff-phone-number" name="staff_phone" value="{{staff.staff_phone}}" required>
+            </div>
+            <div class="col-md-4 mb-4">
+                <label for="staff-address" class="form-label">Địa chỉ</label>
+                <input type="" class="form-control" id="staff-address" name="staff_address" value="{{staff.staff_address}}" required>
+            </div>
+            <div class="col-md-4 mb-4">
+                <label for="staff-email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="staff-email" name="staff_email" value="{{staff.staff_email}}">
+            </div>
+        </div>
+        <a type="button" class="btn btn-secondary cancel-btn" data-dismiss="modal" href="/manager/staff-management">Hủy</a>
+        <button type="submit" class="btn btn-primary save-btn">Lưu thông tin</button>
+    </form>
+</div>

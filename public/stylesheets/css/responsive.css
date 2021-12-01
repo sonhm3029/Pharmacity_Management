@@ -1,5 +1,7 @@
 @media (max-width: 768px) {
-    
+    .staff-function__btn {
+        position: unset;
+    }
 }
 
 

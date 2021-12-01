@@ -9,6 +9,10 @@ function Int(str_data) {
     return Number(str_data);
 }
 
+function Json(data) {
+    return String(data);
+}
+
 function typeOf(data){
     return typeof(data);
 }
@@ -67,7 +71,8 @@ function hbsHelper(app) {
             Int,
             typeOf,
             getYMD,
-            calculate_price
+            calculate_price,
+            Json
         }
     }));
     
