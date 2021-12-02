@@ -48,7 +48,18 @@ function getYMD(product_time) {
     var month = String(getMonth(product_time));
     var date = String(getDate(product_time));
 
-    date_str += year + '-' + month + '-' + date;
+    date_str += year + '/' + month + '/' + date;
+    return date_str;
+}
+
+
+function getDMY(product_time) {
+    var date_str = '';
+    var year = String(getYear(product_time));
+    var month = String(getMonth(product_time));
+    var date = String(getDate(product_time));
+
+    date_str += date + '/' + month + '/' + year;
     return date_str;
 }
 
@@ -77,7 +88,8 @@ function hbsHelper(app) {
             getYMD,
             calculate_price,
             Json,
-            length
+            length,
+            getDMY
         }
     }));
     
