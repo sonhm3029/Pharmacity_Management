@@ -1,25 +1,81 @@
 const User = require('../model/Authentication');
 const Staff = require('../model/Staff');
+const Orders = require('../model/Invoices');
+const Products = require('../model/Products');
 const fs = require('fs');
 
+
+
+function print() {;
+    console.log('Ok')
+}
 class ManagerController {
 
     show(req, res) {
-        
-        User.findOne({_id: req.cookies.userId})
-            .then((auth) => {
-                if(auth.role != 'Manager') {
-                    res.redirect('/staff')
-                    return;
-                }
-                res.render('dashboard', {layout:'main'});
-            })
+        res.redirect('/manager/dashboard');
         
     }
 
 
-    dashboard(req, res) {
-        res.render('dashboard', {layout:'main'});
+    dashboard(req, res,next) {
+        
+        var orders_list;
+        //Take order form db
+        Orders.find({})
+            .then( orders => {
+                orders_list = orders.map(order => order.toObject());
+            });
+        
+        Products.find({})
+            .then( products => {
+
+                products = products.map( product => product.toObject());
+
+                //Current month, year
+                const current = new Date();
+                const current_month = current.getMonth() + 1;
+                const current_year = current.getFullYear();
+                //Number of successed orders this month
+                let month_orders =
+                     orders_list.filter(order => {
+                         return ((order.invoice_date).getMonth() + 1) === current_month;
+                    });
+                // Revenue this month
+                let revenue = month_orders.reduce(function(total, order) {
+                    return total + order.invoice_cost;
+                }, 0);
+                //Number of product import this month
+                let products_this_month =
+                        products.filter( product => {
+                            return (product.createdAt !== undefined)&&(product.createdAt).getMonth() === (current_month - 1);
+                        });
+                //Revenue for each month:
+                let revenue_all_month = [0,0,0,0,0,0,0,0,0,0,0,0];
+                for(let i = 0; i<12; i++) {
+                    revenue_all_month[i] =
+                         orders_list.reduce(function(total, order) {
+                            if((order.invoice_date).getMonth() == i) {
+                                return total + order.invoice_cost;
+                            }
+                            else {
+                                return total + 0;
+                            }
+                         },0)
+                }
+                //standardized revenue to million VND
+                revenue_all_month = revenue_all_month.map(revenue => revenue/1000000);
+
+                res.render('dashboard', {
+                    revenue_all_month,
+                    products_this_month,
+                    revenue,
+                    month_orders,
+                    orders_list,
+                    products,
+                    layout:'main'
+                })
+            })
+            .catch(next);
     }
 
     showStaff(req,res,next) {

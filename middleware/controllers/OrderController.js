@@ -36,12 +36,18 @@ class OrderController {
                             invoice = invoice.toObject();
                             return invoice;
                         })
+                        var page_index = [];
+                        var page_number = Math.ceil((invoices.length)/20);
+                        for(let i = 0; i<page_number; i++) {
+                            page_index.push(i + 1);
+                        }
 
                         res.render('order',{
                             product_code_list: JSON.stringify(products_code_list),
                             product_name_list: JSON.stringify(products_name_list),
                             product_price_list: JSON.stringify(products_price_list),
                             invoices,
+                            page_index,
                             layout:'staff_layout'
                         })
                     })

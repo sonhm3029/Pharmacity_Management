@@ -56,6 +56,10 @@ function calculate_price(product_quantity, product_price) {
     return Number(product_quantity)*Number(product_price);
 }
 
+function length(arr) {
+    return arr.length;
+}
+
 
 
 function hbsHelper(app) {
@@ -72,7 +76,8 @@ function hbsHelper(app) {
             typeOf,
             getYMD,
             calculate_price,
-            Json
+            Json,
+            length
         }
     }));
     

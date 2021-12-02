@@ -95,6 +95,21 @@
                     </div>
                 </div>
             </div>
+            <nav aria-label="..." style="font-size: 1.6rem;">
+                <ul class="pagination mt-4" style="flex-wrap:wrap;">
+                    <li class="order_page-item disabled">
+                        <button type="button" class="btn btn-primary" id="order_pre-page" style="font-size: 1.6rem;"> &#8592; </button>
+                    </li>
+                    {{#each page_index}}
+                        <li class="order_page-item">
+                            <button class="order_page-link" >{{this}}</button>
+                        </li>
+                    {{/each}}
+                    <li class="order_page-item disabled">
+                        <button type="button" class="btn btn-primary" id="order_next-page" style="font-size: 1.6rem;">&#8594;</button>
+                    </li>
+                </ul>
+            </nav>
         </div>
         <div class="tab-pane fade" id="create-invoice__tab" role="tabpanel" aria-labelledby="create-invoice-tab">
             <div class="form-container">
@@ -223,6 +238,7 @@
         </div>
     </div>
 </div>
+
 
 
 

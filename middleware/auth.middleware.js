@@ -6,7 +6,6 @@ class AuthProtect {
 
 
     requireManagerRole(req, res, next) {
-        console.log(req.cookies.userId);
         if(!req.cookies.userId) {
             res.redirect('/');
             return;

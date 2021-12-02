@@ -24,7 +24,7 @@ function addInputChange() {
             
             //Take product_name -- it is product_name_list[product_index];
             var product_name = product_name_list[product_index];
-            $(parent).find(".invoice-product-name").html("KHÔNG TÌM THẤY SẢN PHẨM");
+            $(parent).find(".invoice-product-name").val("KHÔNG TÌM THẤY SẢN PHẨM");
         }
     })
 }

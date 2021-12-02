@@ -6,19 +6,19 @@
         <div class="col-lg-4 col-md-12">
             <div class="white-box data-info">
                 <h3 class="box-title">Đơn Hàng</h3>
-                <span class="box-value">12</span>
+                <span class="box-value">{{length month_orders}}</span>
             </div>
         </div>
         <div class="col-lg-4 col-md-12">
             <div class="white-box data-info">
                 <h3 class="box-title">Doanh Thu</h3>
-                <span class="box-value">12</span>
+                <span class="box-value">{{revenue}} VND</span>
             </div>
         </div>
         <div class="col-lg-4 col-md-12">
             <div class="white-box data-info">
                 <h3 class="box-title">Sản phẩm nhập</h3>
-                <span class="box-value">12</span>
+                <span class="box-value">{{length products_this_month}}</span>
             </div>
         </div>
     </div>
@@ -33,10 +33,11 @@
                     let months = ["Tháng 1", "Tháng 2","Tháng 3","Tháng 4",
                                 "Tháng 5","Tháng 6","Tháng 7","Tháng 8",
                                 "Tháng 9","Tháng 10","Tháng 11","Tháng 12"];
-                    
+                    const Now = new Date();
+                    const current_year = Now.getFullYear();
                     
                     // Y axis
-                    let profit =[55, 49, 44, 24, 15,55, 49, 44, 24, 15,55, 49];
+                    let profit = [{{revenue_all_month}}];
                     let bar_color = ["red"]
                     new Chart("product-yearly-sale__chart", {
                         type: "bar",
@@ -55,7 +56,7 @@
                             plugins: {
                                 title: {
                                     display: true,
-                                    text: 'Doanh thu bán hàng năm 2021'
+                                    text: `Doanh thu bán hàng năm ${current_year}`
                                 }
                             },
                             scales: {
