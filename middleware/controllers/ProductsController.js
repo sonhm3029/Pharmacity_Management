@@ -46,9 +46,12 @@ class ProductsController {
         const formData = req.body;
 
         //Add image file using multer
-        console.log(req.file.path);
-        console.log(req.file);
-        formData.product_img = '/static/' + req.file.path.split('\\').slice(1).join('/');
+        // console.log(req.file.path);
+        // console.log(req.file);
+        // formData.product_img = '/static/' + req.file.path.split('\\').slice(1).join('/');
+        //Using when deploy to heroku
+        formData.product_img = '/static/' + req.file.path.split('/').slice(1).join('/');
+
 
         const newProduct = new Products(formData);
         newProduct.save()
