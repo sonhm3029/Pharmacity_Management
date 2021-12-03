@@ -58,7 +58,7 @@ body {
 
 .search-form button {
     border: none;
-    color: white;
+    color: black;
     height: var(--search-form-height);
     margin-right: 5px;
     border-radius: 5px;
@@ -81,7 +81,7 @@ body {
 .page-layout-wrapper {
     padding-top: var(--topbar-height);
     display: flex;
-    height: 100%;
+    /* height: 100%; */
     position: relative;
     padding-left: 10px;
     background-color: var(--header-color);
@@ -101,7 +101,9 @@ body {
 .page-layout-wrapper .left-sidebar {
     width: 240px;
     background-color: var(--header-color);
-    position: fixed;
+    position: sticky;
+    top: var(--topbar-height);
+    right: 0;
     height: 100%;
 }
 
@@ -148,17 +150,27 @@ body {
 .sidebar-task__link i {
     margin-right: 8px;
 }
+
+
+.dropdown-item {
+    font-size: 1.6rem;
+}
+
+.dropdown-menu {
+    width: 100%;
+    background-color: #ededed;
+}
 /* End left sidebar */
 
 /* Main content */
 .main-content {
     flex: 1;
-    background-color: wheat;
-    height: 1000px;
+    background-color: white;
+    min-height: 100vh;
 }
+
 /* End main content */
 
 /* End page layout wrapper */
-
 
 

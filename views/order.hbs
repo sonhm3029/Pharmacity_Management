@@ -1,0 +1,274 @@
+<div class="page-header-wrapper">
+    <h1>QUẢN LÝ ĐƠN HÀNG</h1>
+</div>
+<div class="page-content-wrapper" id="order-options-container">
+    <ul class="nav nav-pills mb-3" id="order-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="order-online__tab" data-toggle="pill" href="#order-online" role="tab" aria-controls="order-online" aria-selected="true">
+                Đơn đặt hàng
+                <span class="badge badge-danger" id="order-online__notidy">4</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="order-history__tab" data-toggle="pill" href="#order-history" role="tab" aria-controls="order-history" aria-selected="false">
+                Đơn hàng đã thành công
+            </a>
+        </li>
+        <li class="nav-item" id="create-invoice" role="presentation">
+            <a class="btn btn-primary nav-ink" id="create-invoice__btn" data-toggle="pill" href="#create-invoice__tab" aria-selected="false">
+                + Lập hóa đơn
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" id="order-tabs__content">
+        <div class="tab-pane fade show active" id="order-online" role="tabpanel" aria-labelledby="orderonline-tab">
+            <div class="table-container">
+                <table class="table table-hover" id="list-order-online">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col" class="order-info-item">#</th>
+                        <th scope="col" class="order-info-item text-warning">MÃ ĐƠN HÀNG</th>
+                        <th scope="col" class="order-info-item">GIỜ ĐẶT HÀNG</th>
+                        <th scope="col" class="order-info-item">NGÀY ĐẶT HÀNG</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="order-info-value">
+                            <th scope="row">1</th>
+                            <td class="text-warning">DH12020</td>
+                            <td>06:24:24</td>
+                            <td>06/11/2021</td>
+                            <td class="order-options">
+                                <a href="./invoice.html" class="confirm-order">Xem</a>
+                                <a href="" class="cancel-order">Xóa</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order-history" role="tabpanel" aria-labelledby="order-history-tab">
+            <div class="table-container">
+                <table class="table table-hover" id="list-solved-order">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col" class="order-info-item">#</th>
+                        <th scope="col" class="order-info-item" style="color: var(--success-status);">MÃ ĐƠN HÀNG</th>
+                        <th scope="col" class="order-info-item">NGÀY ĐẶT HÀNG</th>
+                        <th scope="col" class="order-info-item">GIÁ TRỊ ĐƠN HÀNG</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {{#each invoices}}
+                            <tr class="order-info-value">
+                                <th scope="row">{{sum @index 1}}</th>
+                                <td style="color:var(--success-status);">{{this.invoice_code}}</td>
+                                <td>{{getDate this.invoice_date}}/{{getMonth this.invoice_date}}/{{getYear this.invoice_date}}</td>
+                                <td>{{this.invoice_cost}} VND</td>
+                                <td class="order-options">
+                                    <a href="/order/successed/{{this.invoice_code}}" class="view-order">Xem</a>
+                                    <a href="" class="delete-order" data-toggle="modal" data-target="#delete-order__modal" data-id="{{this.invoice_code}}">Xóa</a>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <div class="modal fade" id="delete-order__modal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteOrderModal" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmDeleteOrderModal">Xác nhận xóa</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Bạn có muốn xóa hóa đơn này không ?
+                        </div>
+                        <div class="modal-footer">
+                            <button id="delete-confirm-btn" type="button" class="btn btn-primary">OK</button>
+                            <button  type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav aria-label="..." style="font-size: 1.6rem;">
+                <ul class="pagination mt-4" style="flex-wrap:wrap;">
+                    <li class="order_page-item disabled">
+                        <button type="button" class="btn btn-primary" id="order_pre-page" style="font-size: 1.6rem;"> &#8592; </button>
+                    </li>
+                    {{#each page_index}}
+                        <li class="order_page-item">
+                            <button class="order_page-link" >{{this}}</button>
+                        </li>
+                    {{/each}}
+                    <li class="order_page-item disabled">
+                        <button type="button" class="btn btn-primary" id="order_next-page" style="font-size: 1.6rem;">&#8594;</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="tab-pane fade" id="create-invoice__tab" role="tabpanel" aria-labelledby="create-invoice-tab">
+            <div class="form-container">
+                <form  id="create-invoice-form" method="POST">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="invoice-code" class="form-label">Mã hóa đơn</label>
+                            <input type="text" class="form-control" id="invoice-code" name="invoice_code">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="invoice-staff-name" class="form-label">Họ tên nhân viên</label>
+                            <input type="text" class="form-control" id="invoice-staff-name" name="invoice_staff_name">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="invoice-date" class="form-label">Ngày lập hóa đơn</label>
+                            <input type="date" class="form-control" id="invoice-date" name="invoice_date">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-3 mb-3">
+                            <label for="customer-name" class="form-label">Họ tên khách hàng</label>
+                            <input type="text" class="form-control" id="customer-name" name="customer_name">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="customer-birth" class="form-label">Ngày sinh</label>
+                            <input type="date" class="form-control" id="customer-birth" name="customer_birth">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="customer-phone" class="form-label">SĐT</label>
+                            <input type="text" class="form-control" id="customer-phone" name="customer_phone">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="customer-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="customer-email" name="customer_email">
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12 mb-3" id="list_dynamic_items">
+                            <div class="dynamic-field__heading mb-3">
+                                <h1>Danh sách sản phẩm</h1>
+                            </div>
+                            {{!-- <div class="form-row dynamic-field__content">
+                                <div class="col-md-2-5 mb-3">
+                                    <label for="invoice-product-code__0" class="form-label">Mã Sản Phẩm</label>
+                                    <input type="text" class="form-control" id="invoice-product-code" name="product_code">
+                                </div>
+                                <div class="col-md-2-5 mb-3">
+                                    <h3>Tên sản phẩm</h3>
+                                    <span id="invoice-product-name__0" style="display:block;padding:8px;" class="invoice-product-name"></span>
+                                </div>
+                                <div class="col-md-2-5 mb-3">
+                                    <label for="invoice-product-quantity__0" class="form-label">Số lượng</label>
+                                    <input type="number" min="0" step="1" value="0" class="form-control" id="invoice-product-quantity__0" name="product_quantity">
+                                </div>
+                                <div class="col-md-2-5 mb-3">
+                                    <h3>Giá tiền</h3>
+                                    <span id="invoice-product-price__0" style="display:block;padding:8px;" class="invoice-product-price"></span>
+                                </div>
+                                <div class="col-md-2-5">
+                                    <div class="copy_btn">
+                                        <label for="" class="form-label"></label>
+                                        <div>
+                                            <button class="btn_round" type="button">
+                                                <i class="fa fa-copy"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="trash_btn">
+                                        <label for="" class="form-label"></label>
+                                        <div>
+                                            <button class="btn_round" type="button" disabled>
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div> --}}
+                        </div>
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary" id="add-new-field"> + Thêm sản phẩm</button>
+                        </div>
+                    </div>
+                    <div class="form-row"  style="margin-top: 32px;flex-direction:column">
+                        <div class="col-md-3">
+                            <label for="invoice_cost" class="form-label"><strong>Tổng tiền</strong></label>
+                            <input type="text" class="form-control" id="invoice_cost" name="invoice_cost">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="customer-pay" class="form-label"><strong>Số tiền khách trả</strong></label>
+                            <input type="text" class="form-control" id="customer-pay" name="customer_pay">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="customer-pay-back" class="form-label"><strong>Số tiền trả lại khách</strong></label>
+                            <input type="text" class="form-control" id="customer-pay-back" name="customer_pay_back">
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-top: 32px;">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary" id="submit-invoice" data-toggle="modal" data-target="#confirmModal">Xác nhận</button>
+                            <button type="button" class="btn btn-danger" id="cancel-invoice" onclick="cancel_invoice()">Hủy</button>
+                        </div>
+                    </div>
+
+                    {{!-- Modal --}}
+                    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="confirmModalLabel">Xác nhận</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              Bạn có xác nhận lập hóa đơn này?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-danger confirm-btn" data-dismiss="modal">Hủy</button>
+                              <button type="submit" class="btn btn-primary cancel-btn">Xác nhận</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{{!-- Submit delete invoice modal --}}
+
+<form name="submit-delete-modal" method="POST">
+    <script>
+        $(function() {
+            var invoice_code;
+            let delete_confirm_btn = $('#delete-confirm-btn');
+            const submit_delete_modal = $("[name='submit-delete-modal']");
+            $('#delete-order__modal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                invoice_code = button.data('id'); // Extract info from data-* attributes
+            });
+                delete_confirm_btn.click(function() {
+                    submit_delete_modal.attr("action",'/order/successed/' + invoice_code + '?_method=DELETE');
+                    submit_delete_modal.submit();
+            });
+
+        })
+    </script>
+</form>
+
+<script>
+    const product_code_list = {{{product_code_list}}};
+    const product_name_list = {{{product_name_list}}};
+    const product_price_list = {{{product_price_list}}};
+    
+    product_code_list = JSON.parse(product_code_list);
+    product_name_list = JSON.parse(product_name_list);
+    product_price_list = JSON.parse(product_price_list);
+</script>

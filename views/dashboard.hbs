@@ -1,0 +1,175 @@
+<div class="page-header-wrapper">
+    <h1>DASH BOARD</h1>
+</div>
+<div class="page-content-wrapper">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-12">
+            <div class="white-box data-info">
+                <h3 class="box-title">Đơn Hàng</h3>
+                <span class="box-value">{{length month_orders}}</span>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+            <div class="white-box data-info">
+                <h3 class="box-title">Doanh Thu</h3>
+                <span class="box-value">{{revenue}} VND</span>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+            <div class="white-box data-info">
+                <h3 class="box-title">Sản phẩm nhập</h3>
+                <span class="box-value">{{length products_this_month}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="products-yearly-sale">
+        <div class="col-md-12 col-lg-12">
+            <div class="white-box data-info">
+                <h3 class="box-title">Biểu đồ doanh thu</h3>
+                <!--Chart -->
+                <canvas id="product-yearly-sale__chart"></canvas>
+                <script>
+                    //X axis
+                    let months = ["Tháng 1", "Tháng 2","Tháng 3","Tháng 4",
+                                "Tháng 5","Tháng 6","Tháng 7","Tháng 8",
+                                "Tháng 9","Tháng 10","Tháng 11","Tháng 12"];
+                    const Now = new Date();
+                    const current_year = Now.getFullYear();
+                    
+                    // Y axis
+                    let profit = [{{revenue_all_month}}];
+                    let bar_color = ["red"]
+                    new Chart("product-yearly-sale__chart", {
+                        type: "bar",
+                        data: {
+                            labels: months,
+                            datasets: [{
+                                label:'Doanh thu (triệu VND)',
+                                backgroundColor: "rgba(85,162,222,1)",
+                                data: profit
+                            }]
+                        },
+                        options: {
+                            legend: {
+                                display: false
+                            },
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: `Doanh thu bán hàng năm ${current_year}`
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="products-best-sale">
+        <div class="col-md-12 col-lg-12">
+            <div class="white-box data-info">
+                <h3 class="box-title">Top sản phẩm bán chạy</h3>
+                <div class="products-best-sale__table">
+                    <table class="table table-hover" style="margin-top:24px;">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col" class="text-primary">Mã SP</th>
+                                <th scope="col" class="text-primary">Tên SP</th>
+                                <th scope="col">Số lượng bán</th>
+                                <th scope="col">Giá (VNĐ)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each top_best_sold}}
+                                <tr>
+                                    <th scope="row">{{sum @index 1}}</th>
+                                    <td class="text-primary">{{this.product_code}}</td>
+                                    <td>{{this.product_name}}</td>
+                                    <td class="my-table-column__success">{{this.product_quantity}}</td>
+                                    <td class="my-table-column__success">{{this.product_price}}</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="products-slowest-sale">
+        <div class="col-md-12 col-lg-12">
+            <div class="white-box data-info">
+                <h3 class="box-title">Các sản phẩm bán chậm</h3>
+                <div class="products-slowest-sale__table">
+                    <table class="table table-hover" style="margin-top:24px;">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col" class="text-warning">Mã SP</th>
+                                <th scope="col">Loại SP</th>
+                                <th scope="col" class="text-warning">Số lượng bán</th>
+                                <th scope="col" class="text-warning">Giá (VNĐ)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td class="text-warning">MD0000</td>
+                                <td>Thực phẩm chức năng</td>
+                                <td class="text-warning">1000000</td>
+                                <td>1000000</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td class="text-warning">MD0000</td>
+                                <td>Thực phẩm chức năng</td>
+                                <td class="text-warning">1000000</td>
+                                <td>1000000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="products-expired">
+        <div class="col-md-12 col-lg-12">
+            <div class="white-box data-info">
+                <h3 class="box-title">Các sản phẩm sắp hết hạn</h3>
+                <div class="products-expired__table">
+                    <table class="table table-hover" style="margin-top:24px;">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col" class="text-warning">Mã SP</th>
+                                <th scope="col">Tên SP</th>
+                                <th scope="col">Loại SP</th>
+                                <th scope="col">Số lượng</th>
+                                <th scope="col">Ngày hết hạn</th>
+                                <th scope="col">Giá (VNĐ)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each list_out_of_date}}
+                                <tr>
+                                    <th scope="row">{{sum @index 1}}</th>
+                                    <td class="text-warning">{{this.product_code}}</td>
+                                    <td>{{this.product_name}}</td>
+                                    <td>{{this.product_type}}</td>
+                                    <td>{{this.product_quantity}}</td>
+                                    <td class="text-warning">{{getDMY this.product_expired}}</td>
+                                    <td>{{this.product_price_out}}</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

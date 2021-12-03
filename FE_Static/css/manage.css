@@ -1,0 +1,37 @@
+
+
+.page-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+#product-management__function form input {
+    border: 1px solid black;
+}
+
+.product-type__filter-form {
+    display: flex;
+    font-size: 1.6rem;
+}
+
+#product-type__filter {
+    font-size: 1.6rem;
+}
+
+
+#list-product {
+    font-size: 1.6rem;
+}
+
+.product-info-item {
+    text-transform: uppercase;
+}
+
+
+.update-product {
+    margin-right: 12px;
+}
+
+.delete-product {
+    color: red;
+}

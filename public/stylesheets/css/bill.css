@@ -1,0 +1,71 @@
+#order-options-container {
+    font-size: 1.6rem;
+}
+
+#order-tabs {
+    position: relative;
+}
+
+
+/* online order */
+
+.confirm-order,
+.view-order {
+    margin-right: 8px;
+}
+
+.cancel-order,
+.delete-order {
+    color: red;
+}
+
+/* Create invoice */
+#create-invoice {
+    position: relative;
+    flex: 1;
+}
+
+#create-invoice__btn {
+    position: absolute;
+    right: 0;
+    font-size: 1.6rem;
+}
+
+#create-invoice-form,
+#create-invoice-form input {
+    font-size: 1.6rem;
+}
+
+#submit-invoice,
+#cancel-invoice {
+    font-size: 1.6rem;
+}
+
+
+#delete-order__modal,
+#delete-order__modal .modal-footer button {
+    font-size: 1.6rem;
+}
+
+
+#delete-order__modal .modal-title,
+.modal-title {
+    font-size: 2rem;
+    color: white;
+}
+
+/* Pagination */
+.order_page-item {
+    
+}
+
+.order_page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}

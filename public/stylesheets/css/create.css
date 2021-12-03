@@ -1,0 +1,35 @@
+/* Create in main content */
+
+#create-product-form input,
+#product-description, option,
+#product-brand,
+#product-type,
+#product-maker__place  {
+    font-size: 1.6rem;
+}
+
+
+#create-btn, #cancel-create__btn {
+    padding: 8px 24px 8px 24px;
+    font-size: 1.6rem;
+}
+
+label[for="#product-image"] {
+    font-size: 1.6rem;
+}
+
+#product-image {
+    display: block;
+}
+
+/* Confirm modal */
+#confirmModal,
+#confirmModal button.confirm-btn,
+#confirmModal button.cancel-btn {
+    font-size: 1.6rem;
+}
+
+#confirmModal .modal-title {
+    font-size: 2.4rem;
+}
+

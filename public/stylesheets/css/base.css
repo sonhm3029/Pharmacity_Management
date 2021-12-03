@@ -1,0 +1,87 @@
+/* Color variables */
+:root {
+    --red-color: red;
+    --header-color:#4a4a4a;
+    /* --header-color:#0f62f9; */
+    --dashboard-color:#363636;
+    --btn-color:#01d1b2;
+    --table-header-color:#e0e0e0;
+    --logo-color-1:#55a2de;
+    --logo-color-2:#5dac46;
+    --search-form-height: 32px;
+    --topbar-height:60px;
+    --sidebar-btn-hover:#ededed;
+    --success-status:#4ae41e;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    line-height: 1.5;
+    font-size: 62.5%; 
+}
+
+.form-container {
+    padding: 12px;
+    background-color: white;
+    min-height: 400px;
+}
+.table-container {
+    padding: 12px;
+    background-color: white;
+    min-height: 524px;
+}
+
+
+.page-header-wrapper {
+    padding: 24px;
+    height: 80px;
+    width: 100%;
+    background-color: white;
+}
+
+.page-content-wrapper {
+    background-color: #edf1f5;
+    padding: 24px;
+    min-height: 100vh;
+}
+
+
+.form-label {
+    font-size: 1.6rem;
+}
+
+/* my config */
+.my-alert {
+    font-size: 1.6rem;
+}
+
+.active-task {
+    background-color: var(--sidebar-btn-hover);
+    cursor: pointer;
+}
+
+.active-task__link {
+    color: black!important;
+}
+
+.active-page {
+    color: white;
+    background-color: #007bff;
+}
+
+
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+

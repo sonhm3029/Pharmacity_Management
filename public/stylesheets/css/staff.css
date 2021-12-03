@@ -1,0 +1,108 @@
+#add-staff__btn,
+.cancel-btn,
+.save-btn {
+    font-size: 1.6rem;
+}
+/* Add staff modal */
+
+#add-staff__modal {
+    font-size: 1.6rem
+}
+
+#add-staff__modal .modal-title,
+button.close {
+    font-size: 2.4rem;
+    color: white;
+}
+
+.modal-header {
+    background-color: #55a2de;
+}
+
+#add-staff__modal button.close:hover {
+    color: white;
+}
+
+
+#add-staff__form .form-label,
+#add-staff__form input,
+#add-staff__form select {
+    font-size: 1.6rem;
+}
+/* End add staff modal */
+
+/* List staff */
+
+.staff-information {
+    font-weight: 800;
+}
+
+.staff-information span {
+    font-weight: initial;
+}
+
+.card-name-field {
+    font-size: 2.4rem;
+}
+
+.card-age-field,
+.card-gender-field,
+.card-phone-field,
+.card-email-field,
+.card-address-field,
+.card-code-field {
+    font-size: 1.6rem;
+}
+
+.update-staff,
+.delete-staff {
+    font-size: 1.6rem;
+}
+
+/* Staff info */
+.staff-info {
+    min-height: 650px;
+}
+
+.staff-info .card {
+    height: 100%;
+}
+
+
+.staff-function__btn {
+    position: absolute;
+    bottom: 20px;
+}
+
+/* .card img {
+    height: 40%;
+} */
+
+/* End list staff */
+
+/* Update staff modal */
+
+#update-staff__form .form-label,
+#update-staff__form input,
+#update-staff__form select {
+    font-size: 1.6rem;
+}
+/* End update staff modal */
+
+/* Delete staff modal */
+
+#delete-staff__modal,
+#delete-staff__modal .modal-footer button {
+    font-size: 1.6rem;
+}
+
+#delete-staff__modal .modal-title,
+.modal-title {
+    font-size: 2rem;
+    color: white;
+}
+
+#delete-staff__modal button.close:hover {
+    color: white;
+}
+/* End delete staff modal */

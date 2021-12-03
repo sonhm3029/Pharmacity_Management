@@ -1,0 +1,135 @@
+
+
+<div class="page-header-wrapper">
+    <h1>QUẢN LÝ KHO THUỐC</h1>
+    <div class="page-header__function" id="product-management__function">
+        <form class="form-inline my-2 my-lg-0 search-form" action="/search" id="header-search-form">
+            <input class="form-control mr-sm-2" type="search" placeholder="Tìm theo mã sản phẩm..." aria-label="Search" name="product_code">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>   
+    </div>
+    <form action="/product" id="header-filter-form">
+        <div class="product-type__filter-form">
+        <label for="product-type__filter" class="form-label">Loại sản phẩm</label>
+        <select class="custom-select" id="product-type__filter" name="product_type" required>
+            <option selected disabled value="">Chọn</option>
+            <option>Dược phẩm</option>
+            <option>Chăm sóc sức khỏe</option>
+            <option>Chăm sóc cá nhân</option>
+            <option>Sản phẩm tiện lợi</option>
+            <option>Thực phẩm chức năng</option>
+            <option>Mẹ và bé</option>
+            <option>Chăm sóc sắc đẹp</option>
+            <option>Thiết bị y tế</option>
+        </select>
+        </div>
+    </form>
+</div>
+<div class="page-content-wrapper">
+    <div class="table-container">
+        <table class="table table-hover" id="list-product">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" class="product-info-item">#</th>
+                <th scope="col" class="product-info-item">MÃ SP</th>
+                <th scope="col" class="product-info-item">Loại SP</th>
+                <th scope="col" class="product-info-item">Giá</th>
+                <th scope="col" class="product-info-item">Số lượng</th>
+                <th scope="col" class="product-info-item">Ngày nhập</th>
+                <th scope="col" class="product-info-item">HSD</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                    <tr class="product-info-value">
+                        <th scope="row">{{product_index @index 1 ../page_number}}</th>
+                        <td><a href="">{{this.product_code}}</a></td>
+                        <td>{{this.product_type}}</td>
+                        <td>{{this.product_price_in}}</td>
+                        <td>{{this.product_quantity}}</td>
+                        <td>{{getDate this.product_MFG}}/{{getMonth this.product_MFG}}/{{getYear this.product_MFG}}</td>
+                        <td>{{getDate this.product_expired}}/{{getMonth this.product_expired}}/{{getYear this.product_expired}}</td>
+                        <td class="edit-product">
+                            <a href="/product/{{this.product_code}}/edit" class="update-product">Sửa</a>
+                            <a href="" class="delete-product" data-toggle="modal" data-target="#delete-product__modal" data-id="{{this.product_code}}">Xóa</a>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{!-- Delete Dialog Modal --}}
+        <div class="modal fade" id="delete-product__modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có muốn xóa sản phẩm này không ?
+                </div>
+                <div class="modal-footer">
+                    <button id="delete-confirm-btn" type="button" class="btn btn-primary">OK</button>
+                    <button  type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav aria-label="..." style="font-size: 1.6rem;">
+        <ul class="pagination mt-4" style="flex-wrap:wrap;">
+            <li class="page-item disabled">
+                <button type="button" class="btn btn-primary" id="pre-page" style="font-size: 1.6rem;"> &#8592; </button>
+            </li>
+            {{#each page_index}}
+                <li class="page-item">
+                    <button class="page-link" >{{this}}</button>
+                </li>
+            {{/each}}
+            <li class="page-item disabled">
+                <button type="button" class="btn btn-primary" id="next-page" style="font-size: 1.6rem;">&#8594;</button>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+{{!-- <div id="pagination">
+</div> --}}
+
+{{!-- Submit delete modal --}}
+<form name="submit-delete-modal" method="POST">
+    <script>
+        $(function() {
+            var product_code;
+            let delete_confirm_btn = $('#delete-confirm-btn');
+            const submit_delete_modal = $("[name='submit-delete-modal']");
+            $('#delete-product__modal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                product_code = button.data('id'); // Extract info from data-* attributes
+            });
+                delete_confirm_btn.click(function() {
+                    submit_delete_modal.attr("action",'/product/' + product_code + '?_method=DELETE');
+                    submit_delete_modal.submit();
+            });
+
+        })
+    </script>
+</form>
+
+{{!-- filter form --}}
+<script>
+    $(function() {
+        const product_filter_form = $('#header-filter-form');
+        const custom_selection = $('#product-type__filter');
+
+        $(custom_selection).change(()=>{
+            $(product_filter_form).submit();
+        });
+    })
+</script>
+

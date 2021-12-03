@@ -1,7 +1,5 @@
 @media (max-width: 768px) {
-    .navbar-function .search-form {
-        display: none;
-    }
+    
 }
 
 
@@ -50,5 +48,21 @@
 
     .sidebar-task__link {
         padding: 24px 15px 24px 24px;
+    }
+
+    .submit-checkbox, 
+    #forgot-password a {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 1199px) {
+
+    .page-header-wrapper h1 {
+        font-size: 20px;
+    }
+
+    #product-management__function button {
+        display: none;
     }
 }

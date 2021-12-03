@@ -1,0 +1,123 @@
+<div class="page-header-wrapper">
+    <h1>QUẢN LÝ NHÂN VIÊN</h1>
+    <div class="page-header__function" id="staff-management__function">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" id="add-staff__btn" data-toggle="modal" data-target="#add-staff__modal">
+            Thêm mới nhân viên
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="add-staff__modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content" style="border:none">
+                <div class="modal-header">
+                  <h5 class="modal-title">NHẬP THÔNG TIN NHÂN VIÊN</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form id="add-staff__form" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="col-md-3 mb-4">
+                                <label for="staff-name" class="form-label">Họ và tên</label>
+                                <input type="text" class="form-control" id="staff-name" name="staff_name" required>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <label for="staff-code" class="form-label">Mã nhân viên</label>
+                                <input type="text" class="form-control" id="staff-code" name="staff_code" required>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <label for="staff-gender" class="form-label">Giới tính</label>
+                                <select class="custom-select" id="staff-gender" name="staff_gender" required>
+                                    <option selected disabled value="">Chọn</option>
+                                    <option>Nữ</option>
+                                    <option>Nam</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <label for="staff-birthday" class="form-label">Ngày sinh</label>
+                                <input type="date" class="form-control" id="staff-birthday" name="staff_birthday" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4 mb-4">
+                                <label for="staff-phone-number" class="form-label">Số điện thoại</label>
+                                <input type="tel" class="form-control" id="staff-phone-number" name="staff_phone" required>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label for="staff-address" class="form-label">Địa chỉ</label>
+                                <input type="" class="form-control" id="staff-address" name="staff_address" required>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label for="staff-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="staff-email" name="staff_email">
+                            </div>
+                        </div>
+                        <div class="form-row mt-4 mb-4" style="flex-direction: column;">
+                            <label for="#staff-image">Tải ảnh đại diện nhân viên</label>
+                            <input type="file" id="staff-image" name="staff_img" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary cancel-btn" data-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-primary save-btn">Lưu thông tin</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-content-wrapper container">
+    <div class="row">
+        {{#each staffs}}
+            <div class="col-md-6 col-lg-4 mb-4 staff-info">
+                <div class="card">
+                    <img src="{{this.staff_img}}" class="card-img-top" alt="...">
+                    <div class="card-body staff-information">
+                        <p class="card-name-field">{{this.staff_name}}</p>
+                        <p class="card-code-field">Mã nhân viên: <span>{{this.staff_code}}</span></p>
+                        <p class="card-age-field">Ngày sinh:
+                            <span>
+                                {{getDate this.staff_birthday}}/
+                                {{getMonth this.staff_birthday}}/
+                                {{getYear this.staff_birthday}}
+                            </span>
+                        </p>
+                        <p class="card-gender-field">Giới tính: <span>{{this.staff_gender}}</span></p>
+                        <p class="card-phone-field">SĐT: <span>{{this.staff_phone}}</span></p>
+                        <p class="card-email-field">Email: <span>{{this.staff_email}}</span></p>
+                        <p class="card-address-field">Địa chỉ: <span>{{this.staff_address}}</span></p>
+                        <div class="staff-function__btn">
+                            <a class="btn btn-primary update-staff" href="/manager/staff-management/{{this.staff_code}}">Sửa</a>
+                            <button class="btn btn-danger delete-staff" data-toggle="modal" data-target="#delete-staff__modal" data-id="{{this.staff_code}}">Xóa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}        
+    </div>
+    <div class="modal fade" id="delete-staff__modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có muốn xóa nhân viên này không ?
+            </div>
+            <div class="modal-footer">
+                <button id="delete-confirm-btn" type="button" class="btn btn-primary">OK</button>
+                <button  type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- For submit delete staff form --}}
+<form name="submit-delete-modal" method="POST">
+</form>

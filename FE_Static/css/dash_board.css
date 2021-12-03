@@ -1,0 +1,49 @@
+
+.white-box.data-info {
+
+    margin-bottom: 30px;
+    padding: 25px;
+    background-color: white;
+}
+
+.box-title {
+    text-align: center;
+    display: block;
+    font-size: 2rem;
+    font-weight: 700!important;
+    margin-bottom: 8px;
+}
+
+.box-value {
+    text-align: center;
+    display: block;
+    font-size: 2.4rem;
+}
+
+#products-yearly-sale .box-title,
+#products-best-sale .box-title,
+#products-slowest-sale .box-title,
+#products-expired .box-title {
+    text-align: left;
+}
+
+#product-yearly-sale__chart {
+    width: 100%!important;
+}
+
+.products-best-sale__table,
+.products-slowest-sale__table,
+.products-expired__table {
+    font-size: 1.6rem;
+}
+
+/* Config table color */
+
+/* .my-thead, .my-table {
+    background-color: blue;
+    color: white;
+} */
+
+.my-table-column__success {
+    color: #4ae41e;
+}

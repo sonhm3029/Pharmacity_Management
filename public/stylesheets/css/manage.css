@@ -1,0 +1,80 @@
+
+
+.page-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+#product-management__function form input {
+    border: 1px solid black;
+}
+
+.product-type__filter-form {
+    display: flex;
+    font-size: 1.6rem;
+}
+
+#product-type__filter {
+    font-size: 1.6rem;
+}
+
+/* .product-type__filter-form label {
+    margin-right: 8px;
+} */
+
+
+#list-product {
+    font-size: 1.6rem;
+}
+
+.product-info-item {
+    text-transform: uppercase;
+}
+
+
+.update-product {
+    margin-right: 12px;
+}
+
+.delete-product {
+    color: red;
+}
+
+/* Delete product modal */
+#delete-product__modal,
+#delete-product__modal .modal-footer button {
+    font-size: 1.6rem;
+}
+
+#delete-product__modal .modal-title,
+.modal-title {
+    font-size: 2rem;
+    color: white;
+}
+/* End delete product modal */
+
+
+/* Pagination */
+
+/* .paginationjs-pages  ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.paginationjs-pages  ul li {
+    display: inline-block;
+    font-size: 1.6rem;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    border: 1px solid #dee2e6;
+}
+
+.paginationjs-pages  ul li a{
+    text-decoration: none;
+} */
+
+
+
+
+

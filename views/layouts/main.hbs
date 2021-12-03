@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacity</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="/static/stylesheets/css/base.css">
+    <link rel="stylesheet" href="/static/stylesheets/css/style.css">
+    <link rel="stylesheet" href="/static/stylesheets/css/create.css">
+    <link rel="stylesheet" href="/static/stylesheets/css/login.css">
+    <link rel="stylesheet" href="/static/stylesheets/css/manage.css">
+    <link rel="stylesheet" href="/static/stylesheets/css/report.css">
+    <link rel="stylesheet" href="/static/stylesheets/css/staff.css">
+    <link rel="stylesheet" href="/static/stylesheets/css/dash_board.css">
+    <link rel="stylesheet" href="/static/stylesheets/css/dynamic_input.css">
+
+    <link rel="stylesheet" href="/static/stylesheets/css/bill.css">
+    <link rel="stylesheet" href="/static/stylesheets/css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    
+    <!-- Top bar -->
+    <header class="topbar">
+        {{>header}}
+    </header>
+
+    <div class="page-layout-wrapper">
+        <!-- Left side bar -->
+        {{>layout_manager}}
+
+        <!-- Main content  -->
+        <div class="main-content">
+            {{{body}}}
+        </div>
+    </div>
+
+    <footer>
+        {{>footer}}
+    </footer>
+
+    <script src="/static/stylesheets/js/dynamic_field.js"></script>
+    <script src="/static/stylesheets/js/my_pagination.js"></script>
+    <script src="/static/stylesheets/js/invoice.js"></script>
+    <script src="/static/stylesheets/js/staff_management.js"></script>
+    <script src="/static/stylesheets/js/index.js"></script>
+</body>
+</html>

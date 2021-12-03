@@ -1,0 +1,102 @@
+<div class="page-header-wrapper">
+    <h1>QUẢN LÝ ĐƠN HÀNG</h1>
+</div>
+<div class="page-content-wrapper" id="order-options-container">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Hóa đơn
+            <strong>Ngày:{{getDate invoice.invoice_date}}/{{getMonth invoice.invoice_date}}/{{getYear invoice.invoice_date}}</strong> 
+            <span class="float-right"> <strong>Mã hóa đơn: </strong>{{invoice.invoice_code}}</span>
+      
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-sm-6">
+                        <h6 class="mb-3">Nhân viên:</h6>
+                        <div>
+                            <strong>{{invoice.invoice_staff_name}}</strong>
+                        </div>
+                    </div>
+      
+                    <div class="col-sm-6">
+                        <h6 class="mb-3">Khách hàng:</h6>
+                        <div>
+                            <strong>{{invoice.customer_name}}</strong>
+                        </div>
+                        <div>
+                            Địa chỉ:
+                            {{#if invoice.customer_address}}
+                                {{invoice.customer_address}}
+                            {{/if}}
+                        </div>
+                        <div>Email: {{invoice.customer_email}}</div>
+                        <div>Số điện thoại: {{invoice.customer_phone}}</div>
+                    </div>
+                </div>
+      
+                <div class="table-responsive-sm">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="center">#</th>
+                                <th>Mã sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                        
+                                <th class="right">Số lượng</th>
+                                <th class="center">Giá</th>
+                                <th class="right">Tổng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each invoice.list_products}}
+                                <tr>
+                                    <td class="center">{{sum @index 1}}</td>
+                                    <td class="left strong">{{this.product_code}}</td>
+                                    <td class="left">{{this.product_name}}</td>
+                                    <td class="right">{{this.product_quantity}}</td>
+                                    <td class="center">{{this.product_price}}</td>
+                                    <td class="right">{{calculate_price this.product_quantity this.product_price}}</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-5">
+      
+                    </div>
+      
+                    <div class="col-lg-4 col-sm-5 ml-auto">
+                        <table class="table table-clear">
+                            <tbody>
+                                <tr>
+                                    <td class="left">
+                                        <strong>Tổng số tiền</strong>
+                                    </td>
+                                    <td class="right">{{invoice.invoice_cost}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="left">
+                                        <strong>Số tiền khách trả</strong>
+                                    </td>
+                                    <td class="right">{{invoice.customer_pay}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="left">
+                                        <strong>Số tiền trả lại khách</strong>
+                                    </td>
+                                    <td class="right">
+                                        <strong>{{invoice.customer_pay_back}}</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a type="button" class="btn btn-primary" style="font-size: 1.6rem;margin-top:8px;" href="/order">Quay lại</a>
+    </div>
+    
+</div>
