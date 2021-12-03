@@ -5,7 +5,8 @@ const path = require('path');
 // const handlebars = require('express-handlebars');
 const handlebars_helper = require('./helper/handlebar.helper');
 
-const morgan = require('morgan');
+// const morgan = require('morgan'); commnent morgan before deploy to heroku
+
 const route = require('./routes/index');
 const methodOverride = require('method-override');
 const exp = require('constants');
@@ -20,7 +21,7 @@ const db = require('./config/db/index');
 db.connect();
 
 
-app.use(morgan('combined'));
+// app.use(morgan('combined'));
 app.use(methodOverride('_method'));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: true}));
