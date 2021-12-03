@@ -36,7 +36,7 @@ class LoginController {
 
         User.findOne({username: username})
             .then((auth) => {
-                console.log(auth);
+                console.log(auth,'OK');
                 if(!auth) {
                     res.render('login',{
                         errors: [
