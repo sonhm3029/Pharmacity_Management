@@ -34,20 +34,20 @@ function findBestSold(orders_list) {
                     }
                 }     
 
-                console.log("temp_list_product",temp_list_product)
                 for(let i = 0; i<temp_list_product_code.length; i++) {
-
+                    
                     temp_list_product_quantity[i] = 
-                        list_sold_products.reduce(function(total, product){
-                            if(product.product_code == temp_list_product_code[i]) {
-                                return total + Number(product.product_quantity);
-                            }
-                            else {
-                                return total + 0;
-                            }
-                        },0);
+                    list_sold_products.reduce(function(total, product){
+                        if(product.product_code == temp_list_product_code[i]) {
+                            return total + Number(product.product_quantity);
+                        }
+                        else {
+                            return total + 0;
+                        }
+                    },0);
                     temp_list_product[i].product_quantity = temp_list_product_quantity[i];     
                 }
+                console.log("temp_list_product",temp_list_product)
                 // Sort list product
                 temp_list_product.sort(
                     function(product_1, product_2) {
@@ -58,6 +58,7 @@ function findBestSold(orders_list) {
                 if(temp_list_product.length >=10) {
                     top_best_sold = temp_list_product.slice(0,10);
                 }
+            console.log("top_best_sold_1",top_best_sold);
     return top_best_sold;
 }
 
