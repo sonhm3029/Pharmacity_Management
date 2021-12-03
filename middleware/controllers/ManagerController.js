@@ -19,7 +19,6 @@ function findBestSold(orders_list) {
                         return results.concat(arr);
                     },[]);
 
-                console.log("list_sold_products",list_sold_products);
 
                 var temp_list_product_code = [];
                 var temp_list_product_quantity = [];
@@ -47,7 +46,6 @@ function findBestSold(orders_list) {
                     },0);
                     temp_list_product[i].product_quantity = temp_list_product_quantity[i];     
                 }
-                console.log("temp_list_product",temp_list_product)
                 // Sort list product
                 temp_list_product.sort(
                     function(product_1, product_2) {
@@ -58,7 +56,9 @@ function findBestSold(orders_list) {
                 if(temp_list_product.length >=10) {
                     top_best_sold = temp_list_product.slice(0,10);
                 }
-            console.log("top_best_sold_1",top_best_sold);
+                else {
+                    top_best_sold = temp_list_product;
+                }
     return top_best_sold;
 }
 
@@ -141,8 +141,6 @@ class ManagerController {
                 const revenue_all_month = findRevenueAll(orders_list);
                 const top_best_sold = findBestSold(orders_list);
                 const list_out_of_date = findOutOfDate(products);
-                console.log("orders_list",orders_list);
-                console.log("top_best_sold",top_best_sold);
                 
          
                 res.render('dashboard', {
