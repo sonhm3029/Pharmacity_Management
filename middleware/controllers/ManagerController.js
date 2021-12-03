@@ -19,7 +19,7 @@ function findBestSold(orders_list) {
                         return results.concat(arr);
                     },[]);
 
-                console.log(list_sold_products);
+                console.log("list_sold_products",list_sold_products);
 
                 var temp_list_product_code = [];
                 var temp_list_product_quantity = [];
@@ -34,7 +34,7 @@ function findBestSold(orders_list) {
                     }
                 }     
 
-                console.log(temp_list_product)
+                console.log("temp_list_product",temp_list_product)
                 for(let i = 0; i<temp_list_product_code.length; i++) {
 
                     temp_list_product_quantity[i] = 
@@ -140,8 +140,8 @@ class ManagerController {
                 const revenue_all_month = findRevenueAll(orders_list);
                 const top_best_sold = findBestSold(orders_list);
                 const list_out_of_date = findOutOfDate(products);
-                console.log(orders_list);
-                console.log(top_best_sold);
+                console.log("orders_list",orders_list);
+                console.log("top_best_sold",top_best_sold);
                 
          
                 res.render('dashboard', {
