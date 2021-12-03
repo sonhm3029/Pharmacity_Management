@@ -136,6 +136,7 @@ class ManagerController {
                 const revenue_all_month = findRevenueAll(orders_list);
                 const top_best_sold = findBestSold(orders_list);
                 const list_out_of_date = findOutOfDate(products);
+                console.log(top_best_sold);
                 
          
                 res.render('dashboard', {
