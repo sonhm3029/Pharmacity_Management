@@ -252,7 +252,9 @@ class ManagerController {
             Staff.findOne({staff_code: req.params.id})
                 .then(staff => {
                     if(staff.staff_img) {
+                        console.log(staff.staff_img);
                         var old_img = 'public/' + staff.staff_img.split('/').slice(2).join('/');
+                        console.log(old_img);
                         fs.unlink(old_img, function (err) {
                             if (err) throw err;
                             // if no error, file has been deleted successfully
@@ -261,7 +263,7 @@ class ManagerController {
                     }
                 })
                 .catch()
-        //UPdate with the new one
+            //UPdate with the new one
             // formData.staff_img = '/static/' + req.file.path.split('\\').slice(1).join('/');
             //Using when on heroku
             formData.staff_img = '/static/' + req.file.path.split('/').slice(1).join('/');
