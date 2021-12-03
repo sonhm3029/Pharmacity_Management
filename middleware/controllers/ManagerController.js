@@ -240,7 +240,7 @@ class ManagerController {
         // Find staff and show edit staff info page
         Staff.findOne({staff_code: req.params.id})
             .then(staff => {
-                staff = staff.toObject();
+                // staff = staff.toObject();
                 res.render('staff_edit', {
                     staff,
                     layout: 'main'
