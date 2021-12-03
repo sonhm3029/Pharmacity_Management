@@ -217,7 +217,9 @@ class ManagerController {
 
     saveStaffInfo(req,res,next) {
         const formData = req.body;
-        formData.staff_img = '/static/' +  req.file.path.split('\\').slice(1).join('/');
+        // formData.staff_img = '/static/' +  req.file.path.split('\\').slice(1).join('/');
+        //Using when on heroku
+        formData.staff_img = '/static/' +  req.file.path.split('/').slice(1).join('/');
         
         const newStaff = new Staff(formData);
         newStaff.save()
@@ -258,7 +260,9 @@ class ManagerController {
                 })
                 .catch()
         //UPdate with the new one
-            formData.staff_img = '/static/' + req.file.path.split('\\').slice(1).join('/');
+            // formData.staff_img = '/static/' + req.file.path.split('\\').slice(1).join('/');
+            //Using when on heroku
+            formData.staff_img = '/static/' + req.file.path.split('/').slice(1).join('/');
         }
 
         // Update staff info

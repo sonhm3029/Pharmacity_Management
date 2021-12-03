@@ -98,7 +98,9 @@ class ProductsController {
                 })
                 .catch()
             //UPdate with the new one
-            formData.product_img = '/static/' + req.file.path.split('\\').slice(1).join('/');
+            // formData.product_img = '/static/' + req.file.path.split('\\').slice(1).join('/');
+            //Using when in heroku
+            formData.product_img = '/static/' + req.file.path.split('/').slice(1).join('/');
         }
 
         Products.updateOne({product_code: req.params.id}, formData)
