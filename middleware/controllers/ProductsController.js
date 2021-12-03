@@ -46,6 +46,8 @@ class ProductsController {
         const formData = req.body;
 
         //Add image file using multer
+        console.log(req.file.path);
+        console.log(req.file);
         formData.product_img = '/static/' + req.file.path.split('\\').slice(1).join('/');
 
         const newProduct = new Products(formData);
