@@ -89,12 +89,14 @@ class ProductsController {
             //if update image, delete the old one
             Products.findOne({product_code: req.params.id})
                 .then(product => {
-                    var old_img = 'public/' + product.product_img.split('/').slice(2).join('/');
-                    fs.unlink(old_img, function (err) {
-                        if (err) throw err;
-                        // if no error, file has been deleted successfully
-                        console.log('File deleted!');
-                    });
+                    if(product.product_img) {
+                        var old_img = 'public/' + product.product_img.split('/').slice(2).join('/');
+                        fs.unlink(old_img, function (err) {
+                            if (err) throw err;
+                            // if no error, file has been deleted successfully
+                            console.log('File deleted!');
+                        });
+                    }
                 })
                 .catch()
             //UPdate with the new one

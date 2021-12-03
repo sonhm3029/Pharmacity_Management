@@ -251,12 +251,14 @@ class ManagerController {
         //if update image, delete the old one
             Staff.findOne({staff_code: req.params.id})
                 .then(staff => {
-                    var old_img = 'public/' + staff.staff_img.split('/').slice(2).join('/');
-                    fs.unlink(old_img, function (err) {
-                        if (err) throw err;
-                        // if no error, file has been deleted successfully
-                        console.log('File deleted!');
-                    });
+                    if(staff.staff_img) {
+                        var old_img = 'public/' + staff.staff_img.split('/').slice(2).join('/');
+                        fs.unlink(old_img, function (err) {
+                            if (err) throw err;
+                            // if no error, file has been deleted successfully
+                            console.log('File deleted!');
+                        });
+                    }
                 })
                 .catch()
         //UPdate with the new one
