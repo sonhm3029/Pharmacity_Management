@@ -73,6 +73,7 @@ class ProductsController {
         Products.findOne({product_code: req.params.id})
             .then( product => {
                 product = product.toObject();
+      
                 res.render('edit_product', {
                     product,
                     layout:'staff_layout'
