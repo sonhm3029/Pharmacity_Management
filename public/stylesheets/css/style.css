@@ -1,12 +1,12 @@
 body{
-    background: url(C:\github\Pharmacity_Management\public\img\Ảnh chụp màn hình 2021-12-04 225219.png) no-repeat;
+    background: url(\public\img\opacity.png) no-repeat;
     width: 100%;
     height: 100%;
     background-attachment: fixed;
     background-size: cover;
 }
 .main{
-    padding-top: 30vh;
+    padding-top: 25vh;
     text-align: center;
 }
 h1{
