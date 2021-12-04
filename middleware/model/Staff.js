@@ -13,7 +13,8 @@ const Staff = new Schema({
     staff_address: {type: String},
     staff_email: {type: String},
     staff_phone: {type: String},
-    staff_img: {type: String}
+    staff_img: {type: String},
+    staff_img_id: {type: String}
 }, {
     timestamps: true
 });

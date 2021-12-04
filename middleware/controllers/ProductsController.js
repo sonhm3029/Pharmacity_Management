@@ -2,6 +2,16 @@
 const User = require('../model/Authentication');
 const Products = require('../model/Products');
 const fs = require('fs');
+const cloudinary = require('../cloudinary');
+
+function deleteTempImg(path) {
+    fs.unlink(path, function (err) {
+        console.log(path);
+        if (err) throw err;
+        // if no error, file has been deleted successfully
+        console.log('Temp File deleted!');
+    });
+}
 
 class ProductsController {
 
@@ -42,18 +52,19 @@ class ProductsController {
         res.render('create_product', {layout: 'staff_layout'});
     }
 
-    store_product(req, res, next) {
+    async store_product(req, res, next) {
         const formData = req.body;
 
-        //Add image file using multer
-        // console.log(req.file.path);
-        // console.log(req.file);
-        // formData.product_img = '/static/' + req.file.path.split('\\').slice(1).join('/');
-        //Using when deploy to heroku
-        formData.product_img = '/static/' + req.file.path.split('/').slice(1).join('/');
-
+        //Add image file to cloudinary using multer
+        const result_img = await cloudinary.v2.uploader.upload(req.file.path, {folder: "products"});
+        formData.product_img = result_img.secure_url;
+        formData.product_img_id = result_img.public_id;
 
         const newProduct = new Products(formData);
+
+        //Delete temp file save by multer
+        deleteTempImg(req.file.path); 
+
         newProduct.save()
             .then(()=> {
                 res.redirect('/staff/product');
@@ -82,7 +93,7 @@ class ProductsController {
             .catch(next);
     }
 
-    update_product(req, res, next) {
+    async update_product(req, res, next) {
 
         const formData = req.body;
 
@@ -90,20 +101,21 @@ class ProductsController {
             //if update image, delete the old one
             Products.findOne({product_code: req.params.id})
                 .then(product => {
-                    if(product.product_img) {
-                        var old_img = 'public/' + product.product_img.split('/').slice(2).join('/');
-                        fs.unlink(old_img, function (err) {
-                            if (err) throw err;
-                            // if no error, file has been deleted successfully
-                            console.log('File deleted!');
-                        });
+                    if(product.product_img&&product.product_img_id) {
+                        
+                        cloudinary.v2.uploader.destroy(product.product_img_id,
+                            function(result) {
+                                console.log(result);
+                            })
                     }
                 })
-                .catch()
+                .catch(next)
             //UPdate with the new one
-            // formData.product_img = '/static/' + req.file.path.split('\\').slice(1).join('/');
-            //Using when in heroku
-            formData.product_img = '/static/' + req.file.path.split('/').slice(1).join('/');
+            const new_img = await cloudinary.v2.uploader.upload(req.file.path, {folder: "products"});
+            formData.product_img = new_img.secure_url;
+            formData.product_img_id = new_img.public_id;
+            // Delete temp file
+            deleteTempImg(req.file.path);
         }
 
         Products.updateOne({product_code: req.params.id}, formData)
@@ -116,8 +128,14 @@ class ProductsController {
     }
 
     delete_product(req, res, next) {
-        Products.deleteOne({product_code: req.params.id})
-            .then(()=> {
+        Products.findOneAndDelete({product_code: req.params.id})
+            .then((product)=> {
+                if(product.product_img&&product.product_img_id) {
+                    cloudinary.v2.uploader.destroy(product.product_img_id,
+                        function(result) {
+                            console.log(result);
+                        })
+                }
                 res.redirect('/product');
             })
             .catch(next);

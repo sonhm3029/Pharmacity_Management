@@ -18,7 +18,8 @@ const Product = new Schema({
     product_expired: {type: Date},
     product_price_in: {type: Number},
     product_price_out: {type: Number},
-    product_img: {type: String}
+    product_img: {type: String},
+    product_img_id: {type: String}
 }, {
     timestamps: true
 });

@@ -3,8 +3,9 @@ const router = express.Router();
 const productController = require('../middleware/controllers/ProductsController');
 
 //Upload file module
-const multer = require('multer');
-const upload = multer({ dest: './public/img/product_imgs/'})
+// const multer = require('multer');
+// const upload = multer({ dest: './public/img/product_imgs/'})
+const upload = require('../middleware/multer');
 
 router.get('/', productController.show_product);
 
