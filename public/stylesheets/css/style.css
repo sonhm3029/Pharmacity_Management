@@ -1,13 +1,12 @@
-body{
-    background: url(\public\img\opacity.png) no-repeat;
-    width: 100%;
-    height: 100%;
-    background-attachment: fixed;
-    background-size: cover;
-}
 .main{
-    padding-top: 25vh;
     text-align: center;
+    display: table;
+    width: 100%;
+    height: 100vh;
+}
+.content{
+    display: table-cell;
+    vertical-align: middle;
 }
 h1{
     font-family: 'Questrial', sans-serif;
@@ -19,7 +18,3 @@ h2{
     text-transform: uppercase;
     font-size: 30px;
 }
-.wrap div{
-    font-size: 15px;
-}
-/*404 ra giữa màn hình*/
