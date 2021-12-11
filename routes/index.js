@@ -5,6 +5,7 @@ const staff = require('./staff');
 const products = require('./product');
 const search = require('./search');
 const order = require('./order');
+const error = require('../middleware/error_handling');
 
 const authMiddleware = require('../middleware/auth.middleware');
 
@@ -17,7 +18,7 @@ function route(app) {
     app.use('/search',authMiddleware.requireStaffRole,search);
     app.use('/order',authMiddleware.requireStaffRole, order );
     app.use('/', login);
-    
+    app.use(error);
 }
 
 

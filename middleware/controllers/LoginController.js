@@ -23,7 +23,9 @@ class LoginController {
                     }
 
                 })
-                .catch(next)
+                .catch(error => {
+                    next(error);
+                });
             return;
         }
 
