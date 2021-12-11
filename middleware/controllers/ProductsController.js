@@ -83,12 +83,17 @@ class ProductsController {
     edit_product(req, res, next) {
         Products.findOne({product_code: req.params.id})
             .then( product => {
-                product = product.toObject();
+                if(product) {
+                    product = product.toObject();
       
-                res.render('edit_product', {
-                    product,
-                    layout:'staff_layout'
-                });
+                    res.render('edit_product', {
+                        product,
+                        layout:'staff_layout'
+                    });
+                }
+                else {
+                    next();
+                }
             })
             .catch(next);
     }

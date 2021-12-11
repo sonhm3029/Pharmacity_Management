@@ -146,12 +146,18 @@ class OrderController {
 
         Invoices.findOne({invoice_code: req.params.id})
             .then( invoice => {
-                invoice = invoice.toObject();
-                res.render('invoice', {
-                    invoice,
-                    layout: 'staff_layout'
-                })
+                if(invoice) {
+                     invoice = invoice.toObject();
+                     res.render('invoice', {
+                         invoice,
+                         layout: 'staff_layout'
+                     })
+                }
+                else {
+                    next();
+                }
             })
+            .catch(next);
     }
 
     deleteInvoice(req, res, next) {

@@ -12,11 +12,11 @@ const authMiddleware = require('../middleware/auth.middleware');
 
 function route(app) {
 
-    app.use('/manager',authMiddleware.requireManagerRole, manager);
-    app.use('/staff',authMiddleware.requireStaffRole, staff);
-    app.use('/product',authMiddleware.requireStaffRole, products);
-    app.use('/search',authMiddleware.requireStaffRole,search);
-    app.use('/order',authMiddleware.requireStaffRole, order );
+    app.use('/manager',authMiddleware.requireManagerRole, manager,error);
+    app.use('/staff',authMiddleware.requireStaffRole, staff,error);
+    app.use('/product',authMiddleware.requireStaffRole, products,error);
+    app.use('/search',authMiddleware.requireStaffRole,search,error);
+    app.use('/order',authMiddleware.requireStaffRole, order,error );
     app.use('/', login);
     app.use(error);
 }
