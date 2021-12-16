@@ -1,0 +1,41 @@
+#staff-code,
+#report-date,
+#report-file,
+#report-name,
+#list-report {
+    font-size: 1.6rem;
+}
+
+
+#confirm-send-report,
+#cancel-send-report {
+    font-size: 1.6rem;
+}
+
+
+/* Report detail page */
+
+.report-detail-header, .report-detail-body {
+    margin-bottom: 12px;
+    background-color: white;
+    padding: 12px;
+}
+
+
+#report-detail__staff-info,
+#report-detail__report-info {
+    font-size: 1.6rem;
+}
+
+#report-detail__staff-info span {
+   
+}
+
+#report-detail__report-info h2,
+#report-detail__staff-info h2 {
+    margin-right: 8px;
+    display: inline-block;
+}
+
+
+

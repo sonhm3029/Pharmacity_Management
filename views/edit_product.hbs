@@ -16,7 +16,7 @@
         {{/each}}
     {{/if}}
     <div class="form-container">
-        <form id="create-product-form" method="POST" action="/product/{{product.product_code}}?_method=PUT" enctype="multipart/form-data">
+        <form id="create-product-form" method="POST" action="/product/product-management/{{product.product_code}}?_method=PUT" enctype="multipart/form-data">
             <div class="form-row">
                 <div class="col-md-4 mb-3">
                     <label for="product-name" class="form-label">Tên sản phẩm</label>
@@ -112,7 +112,7 @@
             </div>
             {{!-- Submit button and trigger modal --}}
             <button class="btn btn-primary" type="button" id="create-btn" data-toggle="modal" data-target="#confirmModal">Lưu thay đổi</button>
-            <a  href="/product" class="btn btn-danger" type="button" id="cancel-create__btn">Hủy</a>
+            <a  href="/product/product-management" class="btn btn-danger" type="button" id="cancel-create__btn">Hủy</a>
 
 
 

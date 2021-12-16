@@ -1,0 +1,50 @@
+<div class="page-header-wrapper">
+    <h1>LẬP BÁO CÁO</h1>
+</div>
+<div class="page-content-wrapper" id="create-import-container">
+    <div class="form-container">
+        <form action="" id="import-product-report__form" method="POST" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="staff-code" class="form-label">Mã nhân viên</label>
+                    <select class="custom-select" name="staff_code" id="staff-code" required>
+                        <option value="" selected disabled>Chọn</option>
+                        {{#each staffs}}
+                        <option>{{this.staff_code}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="report-name" class="form-label">Tên báo cáo</label>
+                    <input type="text" class="form-control" id="report-name" name="report_name" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="report-date" class="form-label">Ngày lập báo cáo</label>
+                    <input type="date" class="form-control" id="report-date" name="report_date" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="report-note" class="form-label">Ghi chú</label>
+                    <textarea type="text" class="form-control" id="report-note" name="report_note" style="font-size: 1.6rem;"></textarea>
+                </div>
+            </div>
+            <div class="form-row mt-4 mb-4">
+                <div class="col-md-6" style="display:flex;flex-direction: column;">
+                    <label for="#report-file" class="form-label">Tải ảnh lên</label>
+                    <input type="file" id="report-file" name="report_file" multiple required>
+                </div>
+            </div>
+            <ul id="list-files-upload" style="font-size: 1.6rem;">
+                
+            </ul>
+            <button type="submit" class="btn btn-primary" id="confirm-send-report">Xác nhận</button>
+            <a href="/" class="btn btn-danger" type="button" id="cancel-send-report">Hủy</a>
+        </form>
+    </div>
+</div>
+
+
+
+
+

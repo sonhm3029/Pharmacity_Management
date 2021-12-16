@@ -36,6 +36,7 @@ class OrderController {
                             invoice = invoice.toObject();
                             return invoice;
                         })
+
                         var page_index = [];
                         var page_number = Math.ceil((invoices.length)/20);
                         for(let i = 0; i<page_number; i++) {

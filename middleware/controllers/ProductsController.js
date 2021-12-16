@@ -67,7 +67,7 @@ class ProductsController {
 
         newProduct.save()
             .then(()=> {
-                res.redirect('/staff/product');
+                res.redirect('/product/product-management');
             })
             .catch((error)=> {
                 const oldData = formData;
@@ -125,7 +125,7 @@ class ProductsController {
 
         Products.updateOne({product_code: req.params.id}, formData)
             .then(()=> {
-                res.redirect('/product');
+                res.redirect('/product/product-management');
             })
             .catch( error => {
                 res.redirect(req.get('referer'));
@@ -141,7 +141,7 @@ class ProductsController {
                             console.log(result);
                         })
                 }
-                res.redirect('/product');
+                res.redirect('/product/product-management');
             })
             .catch(next);
     }   

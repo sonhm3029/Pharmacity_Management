@@ -10,7 +10,7 @@
             </button>
         </form>   
     </div>
-    <form action="/product" id="header-filter-form">
+    <form action="/product/product-management" id="header-filter-form">
         <div class="product-type__filter-form">
         <label for="product-type__filter" class="form-label">Loại sản phẩm</label>
         <select class="custom-select" id="product-type__filter" name="product_type" required>
@@ -53,7 +53,7 @@
                         <td>{{getDate this.product_MFG}}/{{getMonth this.product_MFG}}/{{getYear this.product_MFG}}</td>
                         <td>{{getDate this.product_expired}}/{{getMonth this.product_expired}}/{{getYear this.product_expired}}</td>
                         <td class="edit-product">
-                            <a href="/product/{{this.product_code}}/edit" class="update-product">Sửa</a>
+                            <a href="/product/product-management/{{this.product_code}}/edit" class="update-product">Sửa</a>
                             <a href="" class="delete-product" data-toggle="modal" data-target="#delete-product__modal" data-id="{{this.product_code}}">Xóa</a>
                         </td>
                     </tr>
@@ -113,7 +113,7 @@
                 product_code = button.data('id'); // Extract info from data-* attributes
             });
                 delete_confirm_btn.click(function() {
-                    submit_delete_modal.attr("action",'/product/' + product_code + '?_method=DELETE');
+                    submit_delete_modal.attr("action",'/product/product-management/' + product_code + '?_method=DELETE');
                     submit_delete_modal.submit();
             });
 

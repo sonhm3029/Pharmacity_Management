@@ -1,0 +1,39 @@
+<div class="page-header-wrapper">
+    <h1>{{report.report_name}}</h1>
+</div>
+<div class="page-content-wrapper" id="report-detail-container">
+    <div class="report-detail-header">
+        <div id="report-detail__staff-info">
+            <div id="staff-info-code" class="staff-info-item mb-3">
+                <h2><strong>Mã nhân viên: </strong></h2>
+                <span>{{staff.staff_code}}</span>
+            </div>
+            <div id="staff-info-code" class="staff-info-item">
+                <h2><strong>Họ tên nhân viên: </strong></h2>
+                <span>{{staff.staff_name}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="report-detail-body">
+        <div id="report-detail__report-info">
+            <div id="report-info-date" class="report-info-item mb-3">
+                <h2><strong>Ngày lập báo cáo:</strong></h2>
+                <span>{{getDMY report.report_date}}</span>
+            </div>
+            <div id="report-info-note" class="report-info-item mb-3">
+                <h2><strong>Ghi chú</strong></h2>
+                <p>{{report.report_note}}</p>
+            </div>
+        </div>
+        <div id="report-detail__report-data">
+            {{#each report_files}}
+            <img src="{{this.url}}" alt="" style="width:90%;" class="mb-3 mt-3">
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+
+
+
+

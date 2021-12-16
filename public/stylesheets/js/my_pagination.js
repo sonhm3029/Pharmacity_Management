@@ -50,11 +50,11 @@ $(function() {
     const sidebar_task__link = $('.sidebar-task__link');
     let urlPath = window.location.pathname;
     for(var i=0; i <sidebar_task__link.length; i++) {
-        if($(sidebar_task__link[i]).attr('href') == urlPath) {
+        if($(sidebar_task__link[i]).attr('href') == urlPath || urlPath.includes($(sidebar_task__link[i]).attr('href'))) {
             // || urlPath.includes($(sidebar_task__link[i]).attr('href'))
             $(sidebar_task__link[i]).addClass('active-task__link');
             $(taskbar_items[i]).addClass('active-task');
-        }
+        }      
     }
 
 

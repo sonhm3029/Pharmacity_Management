@@ -81,6 +81,10 @@ function length(arr) {
     return arr.length;
 }
 
+function reverseArray(arr) {
+    return arr.reverse();
+}
+
 
 
 function hbsHelper(app) {
@@ -101,6 +105,7 @@ function hbsHelper(app) {
             length,
             getDMY,
             getYMD2,
+            reverseArray
         }
     }));
     
