@@ -2,6 +2,8 @@ const User = require('../model/Authentication');
 const Staff = require('../model/Staff');
 const Orders = require('../model/Invoices');
 const Products = require('../model/Products');
+const Report = require('../model/Reports');
+
 const fs = require('fs');
 const cloudinary = require('../cloudinary');
 
@@ -309,6 +311,44 @@ class ManagerController {
                 res.redirect('/manager/staff-management');
             })
             .catch(next);
+    }
+
+    show_report_page(req, res, next) {
+
+        Report.find({})
+            .then( reports => {
+
+                reports = reports.map( report => report.toObject());
+
+                res.render('report_list_manager',
+                {
+                    layout:"main",
+                    reports
+                });
+            })
+    }
+
+    show_report_detail(req, res, next) {
+        Report.findOne({report_link: req.params.report_link})
+            .then(report => {
+                
+                report = report.toObject();
+                Staff.findOne({staff_code: report.staff_code })
+                    .then( staff => {
+
+                        staff = staff.toObject();
+                        const report_files = report.report_files;
+
+                        res.render('report_detail', {
+                            layout:'main',
+                            report,
+                            staff,
+                            report_files
+                        });
+                    })
+                
+            })
+            .catch(next)
     }
 }
 

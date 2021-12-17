@@ -1,0 +1,34 @@
+<div class="page-header-wrapper">
+    <h1>BÁO CÁO CỦA NHÂN VIÊN</h1>
+</div>
+<div class="page-content-wrapper" id="list-report-container">
+    <div class="table-container">
+        <table class="table table-hover" id="list-report">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" class="report-index">#</th>
+                <th scope="col" class="report-name">Tên báo cáo</th>
+                <th scope="col" class="report-date">Báo cáo ngày</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+                {{#each reports}}
+                <tr class="product-info-value">
+                    <td>{{sum @index 1}}</td>
+                    <td>{{this.report_name}}</td>
+                    <td>{{getDMY this.report_date}}</td>
+                    <td class="report-act">
+                        <a href="/manager/report/{{this.report_link}}" class="view-report">Xem</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+

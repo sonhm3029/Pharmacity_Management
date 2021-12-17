@@ -17,5 +17,6 @@ router.get('/staff-management', managerController.showStaff)
 router.get('/staff-management/:id', managerController.showEditPage)
       .put('/staff-management/:id',upload.single('staff_img'), managerController.updateStaffInfo)
       .delete('/staff-management/:id', managerController.deleteStaffInfo)
-
+router.get('/report', managerController.show_report_page)
+      .get('/report/:report_link', managerController.show_report_detail);
 module.exports = router;
