@@ -169,51 +169,6 @@ class ManagerController {
 
             });
         
-        // Products.find({})
-        //     .then( products => {
-
-        //         products = products.map( product => product.toObject());
-
-        //         //Current month, year
-        //         const current = new Date();
-        //         const current_month = current.getMonth() + 1;
-        //         const current_year = current.getFullYear();
-
-        //         //Number of successed orders this month
-        //         let month_orders =
-        //              orders_list.filter(order => {
-        //                  return ((order.invoice_date).getMonth() + 1) === current_month;
-        //             });
-
-        //         // Revenue this month
-        //         let revenue = month_orders.reduce(function(total, order) {
-        //             return total + order.invoice_cost;
-        //         }, 0);
-
-        //         //Number of product import this month
-        //         let products_this_month =
-        //                 products.filter( product => {
-        //                     return (product.createdAt !== undefined)&&(product.createdAt).getMonth() === (current_month - 1);
-        //                 });
-
-        //         const revenue_all_month = findRevenueAll(orders_list);
-        //         const top_best_sold = findBestSold(orders_list);
-        //         const list_out_of_date = findOutOfDate(products);
-                
-         
-        //         res.render('dashboard', {
-        //             list_out_of_date,
-        //             top_best_sold,
-        //             revenue_all_month,
-        //             products_this_month,
-        //             revenue,
-        //             month_orders,
-        //             orders_list,
-        //             products,
-        //             layout:'main'
-        //         })
-        //     })
-        //     .catch(next);
     }
 
     showStaff(req,res,next) {
