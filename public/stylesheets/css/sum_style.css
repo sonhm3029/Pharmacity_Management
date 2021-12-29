@@ -1,0 +1,928 @@
+/* Base css */
+/* Color variables */
+:root {
+    --red-color: red;
+    --header-color:#4a4a4a;
+    /* --header-color:#0f62f9; */
+    --dashboard-color:#363636;
+    --btn-color:#01d1b2;
+    --table-header-color:#e0e0e0;
+    --logo-color-1:#55a2de;
+    --logo-color-2:#5dac46;
+    --search-form-height: 32px;
+    --topbar-height:60px;
+    --sidebar-btn-hover:#ededed;
+    --success-status:#4ae41e;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    line-height: 1.5;
+    font-size: 62.5%; 
+}
+
+.form-container {
+    padding: 12px;
+    background-color: white;
+    min-height: 400px;
+}
+.table-container {
+    padding: 12px;
+    background-color: white;
+    min-height: 524px;
+}
+
+
+.page-header-wrapper {
+    padding: 24px;
+    height: 80px;
+    width: 100%;
+    background-color: white;
+}
+
+.page-content-wrapper {
+    background-color: #edf1f5;
+    padding: 24px;
+    min-height: 100vh;
+}
+
+
+.form-label {
+    font-size: 1.6rem;
+}
+
+/* my config */
+.my-alert {
+    font-size: 1.6rem;
+}
+
+.active-task {
+    background-color: var(--sidebar-btn-hover);
+    cursor: pointer;
+}
+
+.active-task__link {
+    color: black!important;
+}
+
+.active-page {
+    color: white;
+    background-color: #007bff;
+}
+
+
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+
+/* end base css */
+/* Style csss */
+/* Reset Css */
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Nunito', sans-serif !important;
+}
+
+
+/* Header top navbar */
+
+.topbar {
+    height: var(--topbar-height);
+    width: 100%;
+    position: fixed;
+    background-color: var(--header-color);
+    z-index: 99;
+}
+
+.navbar {
+    height: 100%;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    font-size: 3.2rem;
+    margin-left: 12px;
+    margin-right: 0px;
+    width: calc(240px - 12px);
+    
+}
+
+.navbar-brand p {
+    margin: 0;
+}
+
+
+.navbar-function .search-form {
+    display: inline-block;
+}
+
+.search-form input {
+    border: none;
+    font-size: 1.6rem;
+    color: #4c5667;
+    padding-left: 20px;
+    padding-right: 40px;
+    background: white;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    height: var(--search-form-height);
+    font-weight: 600;
+    width: 180px;
+    display: inline-block;
+    line-height: var(--search-form-height);
+    border-radius: 40px;
+}
+
+.search-form button {
+    border: none;
+    color: black;
+    height: var(--search-form-height);
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.search-form button .fa-search {
+    font-size: 2rem;
+}
+
+.navbar-function .log-out-btn {
+    border: none;
+    color: white;
+    font-size: 1.6rem;
+    margin-right: 12px;
+}
+/* End top bar */
+
+/* Page layout wrapper */
+
+.page-layout-wrapper {
+    padding-top: var(--topbar-height);
+    display: flex;
+    /* height: 100%; */
+    position: relative;
+    padding-left: 10px;
+    background-color: var(--header-color);
+    box-sizing: content-box;
+}
+
+/*  Left sidebar*/
+
+.sidebar-nav__name {
+    margin-top: 4px;
+    margin-left: 12px;
+    color: var(--table-header-color);
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.page-layout-wrapper .left-sidebar {
+    width: 240px;
+    background-color: var(--header-color);
+    position: sticky;
+    top: var(--topbar-height);
+    right: 0;
+    height: 100%;
+}
+
+.left-sidebar .sidebar-wrapper {
+    height: 100%;
+    margin-left: 12px;
+    margin-right: 12px;
+    background-color: var(--dashboard-color);
+}
+
+
+.sidebar-wrapper .sidebar-nav {
+    padding: 24px 0px 0px 0px;
+    list-style-type: none;
+    color: white;
+}
+
+.sidebar-nav__item {
+    display: block;
+}  
+
+.sidebar-nav__item:hover {
+    background-color: var(--sidebar-btn-hover);
+    cursor: pointer;
+}
+
+
+.sidebar-nav__item:hover .sidebar-task__link {
+    color: black;
+    text-decoration: none;
+}
+
+.sidebar-task__link {
+    padding: 15px 15px 15px 24px;
+    display: flex;
+    align-items: center;
+    color: var(--table-header-color);
+    text-decoration: none;
+    font-size: 1.6rem;
+}
+
+
+
+.sidebar-task__link i {
+    margin-right: 8px;
+}
+
+
+.dropdown-item {
+    font-size: 1.6rem;
+}
+
+.dropdown-menu {
+    width: 100%;
+    background-color: #ededed;
+}
+/* End left sidebar */
+
+/* Main content */
+.main-content {
+    flex: 1;
+    background-color: white;
+    min-height: 100vh;
+}
+
+/* End main content */
+
+/* End page layout wrapper */
+
+
+
+/* end style css */
+
+/* Create css */
+/* Create in main content */
+
+#create-product-form input,
+#product-description, option,
+#product-brand,
+#product-type,
+#product-maker__place  {
+    font-size: 1.6rem;
+}
+
+
+#create-btn, #cancel-create__btn {
+    padding: 8px 24px 8px 24px;
+    font-size: 1.6rem;
+}
+
+label[for="#product-image"] {
+    font-size: 1.6rem;
+}
+
+#product-image {
+    display: block;
+}
+
+/* Confirm modal */
+#confirmModal,
+#confirmModal button.confirm-btn,
+#confirmModal button.cancel-btn {
+    font-size: 1.6rem;
+}
+
+#confirmModal .modal-title {
+    font-size: 2.4rem;
+}
+
+/* End create css */
+/* Login css */
+.login-form-wrapper {
+    padding-top: 112px;
+    padding-bottom: 112px;
+    background-color: #f8fafb;
+    min-height: 100vh;
+}
+
+#login-form {
+    width: 100%;
+}
+
+
+.login-form__header {
+    font-size: 2.4rem;
+}
+
+label[for="Adminname"], label[for="password"] {
+    font-size: 1.6rem;
+}
+
+#login-form__content {
+    margin-top: 10px;
+    
+}
+
+#login-form__content .login-form__input {
+    font-size: 1.6rem;
+    color: #b3b3b3; 
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.login-form__input:focus {
+    box-shadow: none;
+}
+
+.login-form__input::placeholder {
+    color: #b3b3b3;
+}
+
+.submit-checkbox {
+    display: inline-block;
+    position: relative;
+    padding-left: 28px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1.6rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #888;
+}
+
+.submit-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+
+
+
+/* On mouse-over, add a grey background color */
+.submit-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+  
+/* When the checkbox is checked, add a blue background */
+.submit-checkbox input:checked ~ .checkmark {
+    background-color: #38d39f;
+}
+  
+/* Create the checkmark/indicator (hidden when not checked) */
+  
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+/* Show the checkmark when checked */
+.submit-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+/* Style the checkmark/indicator */
+.submit-checkbox .checkmark:after {
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+#login-form__content .form-group:nth-child(3) {
+    display: flex;
+}
+
+#forgot-password {
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+#forgot-password a {
+    font-size: 1.6rem;
+    color: #888;
+    text-decoration: underline;
+}
+
+#submit-login__btn {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 1.6rem;
+    background-color: #38d39f;
+    color: white;
+    font-weight: 700;
+}
+/* End login css */
+/* Manage csss */
+
+
+.page-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+#product-management__function form input {
+    border: 1px solid black;
+}
+
+.product-type__filter-form {
+    display: flex;
+    font-size: 1.6rem;
+}
+
+#product-type__filter {
+    font-size: 1.6rem;
+}
+
+/* .product-type__filter-form label {
+    margin-right: 8px;
+} */
+
+
+#list-product {
+    font-size: 1.6rem;
+}
+
+.product-info-item {
+    text-transform: uppercase;
+}
+
+
+.update-product {
+    margin-right: 12px;
+}
+
+.delete-product {
+    color: red;
+}
+
+/* Delete product modal */
+#delete-product__modal,
+#delete-product__modal .modal-footer button {
+    font-size: 1.6rem;
+}
+
+#delete-product__modal .modal-title,
+.modal-title {
+    font-size: 2rem;
+    color: white;
+}
+/* End delete product modal */
+
+
+/* Pagination */
+
+/* .paginationjs-pages  ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.paginationjs-pages  ul li {
+    display: inline-block;
+    font-size: 1.6rem;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    border: 1px solid #dee2e6;
+}
+
+.paginationjs-pages  ul li a{
+    text-decoration: none;
+} */
+
+
+
+
+
+
+/* End manage css */
+/* Report css */
+#staff-code,
+#report-date,
+#report-file,
+#report-name,
+#list-report {
+    font-size: 1.6rem;
+}
+
+
+#confirm-send-report,
+#cancel-send-report {
+    font-size: 1.6rem;
+}
+
+
+/* Report detail page */
+
+.report-detail-header, .report-detail-body {
+    margin-bottom: 12px;
+    background-color: white;
+    padding: 12px;
+}
+
+
+#report-detail__staff-info,
+#report-detail__report-info {
+    font-size: 1.6rem;
+}
+
+#report-detail__staff-info span {
+   
+}
+
+#report-detail__report-info h2,
+#report-detail__staff-info h2 {
+    margin-right: 8px;
+    display: inline-block;
+}
+
+
+
+
+/* End report css */
+/* Staff csss */
+#add-staff__btn,
+.cancel-btn,
+.save-btn {
+    font-size: 1.6rem;
+}
+/* Add staff modal */
+
+#add-staff__modal {
+    font-size: 1.6rem
+}
+
+#add-staff__modal .modal-title,
+button.close {
+    font-size: 2.4rem;
+    color: white;
+}
+
+.modal-header {
+    background-color: #55a2de;
+}
+
+#add-staff__modal button.close:hover {
+    color: white;
+}
+
+
+#add-staff__form .form-label,
+#add-staff__form input,
+#add-staff__form select {
+    font-size: 1.6rem;
+}
+/* End add staff modal */
+
+/* List staff */
+
+.staff-information {
+    font-weight: 800;
+}
+
+.staff-information span {
+    font-weight: initial;
+}
+
+.card-name-field {
+    font-size: 2.4rem;
+}
+
+.card-age-field,
+.card-gender-field,
+.card-phone-field,
+.card-email-field,
+.card-address-field,
+.card-code-field {
+    font-size: 1.6rem;
+}
+
+.update-staff,
+.delete-staff {
+    font-size: 1.6rem;
+}
+
+/* Staff info */
+.staff-info {
+    min-height: 650px;
+}
+
+.staff-info .card {
+    height: 100%;
+}
+
+
+.staff-function__btn {
+    position: absolute;
+    bottom: 20px;
+}
+
+/* .card img {
+    height: 40%;
+} */
+
+/* End list staff */
+
+/* Update staff modal */
+
+#update-staff__form .form-label,
+#update-staff__form input,
+#update-staff__form select {
+    font-size: 1.6rem;
+}
+/* End update staff modal */
+
+/* Delete staff modal */
+
+#delete-staff__modal,
+#delete-staff__modal .modal-footer button {
+    font-size: 1.6rem;
+}
+
+#delete-staff__modal .modal-title,
+.modal-title {
+    font-size: 2rem;
+    color: white;
+}
+
+#delete-staff__modal button.close:hover {
+    color: white;
+}
+/* End delete staff modal */
+
+/* end staff css */
+/* Dashboard css */
+
+.white-box.data-info {
+
+    margin-bottom: 30px;
+    padding: 25px;
+    background-color: white;
+}
+
+.box-title {
+    text-align: center;
+    display: block;
+    font-size: 2rem;
+    font-weight: 700!important;
+    margin-bottom: 8px;
+}
+
+.box-value {
+    text-align: center;
+    display: block;
+    font-size: 2.4rem;
+}
+
+#products-yearly-sale .box-title,
+#products-best-sale .box-title,
+#products-slowest-sale .box-title,
+#products-expired .box-title {
+    text-align: left;
+}
+
+#product-yearly-sale__chart {
+    width: 100%!important;
+}
+
+.products-best-sale__table,
+.products-slowest-sale__table,
+.products-expired__table {
+    font-size: 1.6rem;
+}
+
+/* Config table color */
+
+/* .my-thead, .my-table {
+    background-color: blue;
+    color: white;
+} */
+
+.my-table-column__success {
+    color: #4ae41e;
+}
+/* end dashboard css */
+/* dynamic input css */
+.dynamic-field__heading {
+    padding: 12px;
+    background-color: #f8f9fa;
+}
+
+.dynamic-field__heading h1 {
+    font-weight: 700;
+}
+
+.dynamic-item {
+    background-color: #f8f9fa;
+}
+
+.col-md-2-5 {
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+.btn_round {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+}
+
+.copy_btn,
+.trash_btn {
+    display: inline-block;
+}
+
+.copy_btn:hover .btn_round,
+.trash_btn:hover .btn_round {
+    color:#fff;
+    background: #6b4acc;
+    border: 1px solid #6b4acc;
+}
+
+#add-new-field {
+    font-size: 1.6rem;
+}
+
+
+
+
+/* end dynamic input css */
+/* Bill css */
+#order-options-container {
+    font-size: 1.6rem;
+}
+
+#order-tabs {
+    position: relative;
+}
+
+
+/* online order */
+
+.confirm-order,
+.view-order {
+    margin-right: 8px;
+}
+
+.cancel-order,
+.delete-order {
+    color: red;
+}
+
+/* Create invoice */
+#create-invoice {
+    position: relative;
+    flex: 1;
+}
+
+#create-invoice__btn {
+    position: absolute;
+    right: 0;
+    font-size: 1.6rem;
+}
+
+#create-invoice-form,
+#create-invoice-form input {
+    font-size: 1.6rem;
+}
+
+#submit-invoice,
+#cancel-invoice {
+    font-size: 1.6rem;
+}
+
+
+#delete-order__modal,
+#delete-order__modal .modal-footer button {
+    font-size: 1.6rem;
+}
+
+
+#delete-order__modal .modal-title,
+.modal-title {
+    font-size: 2rem;
+    color: white;
+}
+
+/* Pagination */
+.order_page-item {
+    
+}
+
+.order_page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+/* End bill css */
+/* Responsive css */
+@media (max-width: 768px) {
+    .staff-function__btn {
+        position: unset;
+    }
+}
+
+
+@media (max-width: 999px) {
+
+
+    .page-layout-wrapper {
+        padding-left: 0px;
+    }
+
+    .navbar.top-navbar {
+        padding-left: 8px;
+    }
+
+    .navbar-brand {
+        margin-left: 0px;
+    }
+
+    .navbar-brand p {
+        display: none;
+    }
+
+
+    .navbar-brand .logo-pharmacy {
+        display: block!important;
+        width: 50px;
+        height: 50px;
+    }
+
+    .sidebar-task__link span {
+        display: none;
+    }
+
+    .sidebar-wrapper {
+        margin: 0px 0px 0px 0px!important;
+    }
+
+    .sidebar-nav__name {
+        display: none;
+    }
+
+    .page-layout-wrapper .left-sidebar {
+        width: 64px;
+    }
+
+
+    .sidebar-task__link {
+        padding: 24px 15px 24px 24px;
+    }
+
+    .submit-checkbox, 
+    #forgot-password a {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 1199px) {
+
+    .page-header-wrapper h1 {
+        font-size: 20px;
+    }
+
+    #product-management__function button {
+        display: none;
+    }
+}
+/* end responsive css */
