@@ -3,62 +3,52 @@ const Staff = require('../model/Staff');
 const Orders = require('../model/Invoices');
 const Products = require('../model/Products');
 const Report = require('../model/Reports');
+const ReportFiles = require('../model/ReportFiles');
+const OrderDetails = require('../model/InvoicesDetails');
 
 const fs = require('fs');
 const cloudinary = require('../cloudinary');
 
 
+// Find the top 10 best sold product in current month
+async function findBestSold(current_month, current_year) {
 
-function findBestSold(orders_list) {
-    var list_sold_products =
-                     orders_list.map( order => order.list_products);
+    // Find list sold product in current month
+    const query_month =
+        current_month > 10 ? String(current_month): '0'+String(current_month);
+    const query_date =
+        String(current_year) + '-' + query_month + '-01';
+                     
+    var list_sold = await OrderDetails.aggregate([
+        {
+            "$match": {"createdAt": {"$gte":new Date(query_date)}}
+        },
+        {
+            "$group": {
+                _id: "$product_code",
+                sumQuantity: {$sum: "$invoice_product_quantity"
+            }}
+        },
+        // Joint result with products table to take product details
+        {
+            "$lookup": {
+                from: "products",
+                localField: "_id",
+                foreignField: "product_code",
+                as: "details"
+            }
+        },
+        {
+            "$replaceRoot":{
+                "newRoot": {"$mergeObjects": [{ "$arrayElemAt":["$details",0]},"$$ROOT"]}
+            }
+        },
+        {
+            $sort: {"sumQuantity": -1}//descending sort
+        }
+    ]);
 
-                list_sold_products =
-                     list_sold_products.reduce(function(results, arr){
-                        return results.concat(arr);
-                    },[]);
-
-
-                var temp_list_product_code = [];
-                var temp_list_product_quantity = [];
-                var temp_list_product = [];
-
-                //Take list product
-                for(let i = 0; i<list_sold_products.length; i++) {
-
-                    if(!temp_list_product_code.includes(list_sold_products[i].product_code)) {
-                        temp_list_product_code.push(list_sold_products[i].product_code);
-                        temp_list_product.push(list_sold_products[i]);
-                    }
-                }     
-
-                for(let i = 0; i<temp_list_product_code.length; i++) {
-                    
-                    temp_list_product_quantity[i] = 
-                    list_sold_products.reduce(function(total, product){
-                        if(product.product_code == temp_list_product_code[i]) {
-                            return total + Number(product.product_quantity);
-                        }
-                        else {
-                            return total + 0;
-                        }
-                    },0);
-                    temp_list_product[i].product_quantity = temp_list_product_quantity[i];     
-                }
-                // Sort list product
-                temp_list_product.sort(
-                    function(product_1, product_2) {
-                        return product_2.product_quantity - product_1.product_quantity;
-                });
-                //take top 10 best sold to show
-                var top_best_sold;
-                if(temp_list_product.length >=10) {
-                    top_best_sold = temp_list_product.slice(0,10);
-                }
-                else {
-                    top_best_sold = temp_list_product;
-                }
-    return top_best_sold;
+    return list_sold.slice(0,11);
 }
 
 function findRevenueAll(orders_list) {
@@ -121,7 +111,7 @@ class ManagerController {
                 orders_list = orders.map(order => order.toObject());
 
             Products.find({})
-            .then( products => {
+            .then(async(products) => {
 
                 products = products.map( product => product.toObject());
 
@@ -148,9 +138,8 @@ class ManagerController {
                         });
 
                 const revenue_all_month = findRevenueAll(orders_list);
-                const top_best_sold = findBestSold(orders_list);
+                const top_best_sold = await findBestSold(current_month,current_year);
                 const list_out_of_date = findOutOfDate(products);
-                
          
                 res.render('dashboard', {
                     list_out_of_date,
@@ -236,7 +225,6 @@ class ManagerController {
 
                         cloudinary.v2.uploader.destroy(staff.staff_img_id,
                             function(result) {
-                                console.log(result);
                             });
                         
                     }
@@ -289,10 +277,12 @@ class ManagerController {
                 
                 report = report.toObject();
                 Staff.findOne({staff_code: report.staff_code })
-                    .then( staff => {
-
+                    .then( async (staff) => {
                         staff = staff.toObject();
-                        const report_files = report.report_files;
+                        let report_files =
+                            await ReportFiles.find({report_link: report.report_link});
+                        report_files =
+                            report_files.map(file => file.toObject());
 
                         res.render('report_detail', {
                             layout:'main',

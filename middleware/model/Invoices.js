@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 // mongoose.plugin(slug);
 
 const Invoice = new Schema({
-
     invoice_code: {type: String, unique:true},
     invoice_staff_name: {type: String},
     customer_name: {type: String},
@@ -17,7 +16,6 @@ const Invoice = new Schema({
     customer_pay: {type: Number},
     customer_pay_back: {type: Number},
     invoice_cost: {type: Number},
-    list_products: {type: Array},
     invoice_status: {type: String}
 }, {
     timestamps: true

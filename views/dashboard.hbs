@@ -81,8 +81,10 @@
                                 <th scope="col">#</th>
                                 <th scope="col" class="text-primary">Mã SP</th>
                                 <th scope="col" class="text-primary">Tên SP</th>
+                                <th scope="col" class="text-primary">Loại SP</th>
                                 <th scope="col">Số lượng bán</th>
-                                <th scope="col">Giá (VNĐ)</th>
+                                <th scope="col">Giá nhập (VNĐ)</th>
+                                <th scope="col">Giá bán (VNĐ)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -91,8 +93,10 @@
                                     <th scope="row">{{sum @index 1}}</th>
                                     <td class="text-primary">{{this.product_code}}</td>
                                     <td>{{this.product_name}}</td>
+                                    <td>{{this.product_type}}</td>
                                     <td class="my-table-column__success">{{this.product_quantity}}</td>
-                                    <td class="my-table-column__success">{{this.product_price}}</td>
+                                    <td class="my-table-column__success">{{this.product_price_in}}</td>
+                                    <td class="my-table-column__success">{{this.product_price_out}}</td>
                                 </tr>
                             {{/each}}
                         </tbody>
@@ -115,7 +119,8 @@
                                 <th scope="col">Loại SP</th>
                                 <th scope="col">Số lượng</th>
                                 <th scope="col">Ngày hết hạn</th>
-                                <th scope="col">Giá (VNĐ)</th>
+                                <th scope="col">Giá nhập(VNĐ)</th>
+                                <th scope="col">Giá bán(VNĐ)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -127,6 +132,7 @@
                                     <td>{{this.product_type}}</td>
                                     <td>{{this.product_quantity}}</td>
                                     <td class="text-warning">{{getDMY this.product_expired}}</td>
+                                    <td>{{this.product_price_in}}</td>
                                     <td>{{this.product_price_out}}</td>
                                 </tr>
                             {{/each}}

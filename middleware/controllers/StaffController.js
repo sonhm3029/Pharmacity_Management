@@ -3,6 +3,7 @@ const User = require('../model/Authentication');
 const Products = require('../model/Products');
 const Staffs = require('../model/Staff');
 const Report = require('../model/Reports');
+const ReportsFiles = require('../model/ReportFiles');
 
 const fs = require('fs');
 
@@ -92,16 +93,15 @@ class StaffController {
     async save_import_report(req, res, next) {
         const formData = req.body;
 
-        console.log(formData);
         var result_files = [];
         for(let i = 0; i< req.files.length; i++) {
 
             var file =
              await cloudinary.v2.uploader.upload(
-                 (req.files[i]).path,
-                 {
-                     folder:"reports"
-                 }
+                (req.files[i]).path,
+                {
+                    folder:"reports"
+                }
              );
 
             deleteTempFile((req.files[i]).path);
@@ -113,11 +113,19 @@ class StaffController {
             result_files.push(file_result);
         }
 
-        formData.report_files = result_files;
+
+        // Save new record in reports table
         const newReport = new Report(formData);
-        newReport.save()
-            .then(() => {
-                res.redirect('/');
+        await newReport.save()
+            .then((report) => {
+                result_files =
+                    result_files.map(file => {
+                        file.report_link = report.report_link;
+                        return file;
+                    });
+                // Save new record in reportfiles table
+                ReportsFiles.insertMany(result_files);
+                res.redirect('/staff/my-report');
             })
             .catch(next);
         
@@ -126,7 +134,7 @@ class StaffController {
     show_my_report_page(req, res, next) {
 
         Report.find({})
-            .then( reports => {
+            .then( (reports) => {
 
                 reports = reports.map( report => report.toObject());
 
@@ -145,10 +153,15 @@ class StaffController {
                 
                 report = report.toObject();
                 Staffs.findOne({staff_code: report.staff_code })
-                    .then( staff => {
+                    .then( async(staff) => {
 
                         staff = staff.toObject();
-                        const report_files = report.report_files;
+                        let report_files =
+                            await ReportsFiles.find({
+                                report_link: report.report_link
+                            });
+                        report_files =
+                            report_files.map(file => file.toObject());
 
                         res.render('report_detail', {
                             layout:'staff_layout',

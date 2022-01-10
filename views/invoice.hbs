@@ -49,14 +49,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each invoice.list_products}}
+                            {{#each list_products}}
                                 <tr>
                                     <td class="center">{{sum @index 1}}</td>
-                                    <td class="left strong">{{this.product_code}}</td>
-                                    <td class="left">{{this.product_name}}</td>
-                                    <td class="right">{{this.product_quantity}}</td>
-                                    <td class="center">{{this.product_price}}</td>
-                                    <td class="right">{{calculate_price this.product_quantity this.product_price}}</td>
+                                    <td class="left strong">{{product_code}}</td>
+                                    <td class="left">{{product_name}}</td>
+                                    <td class="right">{{invoice_product_quantity}}</td>
+                                    <td class="center">{{product_price}}</td>
+                                    <td class="right">{{invoice_product_total}}</td>
                                 </tr>
                             {{/each}}
                         </tbody>

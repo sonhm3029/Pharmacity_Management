@@ -74,9 +74,9 @@ button.close {
     bottom: 20px;
 }
 
-/* .card img {
-    height: 40%;
-} */
+.card .card-staff__img {
+    height: 319px;
+}
 
 /* End list staff */
 

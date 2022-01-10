@@ -4,13 +4,13 @@
 <div class="page-content-wrapper" id="order-options-container">
     <ul class="nav nav-pills mb-3" id="order-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="order-online__tab" data-toggle="pill" href="#order-online" role="tab" aria-controls="order-online" aria-selected="true">
+            <a class="nav-link" id="order-online__tab" data-toggle="pill" href="#order-online" role="tab" aria-controls="order-online" aria-selected="true">
                 Đơn đặt hàng
                 <span class="badge badge-danger" id="order-online__notidy">4</span>
             </a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="order-history__tab" data-toggle="pill" href="#order-history" role="tab" aria-controls="order-history" aria-selected="false">
+            <a class="nav-link active" id="order-history__tab" data-toggle="pill" href="#order-history" role="tab" aria-controls="order-history" aria-selected="false">
                 Đơn hàng đã thành công
             </a>
         </li>
@@ -21,7 +21,7 @@
         </li>
     </ul>
     <div class="tab-content" id="order-tabs__content">
-        <div class="tab-pane fade show active" id="order-online" role="tabpanel" aria-labelledby="orderonline-tab">
+        <div class="tab-pane fade" id="order-online" role="tabpanel" aria-labelledby="orderonline-tab">
             <div class="table-container">
                 <table class="table table-hover" id="list-order-online">
                     <thead class="thead-dark">
@@ -48,7 +48,7 @@
                 </table>
             </div>
         </div>
-        <div class="tab-pane fade" id="order-history" role="tabpanel" aria-labelledby="order-history-tab">
+        <div class="tab-pane fade show active" id="order-history" role="tabpanel" aria-labelledby="order-history-tab">
             
             <div class="table-container">
                 <table class="table table-hover" id="list-solved-order">
@@ -192,8 +192,8 @@
                               Bạn có xác nhận lập hóa đơn này?
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-danger confirm-btn" data-dismiss="modal">Hủy</button>
-                              <button type="submit" class="btn btn-primary cancel-btn">Xác nhận</button>
+                              <button type="button" class="btn btn-danger cancel-btn" data-dismiss="modal">Hủy</button>
+                              <button type="submit" class="btn btn-primary confirm-btn">Xác nhận</button>
                             </div>
                           </div>
                         </div>
@@ -219,9 +219,9 @@
                 var button = $(event.relatedTarget); // Button that triggered the modal
                 invoice_code = button.data('id'); // Extract info from data-* attributes
             });
-                delete_confirm_btn.click(function() {
-                    submit_delete_modal.attr("action",'/order/successed/' + invoice_code + '?_method=DELETE');
-                    submit_delete_modal.submit();
+            delete_confirm_btn.click(function() {
+                (submit_delete_modal).attr("action",'/order/successed/' + invoice_code + '?_method=DELETE');
+                (submit_delete_modal).submit();
             });
 
         })

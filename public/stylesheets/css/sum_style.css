@@ -649,6 +649,9 @@ button.close {
 /* .card img {
     height: 40%;
 } */
+.card .card-staff__img {
+    height: 319px;
+}
 
 /* End list staff */
 
