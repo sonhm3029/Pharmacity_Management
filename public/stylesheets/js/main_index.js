@@ -198,7 +198,6 @@ $(function() {
     // var container = $('#pagination');
     // console.log(container.pagination('getSelectedPageNum'));
 })
-
 $(function() {
     var staff_code;
     let delete_confirm_btn = $('#delete-confirm-btn');
