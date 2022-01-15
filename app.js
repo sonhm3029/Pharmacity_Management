@@ -14,7 +14,7 @@ const router = require('./routes/login');
 
 const cookieParser = require('cookie-parser');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 // Import database and connect
 const db = require('./config/db/index');
