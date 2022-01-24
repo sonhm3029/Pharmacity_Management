@@ -1,55 +1,25 @@
-# Pharmacy_Management
+# Pharmacity management:
 
-## Cách sử dụng
+Hướng dẫn chạy dự án:
 
-Tải Mongo Compass rồi thực hiện theo các bước.
+## tải mongodb, tạo database là Pharmacy_database, kết nối tới project bằng server url trong file `config/db/index.js`:
 
-**Chú ý:** Cần download MongoDb Compass:
-xem video này:
+![1](1.png)
 
- [Hướng dẫn cài đặt Mongo Compass](https://fullstack.edu.vn/learning/nodejs?id=2311)
+## Tải node_modules
 
-Sau khi cài đặt mongo compass. Xem hết video.
+Trong terminal gõ:
 
-Vào Mongo Compass, nhấn **CREATE DATABASE** tạo database như sau:
+```shell
+> npm install
+```
 
-**Lưu ý tạo tên giống hệt**
-#
-#
-#
+## Chạy dự án
 
-![hdmongo_1](./hd_mongo_1.png)
+Trong terminal gõ:
 
-Tiếp theo ấn vào **Create collection** để tạo ra các collection _authentications, orders, products_(Lưu ý tạo tên cũng giống y hệt):
+```shell
+> npm run dev
+```
 
-
-![hdmongo_2](./hd_mongo_2.png)
-
-
-Trong các mục collection, nhấn **ADD DATA** > **Import file**
-
-download các file **authentications.json** và **products.json** và Import vào các collection tương ứng. **order** collection sẽ do mình thực hiện thêm vào trên web quản lý
-
-[Link tải file](https://drive.google.com/drive/u/0/folders/1pR4QHd9wVxZibU1pIXWuIT1dEgLfSKKH)
-
-
-![hdmongo_3](./hd_mongo_3.png)
-![hdmongo_4](./hd_mongo_4.png)
-
-Sau khi chọn file xong ấn **import** > **DONE**
-
-
-
-
-## Chạy project
-
-B1: vào branch son > Code > Download zip
-![hdgitimg](./hdgit_1.png)
-
-B2: Mở code ra. Mở terminal gõ: npm run dev.
-
-ở cửa số log nó có hiện
-
-![hdgit_2](./hd_git_2.png)
-
-**Crtl + Click** hoặc cop cái **http://localhost:3000** vào để chạy lên web
+Dự án sẽ chạy trong [http://localhost:5000/](http://localhost:5000/)
